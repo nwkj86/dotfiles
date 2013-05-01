@@ -41,29 +41,22 @@ alias mv="mv -v"
 
 ### man colors configuration
 man() {
-        env \
-  LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-  LESS_TERMCAP_md=$(printf "\e[1;31m") \
-  LESS_TERMCAP_me=$(printf "\e[0m") \
-  LESS_TERMCAP_se=$(printf "\e[0m") \
-  LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-  LESS_TERMCAP_ue=$(printf "\e[0m") \
-  LESS_TERMCAP_us=$(printf "\e[1;32m") \
+  env                                 \
+  LESS_TERMCAP_mb=$'\E[01;31m'        \
+  LESS_TERMCAP_md=$'\E[01;38;5;74m'   \
+  LESS_TERMCAP_me=$'\E[0m'            \
+  LESS_TERMCAP_se=$'\E[0m'            \
+  LESS_TERMCAP_so=$'\E[38;5;246m'     \
+  LESS_TERMCAP_ue=$'\E[0m'            \
+  LESS_TERMCAP_us=$'\E[04;38;5;146m'  \
   man "$@"
 }
 
 ### exports
 export EDITOR="vim"
-export CPU_NUMBER=$(cat /proc/cpuinfo | grep "cpu MHz" | wc -l)
+export CPU_NUM=$(cat /proc/cpuinfo | grep "cpu MHz" | wc -l)
 
 ### history options
 export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTSIZE=1000
-
-### compilation options
-#export CFLAGS=" -O2 -march=native -mtune=native -pipe -s -fomit-frame-pointer"
-#export CXXFLAGS="$CFLAGS"
-#export CHOST="x86_64-arch-linux-gnu"
-#export MAKEFLAGS=" -j${CPU_NUMBER}"
-#export LDFLAGS="-Wl,--hash-style=gnu,--as-needed,-O2"
 
