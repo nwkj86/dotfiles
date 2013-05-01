@@ -1,0 +1,109 @@
+# Conky configuration script.
+# Filename: .conkyrc2
+# Version: 020612
+# Author: robz
+# This config will give you a horizontal layout with a screen aspect ratio of
+# 16:9 sized for 1920 x 1080 pixels resolution monitor.
+# You'll need the lm-sensors & hddtemp packages from the repositories -
+# sudo apt-get install lm-sensors hddtemp - follow the setup procedures in the
+# man pages, you'll also need my rhythmbox-progbar script see below.
+# The hard drive names and locations will probably need to be changed to suit
+# your PC as will the lm-sensors cpu and motherboard temperatue names, maybe
+# the name of your network interface as well :)
+# To start, in a terminal - conky -d -c <path to .conkyrc2>
+# Or as a startup application - conky -d -p15 -c <path to .conkyrc2>
+# OK here - we - go!
+
+# Locale, fonts and font sizes.
+use_xft yes
+xftfont Droid Sans:size=9
+override_utf8_locale yes
+
+# Conky performance
+update_interval 1
+total_run_times 0
+double_buffer yes
+no_buffers yes
+net_avg_samples 4
+text_buffer_size 1024
+top_name_width 22
+
+# Execute it in its own window
+own_window yes 
+own_window_transparent no
+own_window_colour 0f0f0f
+own_window_type normal 
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Font colors
+default_color white # mid grey
+
+# Header colors
+color0 FFFF66 # pale yellow
+
+# Minimum dimensions
+minimum_size 1150 0
+default_bar_size 100 10
+default_graph_size 100 10
+
+# Conky positioning, roughly centred.
+alignment bottom_middle
+gap_y 5
+
+########### Stuff after "TEXT" will appear onscreen ###########################
+TEXT
+${goto 15}${font style=Bold:size=18}${color0}Arch Linux ${font}\
+${kernel}${font Droid Sans:size=10}\
+${goto 256}Memory & Disks:\
+${goto 560}Network:\
+${goto 765}Top Processes:\
+${goto 975}Activity:\
+${font}${color}${voffset 5}
+########### End of headings line ##############################################
+${goto 15}${if_match ${cpu cpu0} > 75}CPU: !!!!${goto 100}${color red}\
+${cpubar cpu0}${color}  ${cpu cpu0}%${else}CPU Average:${goto 100}\
+${cpubar cpu0}  ${cpu cpu0}%${endif}\
+${goto 256}/home:${goto 330}${fs_used /home}\
+${goto 380}${fs_bar /home}  ${fs_size /home}\
+${goto 560}Up:\
+${goto 605}${upspeedgraph wlan0 10,100 B7B2AD 0099FF}  ${upspeed wlan0}\
+${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
+${goto 975}Processes:${goto 1070}${running_processes}  Running
+########### End of first line #################################################
+${goto 15}${if_match ${cpu cpu1} > 75}Core 1: !!!!${goto 100}${color red}\
+${cpubar cpu1}${color}  ${cpu cpu1}%${else}Core 1:${goto 100}\
+${cpubar cpu1}  ${cpu cpu1}%${endif}\
+${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\
+${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDisk}\
+${goto 560}Down:\
+${goto 605}${downspeedgraph wlan0 10,100 B7B2AD FF0000}  ${downspeed wlan0}\
+${goto 765}${top name 2}${goto 865}${top pid 2}${goto 905}${top cpu 2}%\
+${goto 975}Load Average: ${goto 1070}${loadavg}
+########### End of second line ################################################
+${goto 15}${if_match ${cpu cpu2} > 75}Core 2: !!!!${goto 100}${color red}\
+${cpubar cpu2}${color}  ${cpu cpu2}%${else}Core 2:${goto 100}\
+${cpubar cpu2}  ${cpu cpu2}%${endif}\
+${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
+${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
+${goto 560}Totals:${goto 605}${totalup wlan0}  -  ${totaldown wlan0}${font}\
+${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
+${goto 975}/SDD I/O:${goto 1070}${diskio /dev/sda}/s
+########### End of third line #################################################
+${goto 15}${if_match ${cpu cpu3} > 75}Core 3: !!!!${goto 100}${color red}\
+${cpubar cpu3}${color}  ${cpu cpu3}%${else}Core 3:${goto 100}\
+${cpubar cpu3}  ${cpu cpu3}%${endif}\
+${goto 256}Ram:${goto 330}${memmax}${goto 380}${membar 10,100}  $memperc%\
+${goto 560}Today:${goto 605}${execi 120 vnstat -i wlan0 --oneline | \
+cut -d ';' -f 6}\
+${goto 765}${top name 4} ${goto 865}${top pid 4}${goto 905}${top cpu 4}%\
+${goto 975}Uptime:${goto 1070}$uptime_short
+########### End of forth line #################################################
+${goto 15}${if_match ${cpu cpu4} > 75}Core 4: !!!!${goto 100}${color red}\
+${cpubar cpu4}${color}  ${cpu cpu4}%${else}Core 4:${goto 100}\
+${cpubar cpu4}  ${cpu cpu4}%${endif}\
+${goto 256}Swap:${goto 330}${swapmax}\
+${goto 380}${swapbar 10,100}  ${swapperc}%\
+${goto 560}Month:${goto 605}${execi 120 vnstat -m -i wlan0 --oneline | \
+cut -d ';' -f 11}\
+${goto 765}${top name 5}${goto 865}${top pid 5}${goto 905}${top cpu 5}%
+########### End of fifth line and this configuration ##########################
