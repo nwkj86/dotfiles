@@ -32,3 +32,6 @@ set viminfo^=%
 autocmd BufWritePre *
 \ :%s/\s\+$//e
 
+" highlight searched word
+set hlsearch
+
