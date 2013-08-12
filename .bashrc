@@ -56,3 +56,5 @@ export CPU_NUM=$(cat /proc/cpuinfo | grep "cpu MHz" | wc -l)
 export HISTIGNORE="&:ls:[bf]g:exit"
 export HISTSIZE=1000
 
+# bash settings
+set -o vi # vi mode
