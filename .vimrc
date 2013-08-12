@@ -1,6 +1,5 @@
 " Syntax color
 syntax on
-
 " Use defined color scheme
 colorscheme elflord
 
@@ -25,13 +24,15 @@ autocmd BufReadPost *
 \   exe "normal! g`\"" |
 \ endif
 
-" Remember info about open buffers on close
-set viminfo^=%
-
 " Trim whitespaces at the end of the line
 autocmd BufWritePre *
 \ :%s/\s\+$//e
 
 " highlight searched word
 set hlsearch
+
+" show whitespaces
+nmap <leader>l :set list!<CR>
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 
