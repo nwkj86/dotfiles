@@ -29,10 +29,10 @@ text_buffer_size 1024
 top_name_width 22
 
 # Execute it in its own window
-background no
+background yes
 own_window yes
 own_window_type normal
-own_window_argb_visual true
+own_window_argb_visual false
 override_utf8_locale yes
 own_window_transparent yes
 own_window_colour 0f0f0f
@@ -74,8 +74,8 @@ ${goto 605}${upspeedgraph eth0 10,100 B7B2AD 0099FF -t}  ${upspeed eth0}\
 ${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
 ${goto 975}Processes:${goto 1070}${running_processes}  Running
 ########### End of first line #################################################
-${goto 15}${if_match ${cpu cpu1} > 75}Core 1: !!!!${goto 100}${color red}\
-${cpubar cpu1}${color}  ${cpu cpu1}%${else}Core 1:${goto 100}\
+${goto 15}${if_match ${cpu cpu1} > 75}1 (${freq 1} MHz): !!!!${goto 100}${color red}\
+${cpubar cpu1}${color}  ${cpu cpu1}%${else}1 (${freq 1} MHz):${goto 100}\
 ${cpubar cpu1}  ${cpu cpu1}%${endif}\
 ${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\
 ${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDisk}\
@@ -84,8 +84,8 @@ ${goto 605}${downspeedgraph eth0 10,100 B7B2AD FF0000 -t}  ${downspeed eth0}\
 ${goto 765}${top name 2}${goto 865}${top pid 2}${goto 905}${top cpu 2}%\
 ${goto 975}Load Average: ${goto 1070}${loadavg}
 ########### End of second line ################################################
-${goto 15}${if_match ${cpu cpu2} > 75}Core 2: !!!!${goto 100}${color red}\
-${cpubar cpu2}${color}  ${cpu cpu2}%${else}Core 2:${goto 100}\
+${goto 15}${if_match ${cpu cpu2} > 75}2 (${freq 2} MHz):${goto 100}${color red}\
+${cpubar cpu2}${color}  ${cpu cpu2}%${else}2 (${freq 2} MHz):${goto 100}\
 ${cpubar cpu2}  ${cpu cpu2}%${endif}\
 ${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
 ${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
@@ -93,16 +93,16 @@ ${goto 560}Today:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f
 ${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
 ${goto 975}/SDD I/O:${goto 1070}${diskio /dev/sda}/s
 ########### End of third line #################################################
-${goto 15}${if_match ${cpu cpu3} > 75}Core 3: !!!!${goto 100}${color red}\
-${cpubar cpu3}${color}  ${cpu cpu3}%${else}Core 3:${goto 100}\
+${goto 15}${if_match ${cpu cpu3} > 75}3 (${freq 3} MHz):${goto 100}${color red}\
+${cpubar cpu3}${color}  ${cpu cpu3}%${else}3 (${freq 3} MHz):${goto 100}\
 ${cpubar cpu3}  ${cpu cpu3}%${endif}\
 ${goto 256}Ram:${goto 330}${mem}${goto 380}${membar 10,100}  ${memmax}\
 ${goto 560}Month:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 10} - ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 9}\
 ${goto 765}${top name 4} ${goto 865}${top pid 4}${goto 905}${top cpu 4}%\
 ${goto 975}Uptime:${goto 1070}$uptime_short
 ########### End of forth line #################################################
-${goto 15}${if_match ${cpu cpu4} > 75}Core 4: !!!!${goto 100}${color red}\
-${cpubar cpu4}${color}  ${cpu cpu4}%${else}Core 4:${goto 100}\
+${goto 15}${if_match ${cpu cpu4} > 75}4 (${freq 4} MHz):${goto 100}${color red}\
+${cpubar cpu4}${color}  ${cpu cpu4}%${else}4 (${freq 4} MHz):${goto 100}\
 ${cpubar cpu4}  ${cpu cpu4}%${endif}\
 ${goto 256}Swap:${goto 330}${swap}\
 ${goto 380}${swapbar 10,100}  ${swapmax}\

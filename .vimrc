@@ -18,6 +18,9 @@ set smartindent
 " Wrapping
 set nowrap
 
+" Line numbers
+set number
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -31,8 +34,19 @@ autocmd BufWritePre *
 " highlight searched word
 set hlsearch
 
+" Enable 256 colors
+set t_Co=256
+
 " show whitespaces
-nmap <leader>l :set list!<CR>
+nmap <leader>w :set list!<CR>
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
+" Show syntax highlighting groups for word under cursor
+nmap <leader>x :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc

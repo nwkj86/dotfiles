@@ -38,6 +38,7 @@ alias ll="ls -l -a -h --color=auto -F"
 alias rm="rm -v"
 alias cp="cp -v"
 alias mv="mv -v"
+alias tmux="tmux -2"
 
 ### termcap colors (man, ...)
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -54,7 +55,11 @@ export CPU_NUM=$(cat /proc/cpuinfo | grep "cpu MHz" | wc -l)
 
 ### history options
 export HISTIGNORE="&:ls:[bf]g:exit"
-export HISTSIZE=1000
+export HISTSIZE=1024
 
 # bash settings
 set -o vi # vi mode
+set editing-mode vi
+set keymap vi
+set convert-meta on
+bind -m vi-insert "\C-l":clear-screen
