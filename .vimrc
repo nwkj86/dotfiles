@@ -20,6 +20,8 @@ set nowrap
 
 " Line numbers
 set number
+" mark current line
+set cursorline
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *

@@ -39,6 +39,7 @@ alias rm="rm -v"
 alias cp="cp -v"
 alias mv="mv -v"
 alias tmux="tmux -2"
+alias ping_gateway="ping $(route | grep default | cut -d ' ' -f 10)"
 
 ### termcap colors (man, ...)
 export LESS_TERMCAP_mb=$'\E[01;31m'
