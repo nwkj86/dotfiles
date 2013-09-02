@@ -1,24 +1,28 @@
-" Syntax color
+" syntax color
 syntax on
-" Use defined color scheme
+
+" enable file type detection
+filetype plugin on
+
+" use defined color scheme
 colorscheme artur
 
-" Change tab to spaces
+" change tab to spaces
 set expandtab
 set smarttab
 
-" Each tab is 2 spaces
+" each tab is 2 spaces
 set shiftwidth=2
 set tabstop=2
 
-" Indent
+" indent
 set autoindent
 set smartindent
 
-" Wrapping
+" wrapping
 set nowrap
 
-" Line numbers
+" line numbers
 set number
 
 " mark current line
@@ -33,8 +37,11 @@ set hidden
 " highlight searched word
 set hlsearch
 
-" Enable 256 colors
+" enable 256 colors
 set t_Co=256
+
+" enable omni completion
+set omnifunc=syntaxcomplete#Complete
 
 " show whitespaces
 nmap <leader>l :set list!<CR>
@@ -48,11 +55,11 @@ autocmd BufReadPost *
 \   exe "normal! g`\"" |
 \ endif
 
-" Trim whitespaces at the end of the line
+" trim whitespaces at the end of the line
 autocmd BufWritePre *
 \ :%s/\s\+$//e
 
-" Show syntax highlighting groups for word under cursor
+" show syntax highlighting groups for word under cursor
 nmap <leader>x :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
