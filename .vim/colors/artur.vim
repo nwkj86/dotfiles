@@ -20,7 +20,7 @@ hi NonText                   cterm=bold    ctermfg=190     ctermbg=NONE    term=
 hi SpecialKey                cterm=bold    ctermfg=190     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 " search higlight
 hi Search                    cterm=bold    ctermfg=255     ctermbg=4       term=NONE     gui=NONE    guifg=NONE    guibg=NONE
-" language
+" language general
 hi Comment                   cterm=NONE    ctermfg=245     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 hi Function                  cterm=NONE    ctermfg=28      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 hi Identifier                cterm=NONE    ctermfg=28      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
