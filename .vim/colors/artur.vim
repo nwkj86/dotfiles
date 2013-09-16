@@ -26,7 +26,12 @@ hi Function                  cterm=NONE    ctermfg=28      ctermbg=NONE    term=
 hi Identifier                cterm=NONE    ctermfg=28      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 
 " C/C++
-hi cInclude                  cterm=NONE    ctermfg=28      ctermbg=NONE
-hi cIncluded                 cterm=BOLD    ctermfg=40      ctermbg=NONE
-hi cStatement                cterm=NONE    ctermfg=184     ctermbg=NONE
-hi cppBoolean                cterm=NONE    ctermfg=40      ctermbg=NONE
+hi cInclude                  cterm=NONE    ctermfg=28      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi cIncluded                 cterm=BOLD    ctermfg=40      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi cStatement                cterm=NONE    ctermfg=184     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi cppBoolean                cterm=NONE    ctermfg=40      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+
+" color of matched brace
+hi MatchParen                cterm=BOLD    ctermfg=4       ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+
+
