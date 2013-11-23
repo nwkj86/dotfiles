@@ -91,7 +91,7 @@ ${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
 ${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
 ${goto 560}Today:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 4}\
 ${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
-${goto 975}/SDD I/O:${goto 1070}${diskio /dev/sda}/s
+${goto 975}/SSD I/O:${goto 1070}${diskio /dev/sda}/s
 ########### End of third line #################################################
 ${goto 15}${if_match ${cpu cpu3} > 75}3 (${freq 3} MHz):${goto 100}${color red}\
 ${cpubar cpu3}${color}  ${cpu cpu3}%${else}3 (${freq 3} MHz):${goto 100}\
