@@ -64,7 +64,7 @@ ${goto 765}Top Processes:\
 ${goto 975}Activity:\
 ${font}${color}${voffset 5}
 ########### End of headings line ##############################################
-${goto 15}${if_match ${cpu cpu0} > 75}CPU: !!!!${goto 100}${color red}\
+${goto 15}${if_match ${cpu cpu0} > 75}CPU: !!!${goto 100}${color red}\
 ${cpubar cpu0}${color}  ${cpu cpu0}%${else}CPU Average:${goto 100}\
 ${cpubar cpu0}  ${cpu cpu0}%${endif}\
 ${goto 256}/home:${goto 330}${fs_used /home}\
@@ -74,7 +74,7 @@ ${goto 605}${upspeedgraph eth0 10,100 B7B2AD 0099FF -t}  ${upspeed eth0}\
 ${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
 ${goto 975}Processes:${goto 1070}${running_processes}  Running
 ########### End of first line #################################################
-${goto 15}${if_match ${cpu cpu1} > 75}1 (${freq 1} MHz): !!!!${goto 100}${color red}\
+${goto 15}${if_match ${cpu cpu1} > 75}1 (${freq 1} MHz):${goto 100}${color red}\
 ${cpubar cpu1}${color}  ${cpu cpu1}%${else}1 (${freq 1} MHz):${goto 100}\
 ${cpubar cpu1}  ${cpu cpu1}%${endif}\
 ${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\

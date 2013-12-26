@@ -40,6 +40,9 @@ set hlsearch
 " enable 256 colors
 set t_Co=256
 
+" ignore whitespaces
+set diffopt+=iwhite
+
 " enable omni completion
 set omnifunc=syntaxcomplete#Complete
 
