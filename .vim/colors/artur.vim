@@ -14,12 +14,12 @@ hi CursorLineNr              cterm=NONE    ctermfg=255     ctermbg=NONE    term=
 hi CursorColumn              cterm=NONE    ctermfg=NONE    ctermbg=232     term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 " popup menu
 hi Pmenu                     cterm=NONE    ctermfg=255     ctermbg=240     term=NONE     gui=NONE    guifg=NONE    guibg=NONE
-hi PmenuSel                  cterm=bold    ctermfg=255     ctermbg=1       term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi PmenuSel                  cterm=BOLD    ctermfg=255     ctermbg=1       term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 " non-printable symbols
-hi NonText                   cterm=bold    ctermfg=190     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
-hi SpecialKey                cterm=bold    ctermfg=190     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi NonText                   cterm=BOLD    ctermfg=190     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi SpecialKey                cterm=BOLD    ctermfg=190     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 " search higlight
-hi Search                    cterm=bold    ctermfg=255     ctermbg=4       term=NONE     gui=NONE    guifg=NONE    guibg=NONE
+hi Search                    cterm=BOLD    ctermfg=255     ctermbg=4       term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 " language general
 hi Comment                   cterm=NONE    ctermfg=245     ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 hi Function                  cterm=NONE    ctermfg=28      ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
@@ -34,4 +34,8 @@ hi cppBoolean                cterm=NONE    ctermfg=40      ctermbg=NONE    term=
 " color of matched brace
 hi MatchParen                cterm=BOLD    ctermfg=4       ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 
-
+" diff colors
+hi DiffAdd                   cterm=NONE    ctermfg=NONE      ctermbg=17      term=NONE
+hi DiffDelete                cterm=NONE    ctermfg=NONE      ctermbg=52      term=NONE
+hi DiffChange                cterm=NONE    ctermfg=NONE      ctermbg=236      term=NONE
+hi DiffText                  cterm=BOLD    ctermfg=NONE      ctermbg=241       term=NONE

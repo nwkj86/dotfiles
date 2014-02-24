@@ -1,0 +1,15 @@
+[user]
+	email = nwkj86@gmail.com
+	name = Artur Drozd
+[push]
+	default = simple
+[color]
+	ui = auto
+[review "review.cyanogenmod.org"]
+	username = nwkj86
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
