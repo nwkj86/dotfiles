@@ -28,7 +28,7 @@ _STORAGE="/home/${_MY_ID}/Storage"
 # Backup homedir
 _HOME_BACKUP="home_backup"
 # Sync command
-_SYNC_CMD="rsync -a -r --human-readable --delete --verbose "
+_SYNC_CMD="rsync -a -r --human-readable --delete --verbose --progress "
 
 function sync_dirs
 {
@@ -59,7 +59,7 @@ done
 sync_dirs /home/${_MY_ID}/Muzyka/Mieszana/ ${_BIG_DISK}/Muzyka/Mieszana/ ${_STORAGE}/Muzyka/Mieszana/
 
 # Sync Storage with BigDisk
-for dir in Muzyka Różne Zdjęcia; do
+for dir in Muzyka Różne Zdjęcia Emulatory; do
   sync_dirs ${_BIG_DISK}/${dir}/ ${_STORAGE}/${dir}/
 done
 
