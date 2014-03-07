@@ -45,14 +45,17 @@ default_color white # mid grey
 color0 FFFF66 # pale yellow
 
 # Minimum dimensions
-minimum_size 1150 0
+minimum_size 1366 0
 default_bar_size 100 10
 default_graph_size 100 10
 
 # Conky positioning, roughly centred.
 alignment bottom_left
 gap_y 55
-gap_x 108
+gap_x 0
+
+#MPD settings
+mpd_port 26600
 
 ########### Stuff after "TEXT" will appear onscreen ###########################
 TEXT
@@ -62,6 +65,7 @@ ${goto 256}Memory & Disks:\
 ${goto 560}Network:\
 ${goto 765}Top Processes:\
 ${goto 975}Activity:\
+${goto 1160}Music:\
 ${font}${color}${voffset 5}
 ########### End of headings line ##############################################
 ${goto 15}${if_match ${cpu cpu0} > 75}CPU: !!!${goto 100}${color red}\
@@ -72,7 +76,8 @@ ${goto 380}${fs_bar /home}  ${fs_size /home}\
 ${goto 560}Up:\
 ${goto 605}${upspeedgraph eth0 10,100 B7B2AD 0099FF -t}  ${upspeed eth0}\
 ${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
-${goto 975}Processes:${goto 1070}${running_processes}  Running
+${goto 975}Processes:${goto 1070}${running_processes}  Running\
+${goto 1160}Status:${goto 1210}${mpd_status}
 ########### End of first line #################################################
 ${goto 15}${if_match ${cpu cpu1} > 75}1 (${freq 1} MHz):${goto 100}${color red}\
 ${cpubar cpu1}${color}  ${cpu cpu1}%${else}1 (${freq 1} MHz):${goto 100}\
@@ -82,7 +87,8 @@ ${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDis
 ${goto 560}Down:\
 ${goto 605}${downspeedgraph eth0 10,100 B7B2AD FF0000 -t}  ${downspeed eth0}\
 ${goto 765}${top name 2}${goto 865}${top pid 2}${goto 905}${top cpu 2}%\
-${goto 975}Load Average: ${goto 1070}${loadavg}
+${goto 975}Load Average: ${goto 1070}${loadavg}\
+${goto 1160}Artist:${goto 1210}${mpd_artist}
 ########### End of second line ################################################
 ${goto 15}${if_match ${cpu cpu2} > 75}2 (${freq 2} MHz):${goto 100}${color red}\
 ${cpubar cpu2}${color}  ${cpu cpu2}%${else}2 (${freq 2} MHz):${goto 100}\
@@ -91,7 +97,8 @@ ${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
 ${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
 ${goto 560}Today:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 4}\
 ${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
-${goto 975}/SSD I/O:${goto 1070}${diskio /dev/sda}/s
+${goto 975}/SSD I/O:${goto 1070}${diskio /dev/sda}/s\
+${goto 1160}Title:${goto 1210}${mpd_title}
 ########### End of third line #################################################
 ${goto 15}${if_match ${cpu cpu3} > 75}3 (${freq 3} MHz):${goto 100}${color red}\
 ${cpubar cpu3}${color}  ${cpu cpu3}%${else}3 (${freq 3} MHz):${goto 100}\
@@ -99,7 +106,8 @@ ${cpubar cpu3}  ${cpu cpu3}%${endif}\
 ${goto 256}Ram:${goto 330}${mem}${goto 380}${membar 10,100}  ${memmax}\
 ${goto 560}Month:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 10} - ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 9}\
 ${goto 765}${top name 4} ${goto 865}${top pid 4}${goto 905}${top cpu 4}%\
-${goto 975}Uptime:${goto 1070}$uptime_short
+${goto 975}Uptime:${goto 1070}$uptime_short\
+${goto 1160}${mpd_bar}${goto 1265}${mpd_elapsed} / ${mpd_length} (${mpd_percent}%)
 ########### End of forth line #################################################
 ${goto 15}${if_match ${cpu cpu4} > 75}4 (${freq 4} MHz):${goto 100}${color red}\
 ${cpubar cpu4}${color}  ${cpu cpu4}%${else}4 (${freq 4} MHz):${goto 100}\
