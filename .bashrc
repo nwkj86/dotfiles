@@ -70,3 +70,5 @@ set_cpu_governor()
     echo $1 > /sys/devices/system/cpu/$i/cpufreq/scaling_governor;
   done
 }
+
+

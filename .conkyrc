@@ -16,7 +16,7 @@
 
 # Locale, fonts and font sizes.
 use_xft yes
-xftfont Droid Sans:size=9
+xftfont Clean:size=9
 override_utf8_locale yes
 
 # Conky performance
@@ -45,7 +45,7 @@ default_color white # mid grey
 color0 FFFF66 # pale yellow
 
 # Minimum dimensions
-minimum_size 1366 120
+minimum_size 1366 100
 default_bar_size 100 10
 default_graph_size 100 10
 
@@ -60,7 +60,7 @@ mpd_port 26600
 ########### Stuff after "TEXT" will appear onscreen ###########################
 TEXT
 ${goto 15}${font style=Bold:size=18}${color0}Arch Linux ${font}\
-${kernel}${font Droid Sans:size=10}\
+${kernel}${font Clean:size=10}\
 ${goto 256}Memory & Disks:\
 ${goto 560}Network:\
 ${goto 765}Top Processes:\
@@ -95,7 +95,7 @@ ${cpubar cpu2}${color}  ${cpu cpu2}%${else}2 (${freq 2} MHz):${goto 100}\
 ${cpubar cpu2}  ${cpu cpu2}%${endif}\
 ${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
 ${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
-${goto 560}Today:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 4}\
+${goto 560}Today:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 4}\
 ${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
 ${goto 975}/SSD I/O:${goto 1070}${diskio /dev/sda}/s\
 ${goto 1160}Title:${goto 1210}${mpd_title}
@@ -104,7 +104,7 @@ ${goto 15}${if_match ${cpu cpu3} > 75}3 (${freq 3} MHz):${goto 100}${color red}\
 ${cpubar cpu3}${color}  ${cpu cpu3}%${else}3 (${freq 3} MHz):${goto 100}\
 ${cpubar cpu3}  ${cpu cpu3}%${endif}\
 ${goto 256}Ram:${goto 330}${mem}${goto 380}${membar 10,100}  ${memmax}\
-${goto 560}Month:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 10} - ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 9}\
+${goto 560}Month:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 10} - ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 9}\
 ${goto 765}${top name 4} ${goto 865}${top pid 4}${goto 905}${top cpu 4}%\
 ${goto 975}Uptime:${goto 1070}$uptime_short\
 ${goto 1160}${mpd_bar}${goto 1265}${mpd_elapsed} / ${mpd_length} (${mpd_percent}%)
@@ -114,6 +114,6 @@ ${cpubar cpu4}${color}  ${cpu cpu4}%${else}4 (${freq 4} MHz):${goto 100}\
 ${cpubar cpu4}  ${cpu cpu4}%${endif}\
 ${goto 256}Swap:${goto 330}${swap}\
 ${goto 380}${swapbar 10,100}  ${swapmax}\
-${goto 560}Totals:${goto 605}${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 14}  -  ${execi 120 vnstat -i eth0 --oneline | cut -d ';' -f 15}${font}\
+${goto 560}Totals:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 14}  -  ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 15}${font}\
 ${goto 765}${top name 5}${goto 865}${top pid 5}${goto 905}${top cpu 5}%
 ########### End of fifth line and this configuration ##########################
