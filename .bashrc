@@ -71,4 +71,4 @@ set_cpu_governor()
   done
 }
 
-
+ponysay -o

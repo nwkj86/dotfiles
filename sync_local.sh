@@ -50,6 +50,11 @@ function sync_dirs
 
 notify-send "Syncing started..."
 
+# Firstly move all phone calls records from Dropbox
+mkdir -p ${_BIG_DISK}/Rozmowy/{incoming,outgoing}
+mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/incoming/* ${_BIG_DISK}/Rozmowy/incoming/
+mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/outgoing/* ${_BIG_DISK}/Rozmowy/outgoing/
+
 # Backup home dir
 for dir in Dodatki Dokumenty Dropbox Książki Pobrane Roboczy; do
     sync_dirs /home/${_MY_ID}/${dir}/ ${_STORAGE}/${_HOME_BACKUP}/${dir}/ ${_BIG_DISK}/${_HOME_BACKUP}/${dir}/
@@ -59,13 +64,12 @@ done
 sync_dirs /home/${_MY_ID}/Muzyka/Mieszana/ ${_BIG_DISK}/Muzyka/Mieszana/ ${_STORAGE}/Muzyka/Mieszana/
 
 # Sync Storage with BigDisk
-for dir in Muzyka Różne Zdjęcia Emulatory; do
+for dir in Muzyka Różne Zdjęcia Emulatory Rozmowy; do
   sync_dirs ${_BIG_DISK}/${dir}/ ${_STORAGE}/${dir}/
 done
 
 # Backup videos
-sync_dirs ${_BIG_DISK}/Wideo/Seriale/  ${_STORAGE}/Wideo/Seriale/
-sync_dirs ${_BIG_DISK}/Wideo/MIT/      ${_STORAGE}/Wideo/MIT/
-sync_dirs ${_BIG_DISK}/Wideo/Channel9/ ${_STORAGE}/Wideo/Channel9/
+sync_dirs ${_BIG_DISK}/Wideo/Seriale/   ${_STORAGE}/Wideo/Seriale/
+sync_dirs ${_BIG_DISK}/Wideo/Coursera/  ${_STORAGE}/Wideo/Coursera/
 
 notify-send "Syncing done."
