@@ -18,7 +18,6 @@ set tabstop=2
 " indent
 set autoindent
 set smartindent
-
 " wrapping
 set nowrap
 
@@ -70,3 +69,47 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+" - - - - - - - - - - - - - -
+" Vundle settings
+" - - - - - - - - - - - - - -
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"--------------
+" Plugins
+"--------------
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'altercation/vim-colors-solarized.git'
+"Plugin 'Rip-Rip/clang_complete'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'flazz/vim-colorschemes'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+
+" - - - - - - - - - - - - - -
+" NERDTree settings
+" - - - - - - - - - - - - - -
+map <C-n> :NERDTreeToggle<CR>
+
+" - - - - - - - - - - - - - -
+" tagbar settings
+" - - - - - - - - - - - - - -
+map <C-t> :TagbarToggle<CR>
+let g:tagbar_sort = 1
+let g:tagbar_indent = 1
+let g:tagbar_compact = 1
+let g:tagbar_autoshowtag = 1
+let g:tagbar_width = 60
+
