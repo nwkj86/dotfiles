@@ -45,12 +45,18 @@ function __prompt_command()
     local exit_code_color=$crf_red
   fi
 
+  local git_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null | tr -d ' ')
+
   PS1="$cbf_blue[$exit_code_color\#$cbf_blue]"        # command counter
   PS1+=" "
   PS1+="$cbf_white\u$crf_blue@$cbf_white\h$cbf_white" # username@host
   PS1+=":"
-  PS1+="$crf_green\w$crf_white\n>"                    # working dir
+  PS1+="$crf_green\w"                                 # working dir
   PS1+=" "
+  if [ -n "$git_branch" ]; then
+    PS1+="$cbf_blue[$cbf_orange$git_branch$cbf_blue]"
+  fi
+  PS1+="$crf_white\n> "                               # prompt
   PS1+="$c_reset"
 }
 
