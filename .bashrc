@@ -56,8 +56,8 @@ function __prompt_command()
   if [ -n "$git_branch" ]; then
     PS1+="$cbf_blue[$cbf_orange$git_branch$cbf_blue]"
   fi
-  PS1+="$crf_white\n> "                               # prompt
-  PS1+="$c_reset"
+  PS1+="$crf_white$c_reset"                               # prompt
+  PS1+="\n> "
 }
 
 ###
@@ -95,7 +95,7 @@ export CPU_NUM=$(cat /proc/cpuinfo | grep "cpu MHz" | wc -l)
 ###
 # history options
 ###
-export HISTIGNORE="&:ls:[bf]g:exit"
+export HISTIGNORE="&:md5sum:sha1sum:echo:ls:[bf]g:exit"
 export HISTSIZE=1024
 
 ###

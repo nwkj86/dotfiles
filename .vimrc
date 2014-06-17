@@ -91,6 +91,7 @@ Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -113,3 +114,7 @@ let g:tagbar_compact = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 60
 
+" - - - - - - - - - - - - - -
+" powerline
+" - - - - - - - - - - - - - -
+let g:Powerline_symbols = "unicode"

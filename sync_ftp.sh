@@ -1,24 +1,21 @@
-_USER=artur
 _HOST=10.1.1.1
 
-echo "Syncing home dir to $_USER@$_HOST... [Press ENTER]"
-read
+read -s -p "Password for artur: " artur_pass
+echo
+read -s -p "Password for public: " public_pass
+echo
 
 lftp \
-  -e 'mirror  --verbose --parallel=2 --reverse --delete BigDisk/Zdjęcia; \
-      mirror  --verbose --parallel=2 --reverse --delete BigDisk/home_backup; \
-      mirror  --verbose --parallel=2 --reverse --delete BigDisk/Różne; \
-      mirror  --verbose --parallel=2 --reverse --delete BigDisk/Muzyka; \
+  -e 'mirror  --verbose --parallel=1 --reverse --delete BigDisk/Zdjęcia; \
+      mirror  --verbose --parallel=1 --reverse --delete BigDisk/home_backup; \
+      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Różne; \
+      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Muzyka; \
       exit;' \
-  -u $_USER $_HOST \
-
-_USER=public
-echo "Syncing Storage/Wideo/{Seriale,Filmy} with $_USER@$_HOST... [Press ENTER]"
-read
+  -u artur,$artur_pass $_HOST \
 
 lftp \
   -e 'cd Wideo; \
-      mirror  --verbose --parallel=2 --reverse --delete Storage/Wideo/Seriale; \
-      mirror  --verbose --parallel=2 --reverse --delete Storage/Wideo/Filmy; \
+      mirror  --verbose --parallel=1 --reverse --delete Storage/Wideo/Seriale; \
+      mirror  --verbose --parallel=1 --reverse --delete Storage/Wideo/Filmy; \
       exit;' \
-  -u $_USER $_HOST \
+  -u public,$public_pass $_HOST \
