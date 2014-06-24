@@ -1,0 +1,33 @@
+"SamsungToolsDummyCommand"
+  Control+Alt+Shift+Mod4+F1+F2+F3
+"samsung-tools --show-notify --quiet --backlight hotkey"
+  XF86Launch1
+"samsung-tools --show-notify --quiet --bluetooth hotkey"
+  XF86Launch2
+"samsung-tools --show-notify --quiet --cpu hotkey"
+  XF86Launch3
+"samsung-tools --show-notify --quiet --webcam hotkey"
+  Alt+KP_Insert
+"samsung-tools --show-notify --quiet --wireless hotkey"
+  XF86WLAN
+"mpc prev"
+  m:0x10 + c:173
+  Mod2 + XF86AudioPrev
+"mpc next"
+  m:0x10 + c:171
+  Mod2 + XF86AudioNext
+"mpc stop"
+  m:0x10 + c:174
+  Mod2 + XF86AudioStop
+"mpc toggle"
+  m:0x10 + c:172
+  Mod2 + XF86AudioPlay
+"gewnview"
+  m:0x10 + c:234
+  Mod2 + XF86Pictures
+"zart"
+  m:0x10 + c:220
+  Mod2 + XF86WebCam
+"kcalc"
+  m:0x10 + c:148
+  Mod2 + XF86Calculator
