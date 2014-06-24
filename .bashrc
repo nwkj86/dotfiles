@@ -114,4 +114,10 @@ function set_cpu_governor()
   done
 }
 
+function s3t()
+{
+  echo ${1:0:1}$((${#1}-2))${1:(-1)}
+}
+
 ponysay -o
+export MPD_PORT=26600

@@ -92,6 +92,9 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/Buffergator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

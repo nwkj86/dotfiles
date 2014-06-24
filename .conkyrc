@@ -45,7 +45,7 @@ default_color white # mid grey
 color0 FFFF66 # pale yellow
 
 # Minimum dimensions
-minimum_size 1366 100
+minimum_size 1366 120
 default_bar_size 100 10
 default_graph_size 100 10
 
@@ -115,5 +115,6 @@ ${cpubar cpu4}  ${cpu cpu4}%${endif}\
 ${goto 256}Swap:${goto 330}${swap}\
 ${goto 380}${swapbar 10,100}  ${swapmax}\
 ${goto 560}Totals:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 14}  -  ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 15}${font}\
-${goto 765}${top name 5}${goto 865}${top pid 5}${goto 905}${top cpu 5}%
-########### End of fifth line and this configuration ##########################
+${goto 765}${top name 5}${goto 865}${top pid 5}${goto 905}${top cpu 5}%\
+${goto 975}Temp:${goto 1070}${execi 1 sensors | grep 'Core 0' | cut -c15-22} ${execi 1 sensors | grep 'Core 2' | cut -c15-22}
+########### End of forth line #################################################

@@ -13,3 +13,7 @@
 	prompt = false
 [alias]
 	d = difftool
+  tree = log --oneline --graph --abbrev --decorate
+  co = checkout
+  br = branch
+
