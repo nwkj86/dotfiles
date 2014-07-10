@@ -16,4 +16,4 @@
   tree = log --oneline --graph --abbrev --decorate
   co = checkout
   br = branch
-
+  bsolete = "!f(){ git branch $1 -m obsolete/$1; }; f"

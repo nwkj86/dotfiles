@@ -36,6 +36,9 @@ set hidden
 " highlight searched word
 set hlsearch
 
+" status width
+set laststatus=2
+
 " enable 256 colors
 set t_Co=256
 
@@ -80,21 +83,27 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 "--------------
 " Plugins
 "--------------
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized.git'
 "Plugin 'Rip-Rip/clang_complete'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'majutsushi/tagbar'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-scripts/a.vim'
+Plugin 'tmhedberg/matchit'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Buffergator'
+Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/taglist.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -106,6 +115,7 @@ filetype plugin on
 " NERDTree settings
 " - - - - - - - - - - - - - -
 map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
 
 " - - - - - - - - - - - - - -
 " tagbar settings
@@ -118,6 +128,6 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 60
 
 " - - - - - - - - - - - - - -
-" powerline
+" airline
 " - - - - - - - - - - - - - -
-let g:Powerline_symbols = "unicode"
+
