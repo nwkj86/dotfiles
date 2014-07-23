@@ -35,7 +35,7 @@ hi cppBoolean                cterm=NONE    ctermfg=40      ctermbg=NONE    term=
 hi MatchParen                cterm=BOLD    ctermfg=4       ctermbg=NONE    term=NONE     gui=NONE    guifg=NONE    guibg=NONE
 
 " diff colors
-hi DiffAdd                   cterm=NONE    ctermfg=NONE      ctermbg=17      term=NONE
+hi DiffAdd                   cterm=NONE    ctermfg=NONE      ctermbg=22      term=NONE
 hi DiffDelete                cterm=NONE    ctermfg=NONE      ctermbg=52      term=NONE
-hi DiffChange                cterm=NONE    ctermfg=NONE      ctermbg=236      term=NONE
+hi DiffChange                cterm=NONE    ctermfg=NONE      ctermbg=17      term=NONE
 hi DiffText                  cterm=BOLD    ctermfg=NONE      ctermbg=241       term=NONE
