@@ -104,6 +104,7 @@ Plugin 'vim-scripts/Align'
 Plugin 'vim-scripts/Buffergator'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'xterm-color-table.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -121,13 +122,19 @@ map <C-m> :NERDTreeFind<CR>
 " tagbar settings
 " - - - - - - - - - - - - - -
 map <C-t> :TagbarToggle<CR>
-let g:tagbar_sort = 1
-let g:tagbar_indent = 1
-let g:tagbar_compact = 1
+let g:tagbar_autofocus = 1
 let g:tagbar_autoshowtag = 1
+let g:tagbar_compact = 1
+let g:tagbar_indent = 1
+let g:tagbar_sort = 1
 let g:tagbar_width = 60
 
 " - - - - - - - - - - - - - -
-" airline
+" powerline
 " - - - - - - - - - - - - - -
-
+let g:Powerline_symbols = "unicode"
+" - - - - - - - - - - - - - -
+" A
+" - - - - - - - - - - - - - -
+let g:alternateExtensions_C = "h"
+let g:alternateExtensions_h = "C"
