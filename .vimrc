@@ -138,3 +138,8 @@ let g:Powerline_symbols = "unicode"
 " - - - - - - - - - - - - - -
 let g:alternateExtensions_C = "h"
 let g:alternateExtensions_h = "C"
+
+" - - - - - - - - - - - - - -
+" CtrlP
+" - - - - - - - - - - - - - -
+let g:ctrlp_root_markers = ['.ctrlp']
