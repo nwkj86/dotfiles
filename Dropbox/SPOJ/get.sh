@@ -1,5 +1,11 @@
 #!/bin/bash
 # exit on error
+
+c_reset="$(tput sgr0)"
+crf_red=$(tput setaf 1)
+crf_green=$(tput setaf 2)
+crf_orange=$(tput setaf 3)
+
 set -e
 
 read -p "User: " _USER
@@ -21,14 +27,14 @@ function get_sources
 {
   URL=http://pl.spoj.com/files/src/save/$1
   if [ -f $2 ]; then
-    echo "File $2 exists. Skipping."
+    echo "File $2 exists. ${crf_orange}Skipping.$c_reset"
   else
     echo -n "Downloading to ${2}..."
     ${_WGET_WITH_COOKIES} -p ${URL} -O $2 > /dev/null
     if [ -f $2 ]; then
-      echo "OK"
+      echo "${crf_green}OK$c_reset"
     else
-      echo "FAILED!"
+      echo "${cfr_red}FAILED!$c_reset"
       exit 1;
     fi
   fi
@@ -72,6 +78,8 @@ while read line; do
 
   COUNT=$(($COUNT+1))
 done
+
+echo "Done"
 
 rm -f ${_COOKIES} index.html 2> /dev/null
 
