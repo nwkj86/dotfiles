@@ -39,6 +39,8 @@ function resolve_extension
   case $1 in
     "C++") EXT="cpp" ;;
     "C") EXT="c" ;;
+    "ADA") EXT="ada";;
+    "BF") EXT="bf";;
 
     *) EXT=$1
   esac
@@ -57,7 +59,8 @@ ${_WGET_WITH_COOKIES} -p ${_SPOJ_LIST} -O list.txt > /dev/null
 COUNT=0
 
 echo "Geting ACs"
-grep AC list.txt | cut -d '|' -f 2,4,8 | tr -d '|' | sed 's/ \+/ /g' | \
+awk -F'|' 'BEGIN{p = 0}{if(/\|---------\|---------------------\|-----------\|-----------\|-------\|--------\|-----\|/) {p = 1; next}; if(/\------------------------------------------------------------------------------\//){p = 0}; if(p){print $2 $4 $8}; }' list.txt | \
+sed 's/ \+/ /g' | \
 while read line; do
   set $line
 
@@ -70,5 +73,5 @@ while read line; do
   COUNT=$(($COUNT+1))
 done
 
-rm -f ${_COOKIES} list.txt index.html 2> /dev/null
+rm -f ${_COOKIES} index.html 2> /dev/null
 
