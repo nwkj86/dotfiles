@@ -48,6 +48,11 @@ set diffopt+=iwhite
 " enable omni completion
 set omnifunc=syntaxcomplete#Complete
 
+" case insensitive, smart and incremental search
+set ignorecase
+set smartcase
+set incsearch
+
 " show whitespaces
 nmap <leader>l :set list!<CR>
 
@@ -143,3 +148,4 @@ let g:alternateExtensions_h = "C"
 " CtrlP
 " - - - - - - - - - - - - - -
 let g:ctrlp_root_markers = ['.ctrlp']
+
