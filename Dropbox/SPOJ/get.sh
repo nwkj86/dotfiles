@@ -64,7 +64,6 @@ ${_WGET_WITH_COOKIES} -p ${_SPOJ_LIST} -O list.txt > /dev/null
 
 COUNT=0
 
-echo "Geting ACs"
 awk -F'|' 'BEGIN{p = 0}{if(/\|---------\|---------------------\|-----------\|-----------\|-------\|--------\|-----\|/) {p = 1; next}; if(/\------------------------------------------------------------------------------\//){p = 0}; if(p){print $2 $4 $8}; }' list.txt | \
 sed 's/ \+/ /g' | \
 while read line; do
