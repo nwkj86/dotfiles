@@ -93,7 +93,6 @@ call vundle#begin()
 " Plugins
 "--------------
 "Plugin 'Rip-Rip/clang_complete'
-"Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'bling/vim-airline'
 Plugin 'flazz/vim-colorschemes'
@@ -101,6 +100,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-fugitive'
@@ -120,8 +120,9 @@ filetype plugin on
 " - - - - - - - - - - - - - -
 " NERDTree settings
 " - - - - - - - - - - - - - -
-"map <C-n> :NERDTreeToggle<CR>
-"map <C-m> :NERDTreeFind<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
+let g:NERDTreeQuitOnOpen = 1
 
 " - - - - - - - - - - - - - -
 " tagbar settings
@@ -149,12 +150,6 @@ let g:alternateExtensions_h = "C"
 " CtrlP
 " - - - - - - - - - - - - - -
 let g:ctrlp_root_markers = ['.ctrlp']
-
-" - - - - - - - - - - - - - -
-" netrw
-" - - - - - - - - - - - - - -
-let g:netrw_liststyle=3
-map <C-n> :Explore<CR>
 
 " - - - - - - - - - - - - - -
 " Buffergator
