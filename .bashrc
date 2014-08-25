@@ -56,8 +56,12 @@ function __prompt_command()
   if [ -n "$git_branch" ]; then
     PS1+="$cbf_blue[$cbf_orange$git_branch$cbf_blue]"
   fi
-  PS1+="$crf_white$c_reset"                               # prompt
-  PS1+="\n> "
+  if [ $(id -u) -eq 0 ]; then # white '>' for regular user and red '$' for root
+    PS1+=" ${crf_red}$"
+  else
+    PS1+=" ${crf_white}>"
+  fi
+  PS1+="$c_reset\n"
 }
 
 ###
@@ -85,6 +89,11 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[38;5;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
+
+###
+# man
+###
+export MANWIDTH=80 # easier to read
 
 ###
 # exports
