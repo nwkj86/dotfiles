@@ -155,3 +155,8 @@ let g:ctrlp_root_markers = ['.ctrlp']
 " Buffergator
 " - - - - - - - - - - - - - -
 let g:buffergator_viewport_split_policy = "B"
+
+" - - - - - - - - - - - - - -
+" syntastic
+" - - - - - - - - - - - - - -
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
