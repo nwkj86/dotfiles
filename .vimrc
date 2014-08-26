@@ -4,9 +4,6 @@ syntax on
 " enable file type detection
 filetype plugin on
 
-" use defined color scheme
-colorscheme artur
-
 " change tab to spaces
 set expandtab
 set smarttab
@@ -18,16 +15,15 @@ set tabstop=2
 " indent
 set autoindent
 set smartindent
+
 " wrapping
 set nowrap
 
 " line numbers
 set number
 
-" mark current line
+" mark current line & column
 set cursorline
-
-" mark current column
 set cursorcolumn
 
 " change buffer without saving
@@ -38,6 +34,9 @@ set hlsearch
 
 " status width
 set laststatus=2
+
+" lines 'from the bottom'
+set scrolloff=10
 
 " enable 256 colors
 set t_Co=256
@@ -81,7 +80,6 @@ endfunc
 " - - - - - - - - - - - - - -
 " Vundle settings
 " - - - - - - - - - - - - - -
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -110,6 +108,7 @@ Plugin 'vim-scripts/Buffergator'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'xterm-color-table.vim'
+Plugin 'nanotech/jellybeans.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,12 +140,6 @@ let g:tagbar_width = 60
 let g:Powerline_symbols = "unicode"
 
 " - - - - - - - - - - - - - -
-" A
-" - - - - - - - - - - - - - -
-let g:alternateExtensions_C = "h"
-let g:alternateExtensions_h = "C"
-
-" - - - - - - - - - - - - - -
 " CtrlP
 " - - - - - - - - - - - - - -
 let g:ctrlp_root_markers = ['.ctrlp']
@@ -159,4 +152,10 @@ let g:buffergator_viewport_split_policy = "B"
 " - - - - - - - - - - - - - -
 " syntastic
 " - - - - - - - - - - - - - -
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_compiler_options = ' -std=c++1y'
+
+" - - - - - - - - - - - - - -
+" vim-colorschemes
+" - - - - - - - - - - - - - -
+colorscheme jellybeans
+let g:jellybeans_use_lowcolor_black = 0
