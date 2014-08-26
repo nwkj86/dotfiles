@@ -52,11 +52,15 @@ set ignorecase
 set smartcase
 set incsearch
 
+" more human completition
+set wildmode=longest,list
+set wildmenu
+
 " show whitespaces
-nmap <leader>l :set list!<CR>
+nmap <leader><F1> :set list!<CR>
 
 " wrap in all windows
-nmap <leader>w :set wrap!<CR>
+nmap <leader><F2> :set wrap!<CR>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
