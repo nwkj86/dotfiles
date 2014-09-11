@@ -1,4 +1,11 @@
 ###
+# interactive?
+###
+if [[ $- != *i* ]] ; then
+  return
+fi
+
+###
 # include profile file
 ###
 source /etc/profile
