@@ -1,0 +1,10 @@
+###
+# settings
+###
+set -o vi # vi mode
+set editing-mode vi
+set keymap vi
+set convert-meta on
+bind -m vi-insert "\C-l":clear-screen
+
+echo -n " -> settings"

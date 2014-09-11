@@ -1,0 +1,11 @@
+###
+# aliases
+###
+alias ls="ls --color=auto -F"
+alias ll="ls -l -a -h --color=auto -F"
+alias rm="rm -v"
+alias cp="cp -v"
+alias mv="mv -v"
+alias tmux="tmux -2"
+
+echo -n " -> aliases"
