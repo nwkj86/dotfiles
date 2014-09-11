@@ -113,6 +113,7 @@ Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'xterm-color-table.vim'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
