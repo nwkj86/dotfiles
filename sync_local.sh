@@ -28,7 +28,8 @@ _STORAGE="/home/${_MY_ID}/Storage"
 # Backup homedir
 _HOME_BACKUP="home_backup"
 # Sync command
-_SYNC_CMD="rsync -a -r --human-readable --delete --verbose --progress "
+#_SYNC_CMD="rsync -a -r --human-readable --delete --verbose --progress "
+_SYNC_CMD="rsync -a -r --human-readable --delete "
 
 function sync_dirs
 {
@@ -52,8 +53,8 @@ notify-send "Syncing started..."
 
 # Firstly move all phone calls records from Dropbox
 mkdir -p ${_BIG_DISK}/Rozmowy/{incoming,outgoing}
-mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/incoming/* ${_BIG_DISK}/Rozmowy/incoming/
-mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/outgoing/* ${_BIG_DISK}/Rozmowy/outgoing/
+mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/incoming/* ${_BIG_DISK}/Rozmowy/incoming/ 2> /dev/null
+mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/outgoing/* ${_BIG_DISK}/Rozmowy/outgoing/ 2> /dev/null
 
 # Backup home dir
 for dir in Dodatki Dokumenty Dropbox Książki Pobrane Roboczy; do
@@ -70,6 +71,7 @@ done
 
 # Backup videos
 sync_dirs ${_BIG_DISK}/Wideo/Seriale/   ${_STORAGE}/Wideo/Seriale/
-sync_dirs ${_BIG_DISK}/Wideo/Coursera/  ${_STORAGE}/Wideo/Coursera/
+sync_dirs ${_BIG_DISK}/Wideo/Inne/  ${_STORAGE}/Wideo/Inne/
+sync_dirs ${_BIG_DISK}/Android/  ${_STORAGE}/Android/
 
 notify-send "Syncing done."

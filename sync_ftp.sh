@@ -12,6 +12,7 @@ lftp \
       mirror  --verbose --parallel=1 --reverse --delete BigDisk/home_backup; \
       mirror  --verbose --parallel=1 --reverse --delete BigDisk/Różne; \
       mirror  --verbose --parallel=1 --reverse --delete BigDisk/Muzyka; \
+      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Android; \
       exit;' \
   -u artur,$artur_pass $_HOST \
 
@@ -22,6 +23,7 @@ lftp \
   -e 'cd Wideo; \
       mirror  --verbose --parallel=1 --reverse --delete Storage/Wideo/Seriale; \
       mirror  --verbose --parallel=1 --reverse --delete Storage/Wideo/Filmy; \
+      mirror  --verbose --parallel=1 --reverse --delete Storage/Wideo/Inne; \
       exit;' \
   -u public,$public_pass $_HOST \
 
