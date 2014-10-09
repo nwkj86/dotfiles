@@ -95,13 +95,16 @@ call vundle#begin()
 " Plugins
 "--------------
 "Plugin 'Rip-Rip/clang_complete'
-Plugin 'altercation/vim-colors-solarized.git'
+"Plugin 'altercation/vim-colors-solarized.git'
+"Plugin 'flazz/vim-colorschemes'
 Plugin 'bling/vim-airline'
-Plugin 'flazz/vim-colorschemes'
+Plugin 'danro/rename.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tmhedberg/matchit'
@@ -112,8 +115,6 @@ Plugin 'vim-scripts/Buffergator'
 Plugin 'vim-scripts/a.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'xterm-color-table.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
