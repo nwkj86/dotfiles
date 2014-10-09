@@ -2,7 +2,7 @@
 	email = nwkj86@gmail.com
 	name = Artur Drozd
 [push]
-	default = simple
+  default = current
 [color]
 	ui = auto
 [review "review.cyanogenmod.org"]
