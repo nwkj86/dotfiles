@@ -12,7 +12,8 @@ lftp \
       mirror  --verbose --parallel=1 --reverse --delete BigDisk/home_backup; \
       mirror  --verbose --parallel=1 --reverse --delete BigDisk/Różne; \
       mirror  --verbose --parallel=1 --reverse --delete BigDisk/Muzyka; \
-      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Android; \
+      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Android/APKs; \
+      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Android/clockworkmod; \
       exit;' \
   -u artur,$artur_pass $_HOST \
 

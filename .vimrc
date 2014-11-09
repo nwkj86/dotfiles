@@ -100,11 +100,15 @@ call vundle#begin()
 Plugin 'bling/vim-airline'
 Plugin 'danro/rename.vim'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'kana/vim-operator-user'
+Plugin 'kana/vim-operator-user'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'rhysd/vim-clang-format'
+Plugin 'rhysd/vim-clang-format'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tmhedberg/matchit'
@@ -165,3 +169,19 @@ let g:syntastic_cpp_compiler_options = ' -std=c++1y'
 " - - - - - - - - - - - - - -
 colorscheme jellybeans
 let g:jellybeans_use_lowcolor_black = 0
+
+
+" - - - - - - - - - - - - - -
+" clang_complete
+" - - - - - - - - - - - - - -
+let g:clang_format#style_options = {
+            \ "UseTab": "Never",
+            \ "BreakConstructorInitializersBeforeComma": "true",
+            \ "AlignTrailingComments": "true",
+            \ "IndentWidth": 2,
+            \ "BreakBeforeBraces": "Allman",
+            \ "AllowShortIfStatementsOnASingleLine": "false",
+            \ "IndentCaseLabels": "false",
+            \ "Standard" : "C++11",
+            \ "ColumnLimit": 0 }
+
