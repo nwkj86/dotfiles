@@ -74,7 +74,7 @@ ${cpubar cpu0}  ${cpu cpu0}%${endif}\
 ${goto 256}/home:${goto 330}${fs_used /home}\
 ${goto 380}${fs_bar /home}  ${fs_size /home}\
 ${goto 560}Up:\
-${goto 605}${upspeedgraph eth0 10,100 B7B2AD 0099FF -t}  ${upspeed eth0}\
+${goto 605}${upspeedgraph enp5s0 10,100 B7B2AD 0099FF -t}  ${upspeed enp5s0}\
 ${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
 ${goto 975}Processes:${goto 1070}${running_processes}  Running\
 ${goto 1160}Status:${goto 1210}${mpd_status}
@@ -85,7 +85,7 @@ ${cpubar cpu1}  ${cpu cpu1}%${endif}\
 ${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\
 ${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDisk}\
 ${goto 560}Down:\
-${goto 605}${downspeedgraph eth0 10,100 B7B2AD FF0000 -t}  ${downspeed eth0}\
+${goto 605}${downspeedgraph enp5s0 10,100 B7B2AD FF0000 -t}  ${downspeed enp5s0}\
 ${goto 765}${top name 2}${goto 865}${top pid 2}${goto 905}${top cpu 2}%\
 ${goto 975}Load Average: ${goto 1070}${loadavg}\
 ${goto 1160}Artist:${goto 1210}${mpd_artist}
@@ -95,7 +95,7 @@ ${cpubar cpu2}${color}  ${cpu cpu2}%${else}2 (${freq 2} MHz):${goto 100}\
 ${cpubar cpu2}  ${cpu cpu2}%${endif}\
 ${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
 ${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
-${goto 560}Today:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 4}\
+${goto 560}Today:${goto 605}${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 4}\
 ${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
 ${goto 975}/SSD I/O:${goto 1070}${diskio /dev/sda}/s\
 ${goto 1160}Title:${goto 1210}${mpd_title}
@@ -104,7 +104,7 @@ ${goto 15}${if_match ${cpu cpu3} > 75}3 (${freq 3} MHz):${goto 100}${color red}\
 ${cpubar cpu3}${color}  ${cpu cpu3}%${else}3 (${freq 3} MHz):${goto 100}\
 ${cpubar cpu3}  ${cpu cpu3}%${endif}\
 ${goto 256}Ram:${goto 330}${mem}${goto 380}${membar 10,100}  ${memmax}\
-${goto 560}Month:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 10} - ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 9}\
+${goto 560}Month:${goto 605}${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 10} - ${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 9}\
 ${goto 765}${top name 4} ${goto 865}${top pid 4}${goto 905}${top cpu 4}%\
 ${goto 975}Uptime:${goto 1070}$uptime_short\
 ${goto 1160}${mpd_bar}${goto 1265}${mpd_elapsed} / ${mpd_length} (${mpd_percent}%)
@@ -114,7 +114,7 @@ ${cpubar cpu4}${color}  ${cpu cpu4}%${else}4 (${freq 4} MHz):${goto 100}\
 ${cpubar cpu4}  ${cpu cpu4}%${endif}\
 ${goto 256}Swap:${goto 330}${swap}\
 ${goto 380}${swapbar 10,100}  ${swapmax}\
-${goto 560}Totals:${goto 605}${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 14}  -  ${execi 120 vnstat -i wlan0+eth0 --oneline | cut -d ';' -f 15}${font}\
+${goto 560}Totals:${goto 605}${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 14}  -  ${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 15}${font}\
 ${goto 765}${top name 5}${goto 865}${top pid 5}${goto 905}${top cpu 5}%\
 ${goto 975}Temp:${goto 1070}${execi 1 sensors | grep 'Core 0' | cut -c15-22} ${execi 1 sensors | grep 'Core 2' | cut -c15-22}
 ########### End of forth line #################################################

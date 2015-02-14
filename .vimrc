@@ -97,10 +97,10 @@ call vundle#begin()
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'altercation/vim-colors-solarized.git'
 "Plugin 'flazz/vim-colorschemes'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'
 Plugin 'danro/rename.vim'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'kana/vim-operator-user'
 Plugin 'kana/vim-operator-user'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
@@ -108,10 +108,12 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'rhysd/vim-clang-format'
-Plugin 'rhysd/vim-clang-format'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tmhedberg/matchit'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-scripts/Align'
@@ -132,11 +134,13 @@ filetype plugin on
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :NERDTreeFind<CR>
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeDirArrows = 0
 
 " - - - - - - - - - - - - - -
 " tagbar settings
 " - - - - - - - - - - - - - -
 map <C-t> :TagbarToggle<CR>
+let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_autoshowtag = 1
 let g:tagbar_compact = 1
