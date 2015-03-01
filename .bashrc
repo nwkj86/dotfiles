@@ -21,12 +21,6 @@ fi
 # bash Artur
 ###
 BASH_ARTUR_DIR=~/.bash_artur
-. $BASH_ARTUR_DIR/colors
-. $BASH_ARTUR_DIR/prompt
-. $BASH_ARTUR_DIR/aliases
-. $BASH_ARTUR_DIR/functions
-. $BASH_ARTUR_DIR/settings
-. $BASH_ARTUR_DIR/exports
-. $BASH_ARTUR_DIR/mpc
-. $BASH_ARTUR_DIR/ponysay
-
+for s in $BASH_ARTUR_DIR/*; do
+  . $s
+done

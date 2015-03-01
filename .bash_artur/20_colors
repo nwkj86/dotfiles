@@ -25,4 +25,5 @@ cbf_white=$(tput bold; tput setaf 7)
 ###
 dircolors > /dev/null
 
-echo -n " -> colors"
+unit_name="$(basename $BASH_SOURCE)"
+echo -n " -> $unit_name"

@@ -8,4 +8,5 @@ alias cp="cp -v"
 alias mv="mv -v"
 alias tmux="tmux -2"
 
-echo -n " -> aliases"
+unit_name="$(basename $BASH_SOURCE)"
+echo -n " -> $unit_name"
