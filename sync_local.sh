@@ -57,7 +57,7 @@ mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/incoming/* ${_BIG_D
 mv /home/${_MY_ID}/Dropbox/Aplikacje/CallRecorder_by_skvalex/outgoing/* ${_BIG_DISK}/Rozmowy/outgoing/ 2> /dev/null
 
 # Backup home dir
-for dir in Dodatki Dokumenty Dropbox Książki Pobrane Roboczy; do
+for dir in Android Dodatki Dokumenty Dropbox Książki Pobrane Roboczy; do
     sync_dirs /home/${_MY_ID}/${dir}/ ${_STORAGE}/${_HOME_BACKUP}/${dir}/ ${_BIG_DISK}/${_HOME_BACKUP}/${dir}/
 done
 
