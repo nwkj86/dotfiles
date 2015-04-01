@@ -15,5 +15,34 @@ function s3t()
   echo ${1:0:1}$((${#1}-2))${1:(-1)}
 }
 
+function savedir()
+{
+  local SAVE_FILE="~/.savedir"
+  pwd > ~/.savedir
+}
+
+function loaddir()
+{
+  local SAVE_FILE="~/.savedir"
+
+  if [ ! -r $SAVE_FILE ]; then
+    echo "$SAVE_FILE is missing!"
+  elif [ -z $(cat $SAVE_FILE) ]; then
+    echo "$SAVE_FILE is empty!"
+  else
+    cd $(cat $SAVE_FILE)
+  fi
+}
+
+function settitle() {
+  local TITLE=${1:-$(basename $(realpath .))}
+  printf "\033k${TITLE}\033\\"
+}
+
+function reloadbashrc() {
+  . ~/.bashrc
+}
+
+
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"

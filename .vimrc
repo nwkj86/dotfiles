@@ -98,29 +98,29 @@ call vundle#begin()
 "Plugin 'altercation/vim-colors-solarized.git'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'bling/vim-airline'
-Plugin 'danro/rename.vim'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'kana/vim-operator-user'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'mattn/emmet-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tmhedberg/matchit'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-scripts/Align'
-Plugin 'vim-scripts/Buffergator'
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'xterm-color-table.vim'
+"Plugin 'vim-scripts/taglist.vim'
+Plugin 'bling/vim-airline'              " status line
+Plugin 'gmarik/Vundle.vim'              " plugins management
+Plugin 'kana/vim-operator-user'         " user defined separators, dependency
+Plugin 'kien/ctrlp.vim'                 " search wile by name
+Plugin 'majutsushi/tagbar'              " file outline
+Plugin 'mattn/emmet-vim'                " expanding abbreviations
+Plugin 'mileszs/ack.vim'                " grep replacement
+Plugin 'nanotech/jellybeans.vim'        " colorscheme
+Plugin 'rhysd/vim-clang-format'         " C/C++ source formatter
+Plugin 'scrooloose/nerdtree'            " file explorer
+Plugin 'scrooloose/syntastic'           " syntax checker for many languages
+Plugin 'tmhedberg/matchit'              " match more by %
+Plugin 'tpope/vim-commentary'           " comment stuff out
+Plugin 'tpope/vim-dispatch'             " run task in new tmux window, fetch results back to vim when done
+Plugin 'tpope/vim-eunuch'               " Remove, Unlink, Moe, Rename, Chmod, Mkdir...
+Plugin 'tpope/vim-fugitive'             " git in vim
+Plugin 'tpope/vim-unimpaired'           " many useful shortcuts in ]<letters> and ]<letters>
+Plugin 'vim-scripts/Align'              " aligning text
+Plugin 'vim-scripts/Buffergator'        " buffers & tabs outline
+Plugin 'vim-scripts/a.vim'              " pairing cpp with h
+Plugin 'xterm-color-table.vim'          " print colors, useful to check if 256 cols available
+Plugin 'vim-scripts/DoxygenToolkit.vim' " insert doxygen block
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -166,7 +166,7 @@ let g:buffergator_viewport_split_policy = "B"
 " - - - - - - - - - - - - - -
 " syntastic
 " - - - - - - - - - - - - - -
-let g:syntastic_cpp_compiler_options = ' -std=c++1y'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
 
 " - - - - - - - - - - - - - -
 " vim-colorschemes
