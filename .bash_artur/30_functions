@@ -17,20 +17,22 @@ function s3t()
 
 function savedir()
 {
-  local SAVE_FILE="~/.savedir"
+  local SAVE_FILE="$HOME/.savedir"
   pwd > ~/.savedir
 }
 
 function loaddir()
 {
-  local SAVE_FILE="~/.savedir"
+  local SAVE_FILE="$HOME/.savedir"
 
-  if [ ! -r $SAVE_FILE ]; then
-    echo "$SAVE_FILE is missing!"
-  elif [ -z $(cat $SAVE_FILE) ]; then
-    echo "$SAVE_FILE is empty!"
+  if [ -r "$SAVE_FILE" ]; then
+    if [ -n $(cat "$SAVE_FILE") ]; then
+      cd $(cat "$SAVE_FILE")
+    else
+      echo "$SAVE_FILE is empty!"
+    fi
   else
-    cd $(cat $SAVE_FILE)
+    echo "$SAVE_FILE is missing!"
   fi
 }
 
@@ -42,7 +44,6 @@ function settitle() {
 function reloadbashrc() {
   . ~/.bashrc
 }
-
 
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"
