@@ -21,6 +21,6 @@ fi
 # bash Artur
 ###
 BASH_ARTUR_DIR=~/.bash_artur
-for s in $BASH_ARTUR_DIR/*; do
+for s in $BASH_ARTUR_DIR/*.inc.sh; do
   . $s
 done
