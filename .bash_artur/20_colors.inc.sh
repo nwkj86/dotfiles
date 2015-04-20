@@ -24,6 +24,7 @@ cbf_white=$(tput bold; tput setaf 7)
 # set LS_COLORS
 ###
 dircolors > /dev/null
+export LS_COLORS="$LS_COLORS:di=00;35"
 
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"
