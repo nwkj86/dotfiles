@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIALOG_BIN="$(which dialog 2> /dev/null)";
+read DIALOG_BIN <<< "$(which dialog whiptail 2> /dev/null)"
 if [ -z "DIALOG_BIN" ]; then
   echo "dialog not found"
   exit -1
@@ -14,15 +14,17 @@ if [ -z "$GIT_ROOT" ]; then
   exit -1
 fi
 
-declare -i TERM_COLS=$(tput cols)
-declare -i TERM_LINES=$(tput lines)
+TERM_COLS=$(tput cols)
+TERM_COLS=$(($TERM_COLS-10))
+TERM_LINES=$(tput lines)
+TERM_LINES=$(($TERM_LINES-10))
 
 if [ -z $TERM_COLS -o -z $TERM_LINES ]; then
   echo "Unable to determine terminal size"
   exit -1
 fi
 
-if [ $TERM_LINES < 10 ]; then
+if [ $TERM_LINES -lt 10 ]; then
   echo "Terminal is too small"
   exit -1
 fi
@@ -36,17 +38,23 @@ ALL_ARGS="$@"
 FILES=()
 function get_numbered_files()
 {
-  declare -i c=1
+  c=1
   for f in $(git diff --name-only -M  $ALL_ARGS); do
     FILES+=($c $f)
-    c+=1
+    c=$(($c+1))
   done
 }
 get_numbered_files
 
+if [ ${#FILES[@]} -eq 0 ]; then
+  dialog --msgbox "File list is empty" 5 25
+  clear
+  exit 0
+fi
+
 while [ true ]; do
   declare -i FILE_ID=$("$DIALOG_BIN" \
-         --title "GIT review for $ALL_ARGS" \
+         --title "GIT review for ${ALL_ARGS:-current changes}" \
          --menu "Select file" $TERM_LINES $TERM_COLS $MENU_ELEMS \
          "${FILES[@]}" 3>&2 2>&1 1>&3)
   clear
