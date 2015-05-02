@@ -1,9 +1,9 @@
 ###
 # interactive?
 ###
-if [[ $- != *i* ]] ; then
-  return
-fi
+#if [[ $- != *i* ]] ; then
+#  return
+#fi
 
 ###
 # include profile file

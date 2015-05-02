@@ -97,8 +97,8 @@ call vundle#begin()
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'altercation/vim-colors-solarized.git'
 "Plugin 'flazz/vim-colorschemes'
-"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'vim-scripts/taglist.vim'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'bling/vim-airline'              " status line
 Plugin 'gmarik/Vundle.vim'              " plugins management
 Plugin 'kana/vim-operator-user'         " user defined separators, dependency

@@ -1,54 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-### Colors
-# reset terminal colors
-c_reset="\e[0m"
-# regular foreground
-crf_red=$(tput setaf 1)
-crf_green=$(tput setaf 2)
-crf_orange=$(tput setaf 3)
-crf_blue=$(tput setaf 4)
-crf_pink=$(tput setaf 5)
-crf_cyan=$(tput setaf 6)
-crf_white=$(tput setaf 7)
-# bold foreground
-cbf_red=$(tput bold; tput setaf 1)
-cbf_green=$(tput bold; tput setaf 2)
-cbf_orange=$(tput bold; tput setaf 3)
-cbf_blue=$(tput bold; tput setaf 4)
-cbf_pink=$(tput bold; tput setaf 5)
-cbf_cyan=$(tput bold; tput setaf 6)
-cbf_white=$(tput bold; tput setaf 7)
+. ~/.bashrc
+
 _MY_ID=$(whoami)
-
 # Storages
 _BIG_DISK="/home/${_MY_ID}/BigDisk"
-
 # Backup homedir
 _HOME_BACKUP="home_backup"
-# Sync command
-#_SYNC_CMD="rsync -a -r --human-readable --delete --verbose --progress "
-_SYNC_CMD="rsync -a -r --human-readable --delete "
-
-function sync_dirs
-{
-  if [ "$#" == "0" ]; then
-    echo "Need start dir..."
-  fi
-
-  DIR_FROM=$1
-  shift
-
-  while (( "$#" )); do
-    DIR_TO=$1
-    mkdir -p $DIR_TO
-    echo -e -n "${cbf_orange}Syncing $crf_blue${DIR_FROM}$crf_white --> $crf_blue${DIR_TO}$c_reset --- "
-    ${_SYNC_CMD} ${DIR_FROM} ${DIR_TO} 2> /dev/null && echo -e "${cbf_green}OK$c_reset" || echo -e "${cbf_red}FAILED$c_reset"
-    shift
-  done
-}
-
 notify-send "Syncing started..."
+
 
 # Firstly move all phone calls records from Dropbox
 mkdir -p ${_BIG_DISK}/Rozmowy/{incoming,outgoing}
