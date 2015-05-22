@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=Pobierz napisy (PL)
+Comment=Pobierz napisy (PL)
+
+Exec=qnapi -l pl %F
+
+Icon-Name=bug-buddy
+
+Selection=Any
+
+Extensions=mp4;avi;
