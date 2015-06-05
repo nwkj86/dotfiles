@@ -1,11 +1,8 @@
 [Nemo Action]
 Name=Pobierz napisy (EN)
 Comment=Pobierz napisy (EN)
-
-Exec=qnapi -l en %F
-
+Exec=/usr/bin/qnapi -l en %F
 Icon-Name=bug-buddy
-
 Selection=Any
-
+Quote=double
 Extensions=mp4;avi;

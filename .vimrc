@@ -62,6 +62,9 @@ nmap <leader><F1> :set list!<CR>
 " wrap in all windows
 nmap <leader><F2> :set wrap!<CR>
 
+" paste/nopaste
+nmap <leader><F3> :set paste!<CR>
+
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -122,11 +125,14 @@ Plugin 'vim-scripts/a.vim'              " pairing cpp with h
 Plugin 'xterm-color-table.vim'          " print colors, useful to check if 256 cols available
 Plugin 'vim-scripts/DoxygenToolkit.vim' " insert doxygen block
 
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'             " additional snippets for snipmate
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-filetype plugin on
+"filetype plugin on
 
 " - - - - - - - - - - - - - -
 " NERDTree settings
@@ -166,7 +172,7 @@ let g:buffergator_viewport_split_policy = "B"
 " - - - - - - - - - - - - - -
 " syntastic
 " - - - - - - - - - - - - - -
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_cpp_compiler_options = ' -std=c++14'
 
 " - - - - - - - - - - - - - -
 " vim-colorschemes
@@ -174,6 +180,11 @@ let g:syntastic_cpp_compiler_options = ' -std=c++11'
 colorscheme jellybeans
 let g:jellybeans_use_lowcolor_black = 0
 
+" - - - - - - - - - - - - - -
+" ultisnips
+" - - - - - - - - - - - - - -
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 " - - - - - - - - - - - - - -
 " clang_complete
