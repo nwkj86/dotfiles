@@ -12,6 +12,7 @@ function __prompt_command()
   fi
 
   local git_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null | tr -d ' ')
+  local svn_rev=$(svn info . 2> /dev/null | awk -F ':' '/Revision:/ { print $2 }')
 
   PS1="$cbf_blue[$exit_code_color\#$cbf_blue]"        # command counter
   PS1+=" "
@@ -19,9 +20,15 @@ function __prompt_command()
   PS1+=":"
   PS1+="$crf_green\w"                                 # working dir
   PS1+=" "
+
   if [ -n "$git_branch" ]; then
-    PS1+="$cbf_blue[$cbf_orange$git_branch$cbf_blue]"
+    PS1+="$cbf_blue[${cbf_cyan}git: $cbf_orange$git_branch$cbf_blue]"
   fi
+
+  if [ -n "$svn_rev" ]; then
+    PS1+="$cbf_blue[${cbf_cyan}svn:$cbf_orange$svn_rev$cbf_blue]"
+  fi
+
   if [ $(id -u) -eq 0 ]; then # white '>' for regular user and red '$' for root
     PS1+=" ${crf_red}$"
   else

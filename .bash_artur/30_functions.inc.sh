@@ -3,11 +3,15 @@
 ###
 
 function set_cpu_governor()
-
 {
   for i in cpu{0,1,2,3}; do
     echo $1 > /sys/devices/system/cpu/$i/cpufreq/scaling_governor;
   done
+}
+
+function set_tmux_name()
+{
+  printf "\033k${1:-${PWD##*/}}\033\\"
 }
 
 function s3t()
@@ -63,6 +67,19 @@ function sync_dirs()
     echo -e "${cbf_orange}Syncing $crf_blue${DIR_FROM}$crf_white --> $crf_blue${DIR_TO}$c_reset --- "
     ${_SYNC_CMD} ${DIR_FROM} ${DIR_TO} 2> /dev/null && echo -e "${cbf_green}OK$c_reset" || echo -e "${cbf_red}FAILED$c_reset"
     shift
+  done
+}
+
+function print_colors()
+{
+  for cmd in sgr0 bold; do
+    tput $cmd
+    for i in $(seq 0 7); do
+      for j in $(seq 0 7); do
+        tput setaf $i; tput setab $j; echo -n " $i,$j "
+      done
+      tput sgr0; echo; tput $cmd
+    done
   done
 }
 

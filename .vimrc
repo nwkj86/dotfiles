@@ -128,6 +128,8 @@ Plugin 'vim-scripts/DoxygenToolkit.vim' " insert doxygen block
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'             " additional snippets for snipmate
 
+Plugin 'lervag/vimtex'                  " latex in vim
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

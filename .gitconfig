@@ -13,7 +13,7 @@
 	prompt = false
 [alias]
 	d = difftool
-  tree = log --oneline --graph --abbrev --decorate
+  tree = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold cyan)<%an>%Creset' --abbrev-commit --date=relative
   co = checkout
   br = branch
   obsolete = "!f(){ git branch $1 -m obsolete/$1; }; f"
