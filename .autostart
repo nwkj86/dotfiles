@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+/usr/bin/fusion-icon &
+sleep 3
+
+/usr/bin/keepassx &
+/usr/bin/tilda &
+/usr/bin/thunderbird &
+/usr/bin/pidgin &
+/usr/bin/cantata &
+
+sleep 2
+/usr/bin/conky &
