@@ -4,10 +4,21 @@
 sleep 3
 
 /usr/bin/keepassx &
-/usr/bin/tilda &
+#/usr/bin/tilda &
+/usr/bin/guake &
 /usr/bin/thunderbird &
 /usr/bin/pidgin &
-/usr/bin/cantata &
+/usr/bin/liferea &
+/usr/bin/mpd &
+
+#/usr/bin/cantata &
+/usr/bin/sonata &
 
 sleep 2
 /usr/bin/conky &
+
+/usr/bin/python2 /usr/bin/samsung-tools --show-notify --quiet --cpu hotkey &
+
+killall cairo-dock;
+sleep 1;
+/usr/bin/cairo-dock &

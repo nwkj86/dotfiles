@@ -30,8 +30,8 @@ function loaddir()
   local SAVE_FILE="$HOME/.savedir"
 
   if [ -r "$SAVE_FILE" ]; then
-    if [ -n $(cat "$SAVE_FILE") ]; then
-      cd $(cat "$SAVE_FILE")
+    if [ -n "$(cat "$SAVE_FILE")" ]; then
+      cd "$(cat "$SAVE_FILE")"
     else
       echo "$SAVE_FILE is empty!"
     fi

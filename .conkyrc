@@ -55,7 +55,8 @@ gap_y 55
 gap_x 0
 
 #MPD settings
-mpd_port 26600
+mpd_port 6600
+mpd_password password1
 
 ########### Stuff after "TEXT" will appear onscreen ###########################
 TEXT
