@@ -11,8 +11,8 @@ sleep 3
 /usr/bin/liferea &
 /usr/bin/mpd &
 
-#/usr/bin/cantata &
-/usr/bin/sonata &
+/usr/bin/cantata &
+#/usr/bin/sonata &
 
 sleep 2
 /usr/bin/conky &
