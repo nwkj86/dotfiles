@@ -10,4 +10,4 @@ nmap <leader><F2> :set wrap!<CR>
 " paste/nopaste
 nmap <leader><F3> :set paste!<CR>
 
-
+" vim: ft=vim

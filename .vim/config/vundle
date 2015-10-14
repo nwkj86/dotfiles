@@ -14,14 +14,15 @@ call vundle#begin()
 "Plugin 'Rip-Rip/clang_complete'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'altercation/vim-colors-solarized.git'
+"Plugin 'derekwyatt/vim-fswitch'
 "Plugin 'embear/vim-localvimrc'            " source .lvimrc files
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'vim-scripts/YankRing.vim'         " yield history
-"Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 "Plugin 'vim-scripts/taglist.vim'
+"Plugin 'vim-scripts/Mark'                 " highlight in different colors
+"
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'bling/vim-airline'                " status line
-Plugin 'derekwyatt/vim-fswitch'
 Plugin 'gmarik/Vundle.vim'                " plugins management
 Plugin 'kana/vim-operator-user'           " user defined separators, dependency
 Plugin 'kien/ctrlp.vim'                   " search wile by name
@@ -40,6 +41,7 @@ Plugin 'tpope/vim-unimpaired'             " many useful shortcuts in ]<letters> 
 Plugin 'vim-scripts/Align'                " aligning text
 Plugin 'vim-scripts/Buffergator'          " buffers & tabs outline
 Plugin 'vim-scripts/DoxygenToolkit.vim'   " insert doxygen block
+Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 Plugin 'xterm-color-table.vim'            " print colors, useful to check if 256 cols available
 
 Plugin 'SirVer/ultisnips'
@@ -134,4 +136,9 @@ let g:clang_format#style_options = {
 let g:alternateExtensions_cpp = "h,hpp"
 let g:alternateExtensions_h = "cpp,c"
 
+" - - - - - - - - - - - - - -
+" fswitch
+" - - - - - - - - - - - - - -
+let g:fsnonewfiles = "on"
 
+" vim: ft=vim
