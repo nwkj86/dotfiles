@@ -31,5 +31,10 @@ export HISTSIZE=1024
 ###
 export MPD_PORT=26600
 
+###
+# LibreOffie fresh
+###
+export SAL_USE_VCLPLUGIN=gtk
+
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"
