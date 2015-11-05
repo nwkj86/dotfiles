@@ -26,8 +26,8 @@ set nowrap
 set number
 
 " mark current line & column
-set cursorline
-set cursorcolumn
+set nocursorline
+set nocursorcolumn
 
 " change buffer without saving
 set hidden

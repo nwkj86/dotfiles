@@ -36,5 +36,12 @@ export MPD_PORT=26600
 ###
 export SAL_USE_VCLPLUGIN=gtk
 
+###
+# Compilation *FLAGS
+###
+export CFLAGS="-march=native -mtune=native -O2 -pipe -fstack-protector-strong --param=ssp-buffer-size=4"
+export CXXFLAGS=$CFLAGS
+export MAKEFLAGS="-j4"
+
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"

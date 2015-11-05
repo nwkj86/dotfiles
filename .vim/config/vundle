@@ -19,8 +19,6 @@ call vundle#begin()
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'vim-scripts/YankRing.vim'         " yield history
 "Plugin 'vim-scripts/taglist.vim'
-"Plugin 'vim-scripts/Mark'                 " highlight in different colors
-"
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'bling/vim-airline'                " status line
 Plugin 'gmarik/Vundle.vim'                " plugins management
@@ -41,6 +39,7 @@ Plugin 'tpope/vim-unimpaired'             " many useful shortcuts in ]<letters> 
 Plugin 'vim-scripts/Align'                " aligning text
 Plugin 'vim-scripts/Buffergator'          " buffers & tabs outline
 Plugin 'vim-scripts/DoxygenToolkit.vim'   " insert doxygen block
+Plugin 'vim-scripts/Mark'                 " highlight in different colors
 Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 Plugin 'xterm-color-table.vim'            " print colors, useful to check if 256 cols available
 
