@@ -9,5 +9,7 @@ set convert-meta on
 
 bind -m vi-insert "\C-l":clear-screen
 
+stty -ixon
+
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"
