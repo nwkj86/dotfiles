@@ -40,11 +40,6 @@ function loaddir()
   fi
 }
 
-function settitle() {
-  local TITLE=${1:-$(basename $(realpath .))}
-  printf "\033k${TITLE}\033\\"
-}
-
 function reloadbashrc() {
   . ~/.bashrc
 }

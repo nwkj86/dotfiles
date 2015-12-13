@@ -140,6 +140,6 @@ let g:alternateExtensions_h = "cpp,c"
 " - - - - - - - - - - - - - -
 " fswitch
 " - - - - - - - - - - - - - -
-let g:fsnonewfiles = "on"
+" let g:fsnonewfiles = "on"
 
 " vim: ft=vim

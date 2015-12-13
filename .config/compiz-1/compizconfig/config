@@ -1,12 +1,12 @@
 [general]
 backend = ini
-profile = 
+profile =
 integration = true
 plugin_list_autosort = true
 
 [gnome_session]
 backend = ini
-profile = 
+profile =
 integration = true
 plugin_list_autosort = true
 

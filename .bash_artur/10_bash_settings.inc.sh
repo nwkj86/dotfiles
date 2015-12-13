@@ -13,6 +13,7 @@ set -b
 
 set convert-meta on
 
+# disable Ctrl-S
 stty -ixon
 
 # footer
