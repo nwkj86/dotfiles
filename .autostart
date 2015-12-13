@@ -10,6 +10,7 @@ sleep 3
 /usr/bin/pidgin &
 /usr/bin/liferea &
 /usr/bin/mpd &
+/usr/bin/uget-gtk &
 
 /usr/bin/cantata &
 #/usr/bin/sonata &

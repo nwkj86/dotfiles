@@ -42,6 +42,7 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'   " insert doxygen block
 Plugin 'vim-scripts/Mark'                 " highlight in different colors
 Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 Plugin 'xterm-color-table.vim'            " print colors, useful to check if 256 cols available
+Plugin 'airblade/vim-gitgutter'           " git marks
 
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'               " additional snippets for snipmate
@@ -89,7 +90,8 @@ let g:ctrlp_root_markers = ['.ctrlp']
 " - - - - - - - - - - - - - -
 " Buffergator
 " - - - - - - - - - - - - - -
-let g:buffergator_viewport_split_policy = "B"
+let g:buffergator_viewport_split_policy = "L"
+let g:buffergator_show_full_directory_path = 0
 
 " - - - - - - - - - - - - - -
 " syntastic

@@ -43,5 +43,6 @@ export CFLAGS="-march=native -mtune=native -O2 -pipe -fstack-protector-strong --
 export CXXFLAGS=$CFLAGS
 export MAKEFLAGS="-j4"
 
+# footer
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"

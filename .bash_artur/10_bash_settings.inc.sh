@@ -1,15 +1,20 @@
 ###
 # settings
 ###
-set -o vi # vi mode
-set -b # notify
+
+# vi mode
+set -o vi
 set editing-mode vi
 set keymap vi
-set convert-meta on
-
 bind -m vi-insert "\C-l":clear-screen
+
+# notify
+set -b
+
+set convert-meta on
 
 stty -ixon
 
+# footer
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"
