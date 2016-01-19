@@ -1,25 +1,17 @@
 #!/usr/bin/env bash
 
-/usr/bin/fusion-icon &
-sleep 3
-
-/usr/bin/keepassx &
-#/usr/bin/tilda &
-/usr/bin/guake &
-/usr/bin/thunderbird &
-/usr/bin/pidgin &
-/usr/bin/liferea &
-/usr/bin/mpd &
-/usr/bin/uget-gtk &
-
-/usr/bin/cantata &
-#/usr/bin/sonata &
-
 sleep 2
+/usr/bin/keepassx &
+/usr/bin/guake &
 /usr/bin/conky &
 
-/usr/bin/python2 /usr/bin/samsung-tools --show-notify --quiet --cpu hotkey &
-
-killall cairo-dock;
-sleep 1;
-/usr/bin/cairo-dock &
+sleep 3
+/usr/bin/cantata &
+/usr/bin/thunderbird &
+/usr/bin/uget-gtk &
+/usr/bin/liferea &
+/usr/bin/pidgin &
+/usr/bin/dropbox &
+/usr/bin/kupfer &
+/usr/bin/skype &
+/usr/bin/viber &

@@ -79,7 +79,7 @@ ${cpubar cpu0}  ${cpu cpu0}%${endif}\
 ${goto 256}/home:${goto 330}${fs_used /home}\
 ${goto 380}${fs_bar /home}  ${fs_size /home}\
 ${goto 560}Up:\
-${goto 605}${upspeedgraph wlp3s0b1 10,100 B7B2AD 0099FF -t}  ${upspeed wlp3s0b1}\
+${goto 605}${upspeedgraph wlp3s0 10,100 B7B2AD 0099FF -t}  ${upspeed wlp3s0}\
 ${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
 ${goto 975}Processes:${goto 1070}${running_processes}  Running\
 ${goto 1160}Status:${goto 1210}${mpd_status}
@@ -90,7 +90,7 @@ ${cpubar cpu1}  ${cpu cpu1}%${endif}\
 ${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\
 ${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDisk}\
 ${goto 560}Down:\
-${goto 605}${downspeedgraph wlp3s0b1 10,100 B7B2AD FF0000 -t}  ${downspeed wlp3s0b1}\
+${goto 605}${downspeedgraph wlp3s0 10,100 B7B2AD FF0000 -t}  ${downspeed wlp3s0}\
 ${goto 765}${top name 2}${goto 865}${top pid 2}${goto 905}${top cpu 2}%\
 ${goto 975}Load Average: ${goto 1070}${loadavg}\
 ${goto 1160}Artist:${goto 1210}${mpd_artist}

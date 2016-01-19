@@ -3,6 +3,6 @@ Name=Pobierz napisy (EN)
 Comment=Pobierz napisy (EN)
 Exec=/usr/bin/qnapi -l en %F
 Icon-Name=bug-buddy
-Selection=Any
+Selection=Any;
 Quote=double
 Extensions=mp4;avi;

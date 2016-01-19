@@ -1,21 +1,19 @@
-_HOST=10.1.1.1
+_HOST=10.10.10.10
 
-read -s -p "Password for artur: " artur_pass
+read -s -p "Password for $USER: " PASS
 echo
 #read -s -p "Password for public: " public_pass
 #echo
 
-notify-send "Syncing 'artur'."
+notify-send "Syncing 'BigDisk'."
 
 lftp \
-  -e 'mirror  --verbose --parallel=1 --reverse --delete BigDisk/Zdjęcia; \
-      mirror  --verbose --parallel=1 --reverse --delete BigDisk/home_backup; \
-      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Różne; \
-      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Muzyka; \
-      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Android/APKs; \
-      mirror  --verbose --parallel=1 --reverse --delete BigDisk/Android/clockworkmod; \
+  -e 'mkdir -p -f BigDisk_backup; \
+      cd BigDisk_backup; \
+      lcd BigDisk; \
+      mirror  --verbose --parallel=1 --reverse --delete .; \
       exit;' \
-  -u artur,$artur_pass $_HOST \
+  -u $USER,$PASS $_HOST \
 
 notify-send "Syncing done."
 #notify-send "Syncing 'public'."
