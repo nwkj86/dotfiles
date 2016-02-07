@@ -23,7 +23,7 @@ Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'bling/vim-airline'                " status line
 Plugin 'gmarik/Vundle.vim'                " plugins management
 Plugin 'kana/vim-operator-user'           " user defined separators, dependency
-Plugin 'kien/ctrlp.vim'                   " search wile by name
+Plugin 'ctrlpvim/ctrlp.vim'               " search wile by name
 Plugin 'majutsushi/tagbar'                " file outline
 Plugin 'mattn/emmet-vim'                  " expanding abbreviations
 Plugin 'mileszs/ack.vim'                  " grep replacement
