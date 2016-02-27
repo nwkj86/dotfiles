@@ -2,7 +2,8 @@
 . ~/.bashrc
 
 #_RPI2_IP=10.1.1.10
-_RPI2_IP=10.10.10.10
+#_RPI2_IP=10.10.10.10
+_RPI2_IP=rpi2-e
 _MY_ID=$(whoami)
 
 notify-send "Syncing 'artur'."
