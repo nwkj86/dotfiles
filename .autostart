@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 sleep 2
-/usr/bin/keepassx &
 /usr/bin/guake &
 /usr/bin/conky &
 
@@ -16,3 +15,7 @@ sleep 3
 /usr/bin/skype &
 /usr/bin/viber &
 /usr/bin/hexchat &
+
+sleep 2
+/usr/bin/keepassx &
+/usr/bin/deluge &
