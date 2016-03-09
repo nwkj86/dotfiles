@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+NOINTERNET=~/.local/bin/nointernet
+
 sleep 2
 /usr/bin/guake &
 /usr/bin/conky &
+/usr/bin/variety &
 
 sleep 3
 /usr/bin/cantata &
@@ -15,7 +18,8 @@ sleep 3
 /usr/bin/skype &
 /usr/bin/viber &
 /usr/bin/hexchat &
+(cd ~/GDrive && grive) &
 
 sleep 2
-/usr/bin/keepassx &
+$NOINTERNET /usr/bin/keepassx &
 /usr/bin/deluge &

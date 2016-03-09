@@ -50,6 +50,7 @@ Plugin 'honza/vim-snippets'               " additional snippets for snipmate
 Plugin 'lervag/vimtex'                    " latex in vim
 
 Plugin 'nanotech/jellybeans.vim'          " colorscheme
+Plugin 'chazy/cscope_maps'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
