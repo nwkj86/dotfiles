@@ -55,6 +55,9 @@ set ignorecase
 set smartcase
 set incsearch
 
+" spell check
+set spell
+
 " more human completition
 set wildmode=longest,list
 set wildmenu
