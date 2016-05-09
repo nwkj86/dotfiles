@@ -52,6 +52,8 @@ Plugin 'lervag/vimtex'                    " latex in vim
 Plugin 'nanotech/jellybeans.vim'          " colorscheme
 Plugin 'chazy/cscope_maps'
 
+Plugin 'altercation/vim-colors-solarized'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -109,6 +111,9 @@ let g:jellybeans_use_lowcolor_black = 0
 " ultisnips
 " - - - - - - - - - - - - - -
 let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 " - - - - - - - - - - - - - -

@@ -9,17 +9,19 @@ sleep 2
 
 sleep 3
 /usr/bin/cantata &
-/usr/bin/thunderbird &
-/usr/bin/uget-gtk &
+#/usr/bin/uget-gtk &
+/usr/bin/kget &
 /usr/bin/liferea &
 /usr/bin/pidgin &
 /usr/bin/dropbox &
-/usr/bin/kupfer &
+#/usr/bin/kupfer &
 /usr/bin/skype &
 /usr/bin/viber &
-/usr/bin/hexchat &
-(cd ~/GDrive && grive) &
+#/usr/bin/hexchat &
+/usr/bin/konversation &
 
 sleep 2
 $NOINTERNET /usr/bin/keepassx &
-/usr/bin/deluge &
+#/usr/bin/deluge &
+/usr/bin/ktorrent &
+/usr/bin/thunderbird &

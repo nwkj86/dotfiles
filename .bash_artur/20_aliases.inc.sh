@@ -16,10 +16,13 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 # ctags for cpp
-alias ctagsgenerate="ctags -R --c++-kinds=+p --fields=+iaS --extra=+f+q ."
+alias ctagsgenerate="ctags -R --c++-kinds=+p --fields=+iaS --extra=+f+q . && cscope -R -b ."
 
 # remote to rpi2
-alias rpi2_x11="Xnest -query 10.10.10.10 -geometry 800x600 :2"
+alias rpi2_x11="Xnest -query rpi2 -geometry 800x600 :2"
+# (u)mount rpi2 resources
+alias rpi2_mount="mount ~/rpi2/artur2; mount ~/rpi2/public;"
+alias rpi2_umount="umount ~/rpi2/artur2; umount ~/rpi2/public;"
 
 # package manager
 alias upgrade_system="yaourt -Syu --noconfirm --aur --devel"
