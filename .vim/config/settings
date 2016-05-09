@@ -44,6 +44,9 @@ set scrolloff=10
 " enable 256 colors
 set t_Co=256
 
+" dark background
+set background=dark
+
 " ignore whitespaces
 "set diffopt+=iwhite
 

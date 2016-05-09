@@ -104,8 +104,12 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14'
 " - - - - - - - - - - - - - -
 " jellybeans
 " - - - - - - - - - - - - - -
-colorscheme jellybeans
 let g:jellybeans_use_lowcolor_black = 0
+
+" - - - - - - - - - - - - - -
+" solarized
+" - - - - - - - - - - - - - -
+colorscheme solarized
 
 " - - - - - - - - - - - - - -
 " ultisnips
