@@ -27,11 +27,6 @@ export HISTIGNORE="&:md5sum:sha1sum:echo:ls:[bf]g:exit"
 export HISTSIZE=1024
 
 ###
-# MPD
-###
-export MPD_PORT=26600
-
-###
 # LibreOffie fresh
 ###
 export SAL_USE_VCLPLUGIN=gtk
