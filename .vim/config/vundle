@@ -54,6 +54,9 @@ Plugin 'chazy/cscope_maps'
 
 Plugin 'altercation/vim-colors-solarized'
 
+Plugin 'chrisbra/NrrwRgn' " narrow region
+Plugin 'vim-scripts/ZoomWin' " zoom in/out the window
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
