@@ -16,7 +16,7 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 # ctags for cpp
-alias ctagsgenerate="ctags -R --c++-kinds=+p --fields=+iaS --extra=+f+q . && cscope -R -b ."
+alias ctagsgenerate="ctags -R --c++-kinds=+p --fields=+iaS --extra=+f+q .; cscope -R -b .;"
 
 # remote to rpi2
 alias rpi2_x11="Xnest -query rpi2 -geometry 800x600 :2"

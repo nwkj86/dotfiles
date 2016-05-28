@@ -10,4 +10,8 @@ nmap <leader><F2> :set wrap!<CR>
 " paste/nopaste
 nmap <leader><F3> :set paste!<CR>
 
+" don't move by screen-line
+nnoremap j gj
+nnoremap k gk
+
 " vim: ft=vim

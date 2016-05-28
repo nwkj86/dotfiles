@@ -10,7 +10,7 @@ sleep 2
 sleep 3
 /usr/bin/cantata &
 #/usr/bin/uget-gtk &
-/usr/bin/kget &
+#/usr/bin/kget &
 /usr/bin/liferea &
 /usr/bin/pidgin &
 /usr/bin/dropbox &
@@ -23,5 +23,5 @@ sleep 3
 sleep 2
 $NOINTERNET /usr/bin/keepassx &
 #/usr/bin/deluge &
-/usr/bin/ktorrent &
+#/usr/bin/ktorrent &
 /usr/bin/thunderbird &

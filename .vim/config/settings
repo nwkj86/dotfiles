@@ -24,6 +24,7 @@ set nowrap
 
 " line numbers
 set number
+"set relativenumber
 
 " mark current line & column
 set nocursorline
@@ -49,6 +50,9 @@ set background=dark
 
 " ignore whitespaces
 "set diffopt+=iwhite
+
+" disable vi-backward compatibility
+set nocompatible
 
 " enable omni completion
 set omnifunc=syntaxcomplete#Complete
