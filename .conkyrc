@@ -76,8 +76,8 @@ ${font}${color}${voffset 5}
 ${goto 15}${if_match ${cpu cpu0} > 75}CPU: !!!${goto 100}${color red}\
 ${cpubar cpu0}${color}  ${cpu cpu0}%${else}CPU Average:${goto 100}\
 ${cpubar cpu0}  ${cpu cpu0}%${endif}\
-${goto 256}/home:${goto 330}${fs_used /home}\
-${goto 380}${fs_bar /home}  ${fs_size /home}\
+${goto 256}/:${goto 330}${fs_used /}\
+${goto 380}${fs_bar /}  ${fs_size /}\
 ${goto 560}Up:\
 ${goto 605}${upspeedgraph wlp3s0 10,100 B7B2AD 0099FF -t}  ${upspeed wlp3s0}\
 ${goto 765}${top name 1}${goto 865}${top pid 1}${goto 905}${top cpu 1}%\
@@ -87,8 +87,8 @@ ${goto 1160}Status:${goto 1210}${mpd_status}
 ${goto 15}${if_match ${cpu cpu1} > 75}1 (${freq 1} MHz):${goto 100}${color red}\
 ${cpubar cpu1}${color}  ${cpu cpu1}%${else}1 (${freq 1} MHz):${goto 100}\
 ${cpubar cpu1}  ${cpu cpu1}%${endif}\
-${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\
-${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDisk}\
+${goto 256}/home:${goto 330}${fs_used /home}\
+${goto 380}${fs_bar /home}  ${fs_size /home}\
 ${goto 560}Down:\
 ${goto 605}${downspeedgraph wlp3s0 10,100 B7B2AD FF0000 -t}  ${downspeed wlp3s0}\
 ${goto 765}${top name 2}${goto 865}${top pid 2}${goto 905}${top cpu 2}%\
@@ -98,8 +98,8 @@ ${goto 1160}Artist:${goto 1210}${mpd_artist}
 ${goto 15}${if_match ${cpu cpu2} > 75}2 (${freq 2} MHz):${goto 100}${color red}\
 ${cpubar cpu2}${color}  ${cpu cpu2}%${else}2 (${freq 2} MHz):${goto 100}\
 ${cpubar cpu2}  ${cpu cpu2}%${endif}\
-${goto 256}/Storage:${goto 330}${fs_used /run/media/artur/Storage}\
-${goto 380}${fs_bar /run/media/artur/Storage}  ${fs_size /run/media/artur/Storage}\
+${goto 256}/BigDisk:${goto 330}${fs_used /run/media/artur/BigDisk}\
+${goto 380}${fs_bar /run/media/artur/BigDisk}  ${fs_size /run/media/artur/BigDisk}\
 ${goto 560}Today:${goto 605}${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 5} - ${execi 120 vnstat -i enp5s0+wlp3s0 --oneline | cut -d ';' -f 4}\
 ${goto 765}${top name 3}${goto 865}${top pid 3}${goto 905}${top cpu 3}%\
 ${goto 975}/SSD I/O:${goto 1070}${diskio /dev/sda}/s\
