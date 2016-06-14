@@ -1,0 +1,41 @@
+# using T = X
+snippet us "using X = Y"
+using ${1} = ${2};
+endsnippet
+
+snippet un "using namespace X"
+using namespace ${1:std};
+endsnippet
+
+snippet ns "namespace X"
+namespace ${1} {
+
+${2}
+
+} // namespace $1
+endsnippet
+
+snippet ans "anonymous namespace"
+namespace {
+
+${2}
+
+} // anonymous namespace
+endsnippet
+
+snippet guards "header's guards"
+#ifndef ${1}
+#define $1
+
+${2}
+
+#endif // $1
+endsnippet
+
+snippet main "main function"
+int main(int argc, char* argv[])
+{
+	${1}
+	return 0;
+}
+endsnippet
