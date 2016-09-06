@@ -8,7 +8,7 @@ function __prompt_command()
   if [ $es -eq 0 ]; then
     local exit_code_color=$crf_green
   else
-    local exit_code_color=$crf_red
+    local exit_code_color=$cbf_red
   fi
 
   local git_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null | tr -d ' ')
@@ -16,9 +16,9 @@ function __prompt_command()
 
   PS1="$cbf_blue[$exit_code_color\#$cbf_blue]"        # command counter
   PS1+=" "
-  PS1+="$cbf_white\u$crf_blue@$cbf_white\h$cbf_white" # username@host
+  PS1+="$cbf_white\u$cbf_blue@$cbf_white\h$cbf_white" # username@host
   PS1+=":"
-  PS1+="$crf_green\w"                                 # working dir
+  PS1+="$cbf_green\w"                                 # working dir
   PS1+=" "
 
   if [ -n "$git_branch" ]; then
@@ -30,9 +30,9 @@ function __prompt_command()
   fi
 
   if [ $(id -u) -eq 0 ]; then # white '>' for regular user and red '$' for root
-    PS1+=" ${crf_red}$"
+    PS1+=" ${cbf_red}$"
   else
-    PS1+=" ${crf_white}>"
+    PS1+=" ${cbf_white}>"
   fi
   PS1+="$c_reset\n"
 }

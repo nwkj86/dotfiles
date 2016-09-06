@@ -11,13 +11,12 @@ call vundle#begin()
 " - - - - - - - - - - - - - -
 " Plugins
 " - - - - - - - - - - - - - -
-"Plugin 'Rip-Rip/clang_complete'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'derekwyatt/vim-fswitch'
-"Plugin 'embear/vim-localvimrc'            " source .lvimrc files
-"Plugin 'flazz/vim-colorschemes'
-"Plugin 'vim-scripts/YankRing.vim'         " yield history
-"Plugin 'vim-scripts/taglist.vim'
+
+" Colorschemes
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
+Plugin 'nanotech/jellybeans.vim'
+" Others
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'bling/vim-airline'                " status line
 Plugin 'gmarik/Vundle.vim'                " plugins management
@@ -48,10 +47,7 @@ Plugin 'honza/vim-snippets'               " additional snippets for snipmate
 
 Plugin 'lervag/vimtex'                    " latex in vim
 
-Plugin 'nanotech/jellybeans.vim'          " colorscheme
 Plugin 'chazy/cscope_maps'
-
-Plugin 'altercation/vim-colors-solarized'
 
 Plugin 'chrisbra/NrrwRgn' " narrow region
 Plugin 'vim-scripts/ZoomWin' " zoom in/out the window
@@ -60,6 +56,8 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'tsukkee/unite-tag'
+
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -114,9 +112,9 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14'
 let g:jellybeans_use_lowcolor_black = 0
 
 " - - - - - - - - - - - - - -
-" solarized
+" colorscheme
 " - - - - - - - - - - - - - -
-colorscheme solarized
+colorscheme jellybeans
 
 " - - - - - - - - - - - - - -
 " ultisnips

@@ -4,13 +4,13 @@
 # reset terminal colors
 c_reset="$(tput sgr0)"
 # regular foreground
-crf_red=$(tput setaf 1)
-crf_green=$(tput setaf 2)
-crf_orange=$(tput setaf 3)
-crf_blue=$(tput setaf 4)
-crf_pink=$(tput setaf 5)
-crf_cyan=$(tput setaf 6)
-crf_white=$(tput setaf 7)
+crf_red=$(tput sgr0; tput setaf 1)
+crf_green=$(tput sgr0; tput setaf 2)
+crf_orange=$(tput sgr0; tput setaf 3)
+crf_blue=$(tput sgr0; tput setaf 4)
+crf_pink=$(tput sgr0; tput setaf 5)
+crf_cyan=$(tput sgr0; tput setaf 6)
+crf_white=$(tput sgr0; tput setaf 7)
 # bold foreground
 cbf_red=$(tput bold; tput setaf 1)
 cbf_green=$(tput bold; tput setaf 2)

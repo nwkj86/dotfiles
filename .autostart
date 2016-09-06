@@ -3,7 +3,8 @@
 NOINTERNET=~/.local/bin/nointernet
 
 sleep 2
-/usr/bin/guake &
+#/usr/bin/guake &
+/usr/bin/konsole &
 /usr/bin/conky &
 /usr/bin/variety &
 
