@@ -7,12 +7,14 @@ sleep 2
 /usr/bin/konsole &
 /usr/bin/conky &
 /usr/bin/variety &
+/usr/bin/redshift-gtk &
 
 sleep 3
 /usr/bin/cantata &
 #/usr/bin/uget-gtk &
 #/usr/bin/kget &
-/usr/bin/liferea &
+#/usr/bin/liferea &
+/usr/bin/quiterss &
 /usr/bin/pidgin &
 /usr/bin/dropbox &
 #/usr/bin/kupfer &

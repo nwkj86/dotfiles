@@ -54,16 +54,13 @@ set background=dark
 " disable vi-backward compatibility
 set nocompatible
 
-" enable omni completion
-set omnifunc=syntaxcomplete#Complete
-
 " case insensitive, smart and incremental search
 set ignorecase
 set smartcase
 set incsearch
 
 " spell check
-set spell
+set nospell
 
 " more human completition
 set wildmode=longest,list

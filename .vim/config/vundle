@@ -12,78 +12,73 @@ call vundle#begin()
 " Plugins
 " - - - - - - - - - - - - - -
 
-" Colorschemes
+" Colorschemes & arround
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'morhetz/gruvbox'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
 " Others
+Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'bling/vim-airline'                " status line
 Plugin 'gmarik/Vundle.vim'                " plugins management
 Plugin 'kana/vim-operator-user'           " user defined separators, dependency
-Plugin 'ctrlpvim/ctrlp.vim'               " search wile by name
-Plugin 'majutsushi/tagbar'                " file outline
 Plugin 'mattn/emmet-vim'                  " expanding abbreviations
 Plugin 'mileszs/ack.vim'                  " grep replacement
-Plugin 'rhysd/vim-clang-format'           " C/C++ source formatter
-Plugin 'scrooloose/nerdtree'              " file explorer
 Plugin 'scrooloose/syntastic'             " syntax checker for many languages
-Plugin 'tmhedberg/matchit'                " match more by %
+Plugin 'tmhedberg/matchit'                " match more by % (HTML, Latex, ...)
 Plugin 'tpope/vim-commentary'             " comment stuff out
 Plugin 'tpope/vim-dispatch'               " run task in new tmux window, fetch results back to vim when done
 Plugin 'tpope/vim-eunuch'                 " Remove, Unlink, Moe, Rename, Chmod, Mkdir...
 Plugin 'tpope/vim-fugitive'               " git in vim
 Plugin 'tpope/vim-unimpaired'             " many useful shortcuts in ]<letters> and ]<letters>
 Plugin 'vim-scripts/Align'                " aligning text
-Plugin 'vim-scripts/Buffergator'          " buffers & tabs outline
 Plugin 'vim-scripts/DoxygenToolkit.vim'   " insert doxygen block
 Plugin 'vim-scripts/Mark'                 " highlight in different colors
 Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 Plugin 'xterm-color-table.vim'            " print colors, useful to check if 256 cols available
 Plugin 'airblade/vim-gitgutter'           " git marks
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'               " additional snippets for snipmate
+Plugin 'SirVer/ultisnips'                 " snippets
+Plugin 'honza/vim-snippets'               " additional snippets for ultisnips
 
 Plugin 'lervag/vimtex'                    " latex in vim
 
 Plugin 'chazy/cscope_maps'
 
-Plugin 'chrisbra/NrrwRgn' " narrow region
-Plugin 'vim-scripts/ZoomWin' " zoom in/out the window
+Plugin 'chrisbra/NrrwRgn'                 " narrow region
+Plugin 'vim-scripts/ZoomWin'              " zoom in/out the window
 
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'tsukkee/unite-tag'
+Plugin 'Shougo/vimproc.vim'               " cd ~/.vim/bundle/vimproc && make
+Plugin 'Shougo/unite.vim'                 " Unite itself
+Plugin 'Shougo/unite-help'                " help files
+Plugin 'Shougo/neomru.vim'                " new Most-Recently-Used implementation for unite
+Plugin 'Shougo/unite-outline'
+Plugin 'Shougo/neoyank.vim'               " yank history
+Plugin 'Shougo/neoinclude.vim'
+Plugin 'tsukkee/unite-tag'                " selecting |tags| or selecting files including |tags|
+Plugin 'tacroe/unite-mark'
 
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/vimfiler.vim'              " file explorer (like NerdTree)
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+"file type plugin on
 
 " - - - - - - - - - - - - - -
-" NERDTree settings
+" YouCompleteMe
 " - - - - - - - - - - - - - -
-map <C-n> :NERDTreeToggle<CR>
-map <C-m> :NERDTreeFind<CR>
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeDirArrows = 0
-
-" - - - - - - - - - - - - - -
-" tagbar settings
-" - - - - - - - - - - - - - -
-map <C-t> :TagbarToggle<CR>
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_autoshowtag = 1
-let g:tagbar_compact = 1
-let g:tagbar_indent = 1
-let g:tagbar_sort = 1
-let g:tagbar_width = 60
+let g:ycm_error_symbol = '!!'
+let g:ycm_warning_symbol = '!'
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_server_log_level = 'debug'
 
 " - - - - - - - - - - - - - -
 " powerline
@@ -91,15 +86,10 @@ let g:tagbar_width = 60
 let g:Powerline_symbols = "unicode"
 
 " - - - - - - - - - - - - - -
-" CtrlP
-" - - - - - - - - - - - - - -
-let g:ctrlp_root_markers = ['.ctrlp']
-
-" - - - - - - - - - - - - - -
 " Buffergator
 " - - - - - - - - - - - - - -
-let g:buffergator_viewport_split_policy = "L"
-let g:buffergator_show_full_directory_path = 0
+"let g:buffergator_viewport_split_policy = "L"
+"let g:buffergator_show_full_directory_path = 0
 
 " - - - - - - - - - - - - - -
 " syntastic
@@ -129,40 +119,80 @@ let g:ack_default_options =
   \ " -s -H --nocolor --nogroup --column --smart-case --follow --ignore-file=is:tags"
 
 " - - - - - - - - - - - - - -
-" clang_complete
-" - - - - - - - - - - - - - -
-let g:clang_format#style_options = {
-            \ "UseTab": "Never",
-            \ "BreakConstructorInitializersBeforeComma": "true",
-            \ "AlignTrailingComments": "true",
-            \ "IndentWidth": 2,
-            \ "BreakBeforeBraces": "Allman",
-            \ "AllowShortIfStatementsOnASingleLine": "false",
-            \ "IndentCaseLabels": "false",
-            \ "Standard" : "C++11",
-            \ "ColumnLimit": 0 }
-
-" - - - - - - - - - - - - - -
 " Unite
 " - - - - - - - - - - - - - -
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 " Like ctrlp.vim settings.
 call unite#custom#profile('default', 'context', {
-\   'start_insert': 1,
+\   'start_insert': 0,
 \   'winheight': 10,
 \   'direction': 'botright',
 \ })
+
+call unite#custom#profile('source/file_rec/async', 'context', {
+\   'start_insert': 1,
+\ })
+
+call unite#custom#profile('source/buffer', 'context', {
+\   'start_insert': 0,
+\   'prompt_direction': 'top',
+\   'direction': 'top',
+\   'vertical': 1,
+\   'winwidth': 35,
+\   'split': 1,
+\ })
+
+call unite#custom#profile('source/tab', 'context', {
+\   'start_insert': 0,
+\   'prompt_direction': 'top',
+\   'direction': 'top',
+\   'vertical': 1,
+\   'winwidth': 35,
+\   'split': 1,
+\ })
+
+call unite#custom#profile('source/outline', 'context', {
+\   'start_insert': 0,
+\   'prompt_direction': 'top',
+\   'direction': 'botright',
+\   'vertical': 1,
+\   'winwidth': 60,
+\   'split': 1,
+\ })
+
+call unite#custom#profile('source/history/yank', 'context', {
+\   'winheight': 20,
+\   'prompt_direction': 'top',
+\ })
+
+let g:unite_source_mark_marks =
+\   "abcdefghijklmnopqrstuvwxyz"
+\ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+\ . "0123456789.'`^<>[]{}()\""
+
+nnoremap <C-p> :Unite file_rec/async<cr>
+nnoremap <C-t> :Unite outline<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
+nnoremap <leader>b :Unite buffer<cr>
+nnoremap <leader>t :Unite tab<cr>
+nnoremap <leader>y :Unite history/yank<cr>
+nnoremap <leader>j :Unite mark<cr>
+
+" - - - - - - - - - - - - - -
+" VimFiler
+" - - - - - - - - - - - - - -
+map <C-n> :VimFilerExplorer -force-quit<CR>
+map <C-m> :VimFilerExplorer -find -force-quit<CR>
+" Expand instead of cd on <Enter>
+autocmd FileType vimfiler nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
+      \ "\<Plug>(vimfiler_expand_tree)",
+      \ "\<Plug>(vimfiler_edit_file)")
 
 " - - - - - - - - - - - - - -
 " a.vim
 " - - - - - - - - - - - - - -
 let g:alternateExtensions_cpp = "h,hpp"
 let g:alternateExtensions_h = "cpp,c"
-
-" - - - - - - - - - - - - - -
-" fswitch
-" - - - - - - - - - - - - - -
-" let g:fsnonewfiles = "on"
 
 " vim: ft=vim

@@ -69,12 +69,23 @@ function print_colors()
 {
   for cmd in sgr0 bold; do
     tput $cmd
-    for i in $(seq 0 7); do
-      for j in $(seq 0 7); do
+    for i in {0..7}; do
+      for j in {0..7}; do
         tput setaf $i; tput setab $j; echo -n " $i,$j "
       done
       tput sgr0; echo; tput $cmd
     done
+  done
+
+  echo
+  echo
+
+  for i in {0..31}; do
+    for j in {0..7}; do
+      x=$((8*i+j))
+      printf "\x1b[38;5;${x}mcolour${x}\x1b[0m\t"
+    done
+    echo
   done
 }
 
