@@ -169,7 +169,6 @@ call unite#custom#profile('source/history/yank', 'context', {
 let g:unite_source_mark_marks =
 \   "abcdefghijklmnopqrstuvwxyz"
 \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-\ . "0123456789.'`^<>[]{}()\""
 
 nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <C-t> :Unite outline<cr>
