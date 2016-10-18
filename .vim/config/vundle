@@ -13,16 +13,21 @@ call vundle#begin()
 " - - - - - - - - - - - - - -
 
 " Colorschemes & arround
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'morhetz/gruvbox'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'sickill/vim-monokai'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 " Others
 Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'bling/vim-airline'                " status line
+Plugin 'vim-airline/vim-airline-themes'   " themes for airline
 Plugin 'gmarik/Vundle.vim'                " plugins management
 Plugin 'kana/vim-operator-user'           " user defined separators, dependency
 Plugin 'mattn/emmet-vim'                  " expanding abbreviations
@@ -40,9 +45,10 @@ Plugin 'vim-scripts/Mark'                 " highlight in different colors
 Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 Plugin 'xterm-color-table.vim'            " print colors, useful to check if 256 cols available
 Plugin 'airblade/vim-gitgutter'           " git marks
+Plugin 'easymotion/vim-easymotion'        " easy jumping:wq
+"Plugin 'raimondi/delimitmate'
 
 Plugin 'SirVer/ultisnips'                 " snippets
-Plugin 'honza/vim-snippets'               " additional snippets for ultisnips
 
 Plugin 'lervag/vimtex'                    " latex in vim
 
@@ -61,7 +67,7 @@ Plugin 'Shougo/neoinclude.vim'
 Plugin 'tsukkee/unite-tag'                " selecting |tags| or selecting files including |tags|
 Plugin 'tacroe/unite-mark'
 
-Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/vimfiler.vim'              " file explorer (like NerdTree)
 
 " All of your Plugins must be added before the following line
@@ -73,23 +79,17 @@ filetype plugin indent on    " required
 " - - - - - - - - - - - - - -
 " YouCompleteMe
 " - - - - - - - - - - - - - -
-let g:ycm_error_symbol = '!!'
-let g:ycm_warning_symbol = '!'
+let g:ycm_error_symbol = '!'
+let g:ycm_warning_symbol = '>'
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_confirm_extra_conf = 0
 let g:ycm_server_log_level = 'debug'
+let g:ycm_confirm_extra_conf = 0
 
 " - - - - - - - - - - - - - -
-" powerline
+" airline
 " - - - - - - - - - - - - - -
-let g:Powerline_symbols = "unicode"
-
-" - - - - - - - - - - - - - -
-" Buffergator
-" - - - - - - - - - - - - - -
-"let g:buffergator_viewport_split_policy = "L"
-"let g:buffergator_show_full_directory_path = 0
+let g:airline#extensions#tabline#enabled = 1
 
 " - - - - - - - - - - - - - -
 " syntastic
@@ -97,24 +97,25 @@ let g:Powerline_symbols = "unicode"
 let g:syntastic_cpp_compiler_options = ' -std=c++14'
 
 " - - - - - - - - - - - - - -
-" jellybeans
-" - - - - - - - - - - - - - -
-let g:jellybeans_use_lowcolor_black = 0
-
-" - - - - - - - - - - - - - -
 " colorscheme
 " - - - - - - - - - - - - - -
+let g:jellybeans_use_lowcolor_black = 0
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme jellybeans
+set background=dark
+
 
 " - - - - - - - - - - - - - -
 " ultisnips
 " - - - - - - - - - - - - - -
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " - - - - - - - - - - - - - -
 " Ack
 " - - - - - - - - - - - - - -
-
 let g:ack_default_options =
   \ " -s -H --nocolor --nogroup --column --smart-case --follow --ignore-file=is:tags"
 
@@ -138,27 +139,21 @@ call unite#custom#profile('source/buffer', 'context', {
 \   'start_insert': 0,
 \   'prompt_direction': 'top',
 \   'direction': 'top',
-\   'vertical': 1,
-\   'winwidth': 35,
-\   'split': 1,
+\   'split': 0,
 \ })
 
 call unite#custom#profile('source/tab', 'context', {
 \   'start_insert': 0,
 \   'prompt_direction': 'top',
 \   'direction': 'top',
-\   'vertical': 1,
-\   'winwidth': 35,
-\   'split': 1,
+\   'split': 0,
 \ })
 
 call unite#custom#profile('source/outline', 'context', {
 \   'start_insert': 0,
 \   'prompt_direction': 'top',
 \   'direction': 'botright',
-\   'vertical': 1,
-\   'winwidth': 60,
-\   'split': 1,
+\   'split': 0,
 \ })
 
 call unite#custom#profile('source/history/yank', 'context', {
