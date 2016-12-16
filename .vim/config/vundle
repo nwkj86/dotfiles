@@ -34,6 +34,7 @@ Plugin 'mattn/emmet-vim'                  " expanding abbreviations
 Plugin 'mileszs/ack.vim'                  " grep replacement
 Plugin 'scrooloose/syntastic'             " syntax checker for many languages
 Plugin 'tmhedberg/matchit'                " match more by % (HTML, Latex, ...)
+Plugin 'MattesGroeger/vim-bookmarks'      " bookmarks
 
 Plugin 'tpope/vim-commentary'             " comment stuff out
 Plugin 'tpope/vim-dispatch'               " run task in new tmux window, fetch results back to vim when done
@@ -49,7 +50,7 @@ Plugin 'vim-scripts/Mark'                 " highlight in different colors
 Plugin 'vim-scripts/a.vim'                " pairing cpp with h
 Plugin 'xterm-color-table.vim'            " print colors, useful to check if 256 cols available
 Plugin 'airblade/vim-gitgutter'           " git marks
-Plugin 'easymotion/vim-easymotion'        " easy jumping:wq
+Plugin 'easymotion/vim-easymotion'        " easy jumping
 "Plugin 'raimondi/delimitmate'
 
 Plugin 'SirVer/ultisnips'                 " snippets
@@ -59,7 +60,6 @@ Plugin 'lervag/vimtex'                    " latex in vim
 Plugin 'chazy/cscope_maps'
 
 Plugin 'chrisbra/NrrwRgn'                 " narrow region
-Plugin 'vim-scripts/ZoomWin'              " zoom in/out the window
 
 Plugin 'Shougo/vimproc.vim'               " cd ~/.vim/bundle/vimproc && make
 Plugin 'Shougo/unite.vim'                 " Unite itself
@@ -89,12 +89,10 @@ let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_server_log_level = 'debug'
 let g:ycm_confirm_extra_conf = 0
- let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
-" - - - - - - - - - - - - - -
-" airline
-" - - - - - - - - - - - - - -
-let g:airline#extensions#tabline#enabled = 1
+nmap <leader>g :YcmCompleter GoToDefinition<CR>
+nmap <leader>h :YcmCompleter GoToDeclaration<CR>
 
 " - - - - - - - - - - - - - -
 " syntastic
@@ -140,6 +138,13 @@ call unite#custom#profile('source/file_rec/async', 'context', {
 \   'start_insert': 1,
 \ })
 
+call unite#custom#profile('source/grep', 'context', {
+\   'start_insert': 0,
+\   'no_quit': 1,
+\   'keep_focus': 1,
+\   'buffer_name': 'grep',
+\ })
+
 call unite#custom#profile('source/buffer', 'context', {
 \   'start_insert': 0,
 \   'prompt_direction': 'top',
@@ -172,7 +177,7 @@ let g:unite_source_mark_marks =
 
 nnoremap <C-p> :Unite file_rec/async<cr>
 nnoremap <C-t> :Unite outline<cr>
-nnoremap <leader>/ :Unite grep:.<cr>
+nnoremap <leader>g :UniteWithCursorWord grep:.<CR>
 nnoremap <leader>b :Unite buffer<cr>
 nnoremap <leader>t :Unite tab<cr>
 nnoremap <leader>y :Unite history/yank<cr>
