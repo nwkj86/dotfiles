@@ -5,23 +5,22 @@ NOINTERNET=~/.local/bin/nointernet
 sleep 2
 #/usr/bin/guake &
 /usr/bin/konsole &
-/usr/bin/conky &
-/usr/bin/variety &
+#/usr/bin/conky &
+#/usr/bin/variety &
 /usr/bin/redshift-gtk &
 
 sleep 3
-/usr/bin/cantata &
-#/usr/bin/uget-gtk &
-#/usr/bin/kget &
-#/usr/bin/liferea &
-/usr/bin/quiterss &
-/usr/bin/pidgin &
-/usr/bin/dropbox &
-#/usr/bin/kupfer &
-/usr/bin/skype &
-/usr/bin/viber &
 #/usr/bin/hexchat &
-/usr/bin/konversation &
+#/usr/bin/kget &
+#/usr/bin/konversation &
+#/usr/bin/kupfer &
+#/usr/bin/liferea &
+#/usr/bin/uget-gtk &
+/usr/bin/cantata &
+/usr/bin/dropbox &
+/usr/bin/pidgin &
+/usr/bin/quiterss &
+/usr/bin/viber &
 
 sleep 2
 $NOINTERNET /usr/bin/keepassx &
