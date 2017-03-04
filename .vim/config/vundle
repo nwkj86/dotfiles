@@ -186,8 +186,8 @@ nnoremap <leader>j :Unite mark<cr>
 " - - - - - - - - - - - - - -
 " VimFiler
 " - - - - - - - - - - - - - -
-map <C-n> :VimFilerExplorer -force-quit<CR>
-map <C-m> :VimFilerExplorer -find -force-quit<CR>
+map <C-n> :VimFiler -force-quit<CR>
+map <C-m> :VimFiler -find -force-quit<CR>
 " Expand instead of cd on <Enter>
 autocmd FileType vimfiler nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
       \ "\<Plug>(vimfiler_expand_tree)",
