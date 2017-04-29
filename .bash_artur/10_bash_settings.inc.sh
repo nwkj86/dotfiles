@@ -11,6 +11,9 @@ bind -m vi-insert "\C-l":clear-screen
 # notify
 set -b
 
+# resize on every command
+shopt -s checkwinsize
+
 set convert-meta on
 
 # disable Ctrl-S
