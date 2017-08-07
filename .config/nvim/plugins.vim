@@ -49,6 +49,14 @@ Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, us
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
+Plug 'Shougo/unite.vim'                 " Unite itself
+Plug 'Shougo/unite-help'                " help files
+Plug 'Shougo/unite-outline'
+Plug 'Shougo/neoyank.vim'               " yank history
+Plug 'Shougo/vimfiler.vim'              " file explorer (like NerdTree)
+
+Plug 'tsukkee/unite-tag'                " selecting |tags| or selecting files including |tags|
+Plug 'tacroe/unite-mark'
 Plug 'chemzqm/denite-extra'
 
 call plug#end()
@@ -115,12 +123,12 @@ call deoplete#enable()
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
 nnoremap <C-p> :Denite file_rec -buffer-name=file_rec<cr>
-nnoremap <C-t> :Denite outline -buffer-name=outline<cr>
+nnoremap <C-t> :Denite unite:outline -buffer-name=outline<cr>
 nnoremap <leader>g :DeniteCursorWord -buffer-name=grep grep:.<CR>
 nnoremap <leader>b :Denite -buffer-name=buffer buffer<cr>
-"nnoremap <leader>t :Denite -buffer-name=tab tab<cr>
-"nnoremap <leader>y :Denite history/yank<cr>
-"nnoremap <leader>j :Denite mark<cr>
+nnoremap <leader>t :Denite -buffer-name=tab unite:tab<cr>
+nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<cr>
+nnoremap <leader>j :Denite -buffer-name=mark unite:mark<cr>
 
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('normal', '<Esc>', '<NOP>', 'noremap')
@@ -132,19 +140,66 @@ call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>', 'nore
 
 call denite#custom#option('_', {
             \ 'prompt': '>',
+            \ 'mode': 'normal',
             \ 'cursor_wrap': v:true })
 
 call denite#custom#option('grep', {
             \ 'quit': v:false })
 
+call denite#custom#option('file_rec', {
+            \ 'mode': 'insert' })
+
 call denite#custom#option('buffer', {
-            \ 'mode': 'normal',
             \ 'auto-resize': v:true,
             \ 'force_quit' : v:true,
             \ 'split': 'no' })
 
 call denite#custom#option('outline', {
-            \ 'mode': 'normal',
             \ 'auto-resize': v:true,
             \ 'force_quit' : v:true,
             \ 'split': 'no' })
+
+call denite#custom#option('yank', {
+            \ 'auto-resize': v:true,
+            \ 'force_quit' : v:true })
+
+call denite#custom#option('tab', {
+            \ 'auto-resize': v:true,
+            \ 'force_quit' : v:true })
+
+" - - - - - - - - - - - - - -
+" Shougo/unite.vim
+" - - - - - - - - - - - - - -
+call unite#custom#profile('source/outline', 'context', {
+            \   'start_insert': 0,
+            \   'prompt_direction': 'top',
+            \   'direction': 'botright',
+            \   'split': 0,
+            \ })
+
+call unite#custom#profile('source/history/yank', 'context', {
+            \   'winheight': 20,
+            \   'prompt_direction': 'top',
+            \ })
+
+call unite#custom#profile('source/tab', 'context', {
+            \   'start_insert': 0,
+            \   'prompt_direction': 'top',
+            \   'direction': 'top',
+            \   'split': 0,
+            \ })
+
+let g:unite_source_mark_marks =
+            \   "abcdefghijklmnopqrstuvwxyz"
+            \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+" - - - - - - - - - - - - - -
+" VimFiler
+" - - - - - - - - - - - - - -
+let g:vimfiler_as_default_explorer = 1
+map <C-n> :VimFiler -force-quit<CR>
+map <C-m> :VimFiler -find -force-quit<CR>
+" Expand instead of cd on <Enter>
+autocmd FileType vimfiler nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
+            \ "\<Plug>(vimfiler_expand_tree)",
+            \ "\<Plug>(vimfiler_edit_file)")
