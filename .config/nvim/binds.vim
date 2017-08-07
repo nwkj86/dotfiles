@@ -1,0 +1,18 @@
+"============================
+" Binds
+"============================
+" show whitespaces
+nmap <leader><F1> :set list!<CR>
+
+" wrap in all windows
+nmap <leader><F2> :set wrap!<CR>
+
+" paste/nopaste
+nmap <leader><F3> :set paste!<CR>
+
+" don't move by screen-line
+nnoremap j gj
+nnoremap k gk
+
+" vim: ft=vim
+
