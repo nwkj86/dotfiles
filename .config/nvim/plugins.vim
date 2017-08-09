@@ -95,6 +95,7 @@ nmap <leader>h :YcmCompleter GoToDeclaration<CR>
 " neomake/neomake
 " - - - - - - - - - - - - - -
 autocmd! BufWritePost * Neomake
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'] } " too long lines
 
 " - - - - - - - - - - - - - -
 " arakashic/chromatica.nvim

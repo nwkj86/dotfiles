@@ -40,4 +40,12 @@ alias ports='netstat -tulanp'
 
 # footer
 unit_name="$(basename $BASH_SOURCE)"
+
+if [ -n $(which nvim) ]; then
+    alias vim=nvim
+    alias vi=nvim
+elif [ -n $(which vim) ]; then
+    alias vi=vim
+fi
+
 echo -n " -> $unit_name"
