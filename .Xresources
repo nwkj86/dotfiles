@@ -1,0 +1,12 @@
+URxvt.depth: 24
+URxvt.buffered: true
+URxvt.background: black
+URxvt.foreground: white
+URxvt.scrollBar: false
+URxvt.cursorBlink: true
+URxvt.perl-ext-common: selection-to-clipboard,option-popup,resize-font
+URxvt.title: Artur\'s urxvt-terminal
+
+URxvt.font: -*-clean-medium-r-*-16-*-*-*-*-*-*-*
+!URxvt.font: xft:DejavuSansMono:pixelsize=10
+!URxvt*font: xft:Inconsolata:size=14:antialias=true:hinting=true

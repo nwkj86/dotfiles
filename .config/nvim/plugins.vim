@@ -12,15 +12,13 @@ Plug 'mhinz/vim-janah'
 Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 
-Plug 'arakashic/chromatica.nvim' " clang based c-like languages scheme
+Plug 'arakashic/chromatica.nvim'                              " clang based c-like languages scheme
 
-" Plugins
+                                                              " Plugins
 Plug 'Valloric/YouCompleteMe'                                 " clang completion
 Plug 'neomake/neomake'                                        " asynchronous linting and make framework
 Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'brooth/far.vim'                                         " find and replace
-
-Plug 'jsfaint/gen_tags.vim'                                   " generate ctags
 
 Plug 'tmhedberg/matchit'                                      " match more by % (HTML, Latex, ...)
 
@@ -47,17 +45,25 @@ Plug 'vim-scripts/Mark'                                       " highlight in dif
 Plug 'vim-scripts/a.vim'                                      " pairing cpp with h
 Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, useful to check if 256 cols available
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
-Plug 'Shougo/unite.vim'                 " Unite itself
-Plug 'Shougo/unite-help'                " help files
-Plug 'Shougo/unite-outline'
-Plug 'Shougo/neoyank.vim'               " yank history
-Plug 'Shougo/vimfiler.vim'              " file explorer (like NerdTree)
+Plug 'Shougo/neoyank.vim'                                     " yank history
+Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
-Plug 'tsukkee/unite-tag'                " selecting |tags| or selecting files including |tags|
-Plug 'tacroe/unite-mark'
-Plug 'chemzqm/denite-extra'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
+Plug 'zchee/deoplete-jedi'                                    " python autocompletion
+Plug 'carlitux/deoplete-ternjs'                               " js autocompletion
+Plug 'mhartington/nvim-typescript'                            " typescript autocompletion
+Plug 'sebastianmarkow/deoplete-rust'                          " rust autocompletion
+
+Plug 'elzr/vim-json'                                          " better json support
+Plug 'mbbill/undotree'                                        " undo tree visualiser
+Plug 'majutsushi/tagbar'                                      " ctags based outline
+Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
+Plug 'ludovicchabant/vim-gutentags'                           " ctags management
+Plug 'mhinz/vim-startify'                                     " nice start screen
+Plug 'scrooloose/nerdtree'                                    " file navigator
+
+" Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -70,12 +76,14 @@ colorscheme jellybeans
 set background=dark
 
 " - - - - - - - - - - - - - -
-" netrw
+" scrooloose/nerdtree
 " - - - - - - - - - - - - - -
-let g:netrw_liststyle = 1
-let g:netrw_banner = 0
-let g:netrw_altv = 1
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+map <C-n> :NERDTreeToggle<CR>
+map <C-m> :NERDTreeFind<CR>
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeNaturalSort = 1
+let g:NERDTreeWinSize = 60
 
 " - - - - - - - - - - - - - -
 " Valloric/YouCompleteMe
@@ -110,6 +118,12 @@ let g:session_autoload = 'no'
 let g:session_autosave = 'prompt'
 
 " - - - - - - - - - - - - - -
+" mhinz/startify
+" - - - - - - - - - - - - - -
+let g:startify_session_dir = "~/.config/nvim/sessions"
+let g:startify_list_order = [ ['  Sessions:'], 'sessions', ['  Files:'], 'files', ['  Current dir:'], 'dir', ['  Bookmarks:'], 'bookmarks']
+
+" - - - - - - - - - - - - - -
 " vim-scripts/a.vim
 " - - - - - - - - - - - - - -
 let g:alternateExtensions_cpp = "h,hpp"
@@ -124,12 +138,10 @@ call deoplete#enable()
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
 nnoremap <C-p> :Denite file_rec -buffer-name=file_rec<cr>
-nnoremap <C-t> :Denite unite:outline -buffer-name=outline<cr>
 nnoremap <leader>g :DeniteCursorWord -buffer-name=grep grep:.<CR>
 nnoremap <leader>b :Denite -buffer-name=buffer buffer<cr>
-nnoremap <leader>t :Denite -buffer-name=tab unite:tab<cr>
 nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<cr>
-nnoremap <leader>j :Denite -buffer-name=mark unite:mark<cr>
+nnoremap <leader>j :Denite -buffer-name=jump jump<cr>
 
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('normal', '<Esc>', '<NOP>', 'noremap')
@@ -137,6 +149,8 @@ call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap'
 call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
 call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
 call denite#custom#map('normal', '<C-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
+call denite#custom#map('normal', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
 call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>', 'noremap')
 
 call denite#custom#option('_', {
@@ -152,55 +166,31 @@ call denite#custom#option('file_rec', {
 
 call denite#custom#option('buffer', {
             \ 'auto-resize': v:true,
-            \ 'force_quit' : v:true,
             \ 'split': 'no' })
 
 call denite#custom#option('outline', {
             \ 'auto-resize': v:true,
-            \ 'force_quit' : v:true,
             \ 'split': 'no' })
 
 call denite#custom#option('yank', {
-            \ 'auto-resize': v:true,
-            \ 'force_quit' : v:true })
+            \ 'auto-resize': v:true })
 
 call denite#custom#option('tab', {
-            \ 'auto-resize': v:true,
-            \ 'force_quit' : v:true })
+            \ 'auto-resize': v:true })
 
 " - - - - - - - - - - - - - -
-" Shougo/unite.vim
+" majutsushi/tagbar
 " - - - - - - - - - - - - - -
-call unite#custom#profile('source/outline', 'context', {
-            \   'start_insert': 0,
-            \   'prompt_direction': 'top',
-            \   'direction': 'botright',
-            \   'split': 0,
-            \ })
-
-call unite#custom#profile('source/history/yank', 'context', {
-            \   'winheight': 20,
-            \   'prompt_direction': 'top',
-            \ })
-
-call unite#custom#profile('source/tab', 'context', {
-            \   'start_insert': 0,
-            \   'prompt_direction': 'top',
-            \   'direction': 'top',
-            \   'split': 0,
-            \ })
-
-let g:unite_source_mark_marks =
-            \   "abcdefghijklmnopqrstuvwxyz"
-            \ . "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+nnoremap <C-t> :TagbarToggle<CR>
+let g:tagbar_compact = 1
+let g:tagbar_compact = 1
+let g:tagbar_foldlevel = 3
+let g:tagbar_autoshowtag = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
+let g:tagbar_sort = 1
 
 " - - - - - - - - - - - - - -
-" VimFiler
+" bling/vim-airline
 " - - - - - - - - - - - - - -
-let g:vimfiler_as_default_explorer = 1
-map <C-n> :VimFiler -force-quit<CR>
-map <C-m> :VimFiler -find -force-quit<CR>
-" Expand instead of cd on <Enter>
-autocmd FileType vimfiler nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
-            \ "\<Plug>(vimfiler_expand_tree)",
-            \ "\<Plug>(vimfiler_edit_file)")
+let g:airline_symbols_ascii = 1
