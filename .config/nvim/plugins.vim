@@ -56,6 +56,7 @@ Plug 'Shougo/vinarise.vim'                                    " hex editing for 
 " syntax autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
 Plug 'zchee/deoplete-jedi'                                    " python autocompletion
+Plug 'neovim/python-client'                                   " required by deoplete-ternjs
 Plug 'carlitux/deoplete-ternjs'                               " js autocompletion
 Plug 'mhartington/nvim-typescript'                            " typescript autocompletion
 Plug 'sebastianmarkow/deoplete-rust'                          " rust autocompletion
@@ -89,7 +90,7 @@ let g:gutentags_enabled = 0 " call :GutentagsUpdate
 " - - - - - - - - - - - - - -
 " scrooloose/nerdtree
 " - - - - - - - - - - - - - -
-map <C-n> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeCWD<CR>
 map <C-m> :NERDTreeFind<CR>
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeHijackNetrw = 1
@@ -151,6 +152,18 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " close
 " - - - - - - - - - - - - - -
 let g:deoplete#sources#clang#libclang_path =  "/usr/lib/libclang.so"
 let g:deoplete#sources#clang#clang_header =  "/usr/lib/clang"
+
+" - - - - - - - - - - - - - -
+" zchee/deoplete-jedi
+" - - - - - - - - - - - - - -
+let g:deoplete#sources#jedi#show_docstring = 1
+
+" - - - - - - - - - - - - - -
+" carlitux/deoplete-ternjs
+" - - - - - - - - - - - - - -
+let g:deoplete#sources#ternjs#tern_bin = "/usr/bin/tern"
+let g:deoplete#sources#ternjs#timeout = 2
+let g:deoplete#sources#ternjs#docs = 1
 
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
