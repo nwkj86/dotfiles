@@ -18,12 +18,21 @@ using namespace ${1:std};
 ${0}
 endsnippet
 
-snippet ns "namespace X"
-namespace ${1:/* name */} {
+global !p
+def create_namespaces(snip):
+	placeholders_amount = int(snip.buffer[snip.line].strip())
+	snip.buffer[snip.line] = ""
 
-${0}
+	anon_snippet = " ".join(['namespace $' + str(i + 1) + ' {' for i in range(placeholders_amount)])
+	anon_snippet += '\n' * 2 + '$0' + '\n' * 2
+	anon_snippet += '}' * placeholders_amount + " // namespace " + "::".join(['$' + str(i + 1) for i in range(placeholders_amount)])
 
-} // namespace $1
+	snip.expand_anon(anon_snippet)
+endglobal
+
+post_jump "create_namespaces(snip)"
+snippet "ns(\d+)" "namespaces" br
+`!p snip.rv = match.group(1)`
 endsnippet
 
 snippet if "if"
@@ -95,19 +104,23 @@ private:
 };
 endsnippet
 
-snippet la "lambda"
-auto ${1} = [${2:/* capture */}](${3:/* args */}) ${4:mutable} ${5:noexcept} -> ${6:/* return */} {
+snippet la "lambda - quick"
+[${1:capture}](${2:args}) { ${3:body} }
+endsnippet
+
+snippet laf "lambda - full"
+[${1:/* capture */}](${2:/* args */}) ${3:mutable} ${4:noexcept} -> ${5:/* return */} {
 	${0:/* code */}
 }
 endsnippet
 
-snippet laval "lambda"
+snippet laval "lambda - capure value"
 auto ${1} = [=](${2}) {
 	${0}
 }
 endsnippet
 
-snippet laref "lambda"
+snippet laref "lambda - capture ref"
 auto ${1} = [&](${2}) {
 	${0}
 }
