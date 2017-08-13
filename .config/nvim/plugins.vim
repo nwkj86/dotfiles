@@ -227,6 +227,16 @@ let g:tagbar_autoclose = 1
 let g:tagbar_sort = 1
 
 " - - - - - - - - - - - - - -
+" SirVer/ultisnips
+" - - - - - - - - - - - - - -
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
+  let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
+
+" - - - - - - - - - - - - - -
 " bling/vim-airline
 " - - - - - - - - - - - - - -
 let g:airline_symbols_ascii = 1
