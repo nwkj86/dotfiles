@@ -1,7 +1,9 @@
 " junegunn/vim-plug
 call plug#begin()
 
-" Colorschemes & highlights
+" ---
+" --- Colorschemes & highlights
+" ---
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
@@ -13,9 +15,11 @@ Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 
 Plug 'arakashic/chromatica.nvim'                              " clang based c-like languages scheme
+Plug 'elzr/vim-json'                                          " better json support
 
-                                                              " Plugins
-Plug 'Valloric/YouCompleteMe'                                 " clang completion
+" ---
+" --- Plugins
+" ---
 Plug 'neomake/neomake'                                        " asynchronous linting and make framework
 Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'brooth/far.vim'                                         " find and replace
@@ -49,13 +53,15 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous uni
 Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
+" syntax autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
 Plug 'zchee/deoplete-jedi'                                    " python autocompletion
 Plug 'carlitux/deoplete-ternjs'                               " js autocompletion
 Plug 'mhartington/nvim-typescript'                            " typescript autocompletion
 Plug 'sebastianmarkow/deoplete-rust'                          " rust autocompletion
+Plug 'zchee/deoplete-clang'
+" Plug 'Valloric/YouCompleteMe'                                 " clang completion
 
-Plug 'elzr/vim-json'                                          " better json support
 Plug 'mbbill/undotree'                                        " undo tree visualiser
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
@@ -74,6 +80,11 @@ let g:jellybeans_use_lowcolor_black = 0
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme jellybeans
 set background=dark
+
+" - - - - - - - - - - - - - -
+" ludovicchabant/vim-gutentags
+" - - - - - - - - - - - - - -
+let g:gutentags_enabled = 0 " call :GutentagsUpdate
 
 " - - - - - - - - - - - - - -
 " scrooloose/nerdtree
@@ -133,6 +144,13 @@ let g:alternateExtensions_h = "cpp,c"
 " Shougo/deoplete.nvim
 " - - - - - - - - - - - - - -
 call deoplete#enable()
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " close preview window after completion: Shougo/deoplete.nvim/issues/115
+
+" - - - - - - - - - - - - - -
+" zchee/deoplete-clang
+" - - - - - - - - - - - - - -
+let g:deoplete#sources#clang#libclang_path =  "/usr/lib/libclang.so"
+let g:deoplete#sources#clang#clang_header =  "/usr/lib/clang"
 
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
@@ -179,6 +197,11 @@ call denite#custom#option('tab', {
             \ 'auto-resize': v:true })
 
 " - - - - - - - - - - - - - -
+" nathanaelkane/vim-indent-guides
+" - - - - - - - - - - - - - -
+nmap <leader><F4> ::IndentGuidesToggle<CR>
+
+" - - - - - - - - - - - - - -
 " majutsushi/tagbar
 " - - - - - - - - - - - - - -
 nnoremap <C-t> :TagbarToggle<CR>
@@ -194,3 +217,5 @@ let g:tagbar_sort = 1
 " bling/vim-airline
 " - - - - - - - - - - - - - -
 let g:airline_symbols_ascii = 1
+
+" vim: ft=vim

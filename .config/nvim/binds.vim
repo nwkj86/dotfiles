@@ -15,4 +15,3 @@ nnoremap j gj
 nnoremap k gk
 
 " vim: ft=vim
-

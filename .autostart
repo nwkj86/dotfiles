@@ -4,7 +4,8 @@ NOINTERNET=~/.local/bin/nointernet
 
 sleep 2
 #/usr/bin/guake &
-/usr/bin/konsole &
+#/usr/bin/konsole &
+/usr/bin/urxvt
 #/usr/bin/conky &
 #/usr/bin/variety &
 /usr/bin/redshift-gtk &

@@ -18,3 +18,5 @@
   br = branch
   obsolete = "!f(){ git branch $1 -m obsolete/$1; }; f"
   review = "!f(){ ~/Skrypty/git_review.sh \"$@\"; }; f"
+[core]
+	excludesfile = ~/.gitignore
