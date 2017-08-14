@@ -15,7 +15,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 
 Plug 'arakashic/chromatica.nvim'                              " clang based c-like languages scheme
-Plug 'elzr/vim-json'                                          " better json support
+Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
 
 " ---
 " --- Plugins
@@ -55,13 +55,13 @@ Plug 'Shougo/vinarise.vim'                                    " hex editing for 
 
 " syntax autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
-Plug 'zchee/deoplete-jedi'                                    " python autocompletion
-Plug 'neovim/python-client'                                   " required by deoplete-ternjs
-Plug 'carlitux/deoplete-ternjs'                               " js autocompletion
-Plug 'mhartington/nvim-typescript'                            " typescript autocompletion
-Plug 'sebastianmarkow/deoplete-rust'                          " rust autocompletion
-Plug 'zchee/deoplete-clang'
-" Plug 'Valloric/YouCompleteMe'                                 " clang completion
+"Plug 'zchee/deoplete-jedi'                                    " python autocompletion
+"Plug 'neovim/python-client'                                   " required by deoplete-ternjs
+"Plug 'carlitux/deoplete-ternjs'                               " js autocompletion
+"Plug 'mhartington/nvim-typescript'                            " typescript autocompletion
+"Plug 'sebastianmarkow/deoplete-rust'                          " rust autocompletion
+"Plug 'zchee/deoplete-clang'
+Plug 'Valloric/YouCompleteMe'                                 " clang completion
 
 Plug 'mbbill/undotree'                                        " undo tree visualiser
 Plug 'majutsushi/tagbar'                                      " ctags based outline
@@ -108,8 +108,8 @@ let g:ycm_server_log_level = 'debug'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-nmap <leader>g :YcmCompleter GoToDefinition<CR>
-nmap <leader>h :YcmCompleter GoToDeclaration<CR>
+nmap <leader>d :YcmCompleter GoToDefinition<CR>
+nmap <leader>f :YcmCompleter GoToDeclaration<CR>
 
 " - - - - - - - - - - - - - -
 " neomake/neomake
