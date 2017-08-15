@@ -7,6 +7,24 @@ URxvt.cursorBlink: true
 URxvt.perl-ext-common: selection-to-clipboard,option-popup,resize-font
 URxvt.title: Artur\'s urxvt-terminal
 
-URxvt.font: -*-clean-medium-r-*-16-*-*-*-*-*-*-*
+!URxvt.font: -*-clean-medium-r-*-16-*-*-*-*-*-*-*
+!URxvt.font: xft:Inconsolata-g:style=g:pixelsize=12:antialias=true:hinting=true
 !URxvt.font: xft:DejavuSansMono:pixelsize=10
 !URxvt*font: xft:Inconsolata:size=14:antialias=true:hinting=true
+URxvt.font: xft:Source Code Pro:size=10:antialias=true:hinting=false
+URxvt.boldFont: xft:Source Code Pro:size=10:antialias=true:hinting=false
+URxvt.italicFont: xft:Source Code Pro:style=Oblique:size=10:antialias=true:hinting=false
+URxvt.boldItalicFont: xft:Source Code Pro:style=Bold Oblique:size=10:antialias=true:hinting=false
+URxvt.letterSpace: -2
+
+
+XTerm.vt100.foreground: white
+XTerm.vt100.background: black
+!XTerm.vt100.faceName: Inconsolata-g:style=g:pixelsize=14
+XTerm.vt100.faceName: Source\ Code\ Pro:size=10
+
+Xft.dpi: 100
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: false
+Xft.hintstyle: hintnone
