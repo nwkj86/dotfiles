@@ -14,8 +14,9 @@ Plug 'mhinz/vim-janah'
 Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 
-Plug 'arakashic/chromatica.nvim'                              " clang based c-like languages scheme
+" Plug 'arakashic/chromatica.nvim'                              " clang based c-like languages scheme
 Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
+Plug 'peterhoeg/vim-qml'
 
 " ---
 " --- Plugins
@@ -66,7 +67,6 @@ Plug 'Valloric/YouCompleteMe'                                 " clang completion
 Plug 'mbbill/undotree'                                        " undo tree visualiser
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
-Plug 'ludovicchabant/vim-gutentags'                           " ctags management
 Plug 'mhinz/vim-startify'                                     " nice start screen
 Plug 'scrooloose/nerdtree'                                    " file navigator
 
@@ -81,11 +81,6 @@ let g:jellybeans_use_lowcolor_black = 0
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme jellybeans
 set background=dark
-
-" - - - - - - - - - - - - - -
-" ludovicchabant/vim-gutentags
-" - - - - - - - - - - - - - -
-let g:gutentags_enabled = 0 " call :GutentagsUpdate
 
 " - - - - - - - - - - - - - -
 " scrooloose/nerdtree

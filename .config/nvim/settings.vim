@@ -10,6 +10,8 @@ filetype plugin on
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+set guicursor=""
+
 " change tab to spaces
 set expandtab
 set smarttab

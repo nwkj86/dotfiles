@@ -3,12 +3,10 @@
 NOINTERNET=~/.local/bin/nointernet
 
 sleep 2
-#/usr/bin/guake &
-#/usr/bin/konsole &
-/usr/bin/urxvt
+/usr/bin/konsole &
 #/usr/bin/conky &
 #/usr/bin/variety &
-/usr/bin/redshift-gtk &
+#/usr/bin/redshift-gtk &
 
 sleep 3
 #/usr/bin/hexchat &

@@ -19,6 +19,11 @@ set convert-meta on
 # disable Ctrl-S
 stty -ixon
 
+# merge resources
+if [ -e $HOME/.Xresources ]; then
+    xrdb $HOME/.Xresources
+fi
+
 # footer
 unit_name="$(basename $BASH_SOURCE)"
 echo -n " -> $unit_name"
