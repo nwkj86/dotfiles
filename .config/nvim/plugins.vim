@@ -69,6 +69,7 @@ Plug 'majutsushi/tagbar'                                      " ctags based outl
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'mhinz/vim-startify'                                     " nice start screen
 Plug 'scrooloose/nerdtree'                                    " file navigator
+Plug 'ludovicchabant/vim-gutentags'
 
 " Plug 'ryanoasis/vim-devicons'
 
