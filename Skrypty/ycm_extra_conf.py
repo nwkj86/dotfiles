@@ -80,6 +80,7 @@ flags = [
     './tests/gmock',
     '-isystem',
     './tests/gmock/include',
+    '-Wno-unknown-warning-option',
 ]
 
 
@@ -93,7 +94,7 @@ flags = [
 #
 # Most projects will NOT need to set this to anything; you can just change the
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = '.'
+compilation_database_folder = '/home/artur.drozd/remote/ccdev06/build/mmb-work/'
 
 if os.path.exists(compilation_database_folder):
     database = ycm_core.CompilationDatabase(compilation_database_folder)
@@ -144,7 +145,7 @@ def IsHeaderFile(filename):
 
 
 def GetLevelUp(path):
-    return os.abspath(os.path.join(os.path.dirname(path), '..'))
+    return os.path.abspath(os.path.dirname(path))
 
 
 def IsProjectRoot(path):
@@ -159,36 +160,49 @@ def GetCompilationInfoForFile(filename):
     # for header files. So we do our best by asking the db for flags for a
     # corresponding source file, if any. If one exists, the flags for that file
     # should be good enough.
-    if IsHeaderFile(filename):
-        basename = os.path.splitext(filename)[0]
+    with open("/tmp/script.log", "a") as logfile:
+        if IsHeaderFile(filename):
+            basename = os.path.splitext(filename)[0]
 
-        # match header -> source file
-        for extension in SOURCE_EXTENSIONS:
-            replacement_file = basename + extension
-            if os.path.exists(replacement_file):
-                compilation_info = database.GetCompilationInfoForFile(replacement_file)
-                if compilation_info.compiler_flags_:
-                    return compilation_info
+            # match header -> source file
+            logfile.write("match header -> source file\n")
+            for extension in SOURCE_EXTENSIONS:
+                replacement_file = basename + extension
+                logfile.write("  replacement_file" + replacement_file + "\n")
+                if os.path.exists(replacement_file):
+                    logfile.write("    exists\n")
+                    compilation_info = database.GetCompilationInfoForFile(replacement_file)
+                    if compilation_info.compiler_flags_:
+                        return compilation_info
 
-        # source file from here up to vcs root
-        dirname = os.path.dirname(filename)
-        while True:
-            for root, dirs, files in os.listdir(dirname):
-                for file in files:
-                    for extension in SOURCE_EXTENSIONS:
-                        if file.endswith(extension):
-                            replacement_file = dirname + file
-                            compilation_info = database.GetCompilationInfoForFile(replacement_file)
-                            if compilation_info.compiler_flags_:
-                                return compilation_info
+            # source file from here up to vcs root
+            logfile.write("source file from here up to vcs root\n")
+            dirname = os.path.dirname(filename)
+            logfile.write("  dirname" + dirname + "\n")
+
+            while True:
+                for dirpath, dirs, files in os.walk(dirname):
+                    logfile.write("    walk %s %s %s %s\n" % (dirname, dirpath, dirs, files))
+                    for file in files:
+                        logfile.write("      check " + file + "\n")
+                        for extension in SOURCE_EXTENSIONS:
+                            if file.endswith(extension):
+                                logfile.write("        source file\n")
+                                replacement_file = os.path.join(dirpath, file)
+                                logfile.write("        replacement_file %s\n" % replacement_file)
+                                compilation_info = database.GetCompilationInfoForFile(replacement_file)
+                                if compilation_info.compiler_flags_:
+                                    return compilation_info
 
                 if IsProjectRoot(dirname):
+                    logfile.write("  hit root\n")
                     return None
                 else:
                     dirname = GetLevelUp(dirname)
+                    logfile.write("  up, dirname " + dirname + "\n")
 
-        return None
-    return database.GetCompilationInfoForFile(filename)
+            return None
+        return database.GetCompilationInfoForFile(filename)
 
 
 def FlagsForFile(filename, **kwargs):
