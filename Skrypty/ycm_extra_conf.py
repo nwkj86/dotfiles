@@ -80,9 +80,11 @@ flags = [
     './tests/gmock',
     '-isystem',
     './tests/gmock/include',
-    '-Wno-unknown-warning-option',
 ]
 
+common_flags = [
+    '-Wno-unknown-warning-option',  # ignore unknown flags
+]
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
@@ -94,7 +96,7 @@ flags = [
 #
 # Most projects will NOT need to set this to anything; you can just change the
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = '/home/artur.drozd/remote/ccdev06/build/mmb-work/'
+compilation_database_folder = '.'
 
 if os.path.exists(compilation_database_folder):
     database = ycm_core.CompilationDatabase(compilation_database_folder)
@@ -216,16 +218,8 @@ def FlagsForFile(filename, **kwargs):
         final_flags = MakeRelativePathsInFlagsAbsolute(
             compilation_info.compiler_flags_,
             compilation_info.compiler_working_dir_)
-
-        # NOTE: This is just for YouCompleteMe; it's highly likely that your project
-        # does NOT need to remove the stdlib flag. DO NOT USE THIS IN YOUR
-        # ycm_extra_conf IF YOU'RE NOT 100% SURE YOU NEED IT.
-        try:
-            final_flags.remove('-stdlib=libc++')
-        except ValueError:
-            pass
     else:
         relative_to = DirectoryOfThisScript()
         final_flags = MakeRelativePathsInFlagsAbsolute(flags, relative_to)
 
-    return {'flags': final_flags}
+    return {'flags': final_flags + common_flags}
