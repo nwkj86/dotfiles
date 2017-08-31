@@ -31,195 +31,203 @@
 import os
 import ycm_core
 
-# These are the compilation flags that will be used in case there's no
-# compilation database set (by default, one is not set).
-# CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
-flags = [
-    '-Wall',
-    '-Wextra',
-    '-Werror',
-    '-Wno-long-long',
-    '-Wno-variadic-macros',
-    '-fexceptions',
-    '-DNDEBUG',
-    # You 100% do NOT need -DUSE_CLANG_COMPLETER in your flags; only the YCM
-    # source code needs it.
-    '-DUSE_CLANG_COMPLETER',
-    # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
-    # language to use when compiling headers. So it will guess. Badly. So C++
-    # headers will be compiled as C headers. You don't want that so ALWAYS specify
-    # a "-std=<something>".
-    # For a C project, you would set this to something like 'c99' instead of
-    # 'c++11'.
-    '-std=c++11',
-    # ...and the same thing goes for the magic -x option which specifies the
-    # language that the files to be compiled are written in. This is mostly
-    # relevant for c++ headers.
-    # For a C project, you would set this to 'c' instead of 'c++'.
-    '-x',
-    'c++',
-    '-isystem',
-    '../BoostParts',
-    '-isystem',
-    # This path will only work on OS X, but extra paths that don't exist are not
-    # harmful
-    '/System/Library/Frameworks/Python.framework/Headers',
-    '-isystem',
-    '../llvm/include',
-    '-isystem',
-    '../llvm/tools/clang/include',
-    '-I',
-    '.',
-    '-I',
-    './ClangCompleter',
-    '-isystem',
-    './tests/gmock/gtest',
-    '-isystem',
-    './tests/gmock/gtest/include',
-    '-isystem',
-    './tests/gmock',
-    '-isystem',
-    './tests/gmock/include',
-]
 
-common_flags = [
-    '-Wno-unknown-warning-option',  # ignore unknown flags
-]
+class StaticFlags(object):
+    def __init__(self):
+        self.no_db_flags = [
+            '-Wall',
+            '-Wextra',
+            '-Werror',
+            '-Wno-long-long',
+            '-Wno-variadic-macros',
+            '-fexceptions',
+            '-DNDEBUG',
+            '-DUSE_CLANG_COMPLETER',
+            '-std=c++14',
+            '-x',
+            'c++',
+            '-isystem',
+            '../BoostParts',
+            '-isystem',
 
-# Set this to the absolute path to the folder (NOT the file!) containing the
-# compile_commands.json file to use that instead of 'flags'. See here for
-# more details: http://clang.llvm.org/docs/JSONCompilationDatabase.html
-#
-# You can get CMake to generate this file for you by adding:
-#     set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )
-# to your CMakeLists.txt file.
-#
-# Most projects will NOT need to set this to anything; you can just change the
-# 'flags' list of compilation flags. Notice that YCM itself uses that approach.
-compilation_database_folder = '.'
+            # OS X only
+            '/System/Library/Frameworks/Python.framework/Headers',
+            '-isystem',
+            '../llvm/include',
+            '-isystem',
+            '../llvm/tools/clang/include',
+            '-I',
+            '.',
+            '-I',
+            './ClangCompleter',
+            '-isystem',
+            './tests/gmock/gtest',
+            '-isystem',
+            './tests/gmock/gtest/include',
+            '-isystem',
+            './tests/gmock',
+            '-isystem',
+            './tests/gmock/include',
+        ]
 
-if os.path.exists(compilation_database_folder):
-    database = ycm_core.CompilationDatabase(compilation_database_folder)
-else:
-    database = None
-
-SOURCE_EXTENSIONS = ['.cpp', '.cxx', 'c++', '.cc', '.c', '.m', '.mm']
-HEADER_EXTENSION = ['.h', '.hxx', '.hpp', '.hh']
-PROJECT_ROOT = ['.git', '.hg']
+        # Flags added to both compilation_database and static flags
+        self.common_flags = [
+            '-Wno-unknown-warning-option',  # ignore unknown flags
+        ]
 
 
-def DirectoryOfThisScript():
-    return os.path.dirname(os.path.abspath(__file__))
+class FilesystemHelper(object):
+    def __init__(self):
+        self.PROJECT_ROOT = ['.git', '.hg']
+        self.PATH_FLAGS = ['-isystem', '-I', '-iquote', '--sysroot=']
+
+    def DirectoryOfThisScript(self):
+        return os.path.dirname(os.path.abspath(__file__))
+
+    def GetLevelUp(self, path):
+        return os.path.abspath(os.path.dirname(path))
+
+    def MakeRelativePathsInFlagsAbsolute(self, flags, working_directory):
+        if not working_directory:
+            return list(flags)
+        new_flags = []
+        make_next_absolute = False
+        for flag in flags:
+            new_flag = flag
+
+            if make_next_absolute:
+                make_next_absolute = False
+                if not flag.startswith('/'):
+                    new_flag = os.path.join(working_directory, flag)
+
+            for path_flag in self.PATH_FLAGS:
+                if flag == path_flag:
+                    make_next_absolute = True
+                    break
+
+                if flag.startswith(path_flag):
+                    path = flag[len(path_flag):]
+                    new_flag = path_flag + os.path.join(working_directory, path)
+                    break
+
+            if new_flag:
+                new_flags.append(new_flag)
+        return new_flags
+
+    def IsProjectRoot(self, path):
+        for csv_dir in self.PROJECT_ROOT:
+                if os.path.exists(os.path.join(path, csv_dir)) or path == '/':
+                        return True
+        return False
 
 
-def MakeRelativePathsInFlagsAbsolute(flags, working_directory):
-    if not working_directory:
-        return list(flags)
-    new_flags = []
-    make_next_absolute = False
-    path_flags = ['-isystem', '-I', '-iquote', '--sysroot=']
-    for flag in flags:
-        new_flag = flag
+class CppFiles(object):
+    def __init__(self):
+        self.SOURCE_EXTENSIONS = ['.cpp', '.cxx', 'c++', '.cc', '.c', '.m', '.mm']
+        self.HEADER_EXTENSIONS = ['.h', '.hxx', '.hpp', '.hh']
 
-        if make_next_absolute:
-            make_next_absolute = False
-            if not flag.startswith('/'):
-                new_flag = os.path.join(working_directory, flag)
+    def IsHeaderFile(self, filename):
+        extension = os.path.splitext(filename)[1]
+        return extension in self.HEADER_EXTENSIONS
 
-        for path_flag in path_flags:
-            if flag == path_flag:
-                make_next_absolute = True
-                break
+    def IsSourceFile(self, filename):
+        extension = os.path.splitext(filename)[1]
+        return extension in self.SOURCE_EXTENSIONS
 
-            if flag.startswith(path_flag):
-                path = flag[len(path_flag):]
-                new_flag = path_flag + os.path.join(working_directory, path)
-                break
-
-        if new_flag:
-            new_flags.append(new_flag)
-    return new_flags
+    def GetAlternativeFiles(self, filename):
+        basename = os.path.splitext(filename)[0]
+        return map(lambda ext: basename + ext, self.SOURCE_EXTENSIONS)
 
 
-def IsHeaderFile(filename):
-    extension = os.path.splitext(filename)[1]
-    return extension in HEADER_EXTENSION
+class Logger(object):
+    def __init__(self, logFile, indent=4 * ' '):
+        self.logFile = logFile
+        self.file = open(self.logFile, 'a')
+        self.indent = indent
+
+    def log(self, indent_depth, message):
+        self.file.write(indent_depth * self.indent + message +'\n')
 
 
-def GetLevelUp(path):
-    return os.path.abspath(os.path.dirname(path))
+class FlagsProvider(object):
+    def __init__(self):
+        self.logger = Logger('/tmp/ycm_extra_conf.log')
+        self.staticFlags = StaticFlags()
+        self.fsHelper = FilesystemHelper()
+        self.cppFiles = CppFiles()
 
+        self.compilation_database_folder = '.'
 
-def IsProjectRoot(path):
-    for csv_dir in PROJECT_ROOT:
-            if os.path.exists(os.path.join(path, csv_dir)) or path == '/':
-                    return True
-    return False
+        if os.path.exists(self.compilation_database_folder):
+            self.database = ycm_core.CompilationDatabase(self.compilation_database_folder)
+        else:
+            self.database = None
 
+    def MatchCppFile(self, filename):
+        # match header -> source file
+        self.logger.log(1, "match header -> source file")
+        for replacement_file in self.cppFiles.GetAlternativeFiles(filename):
+            self.logger.log(2, "replacement_file {}".format(replacement_file))
+            if os.path.exists(replacement_file):
+                self.logger.log(3, "exists")
+                compilation_info = self.database.GetCompilationInfoForFile(replacement_file)
+                if compilation_info.compiler_flags_:
+                    return compilation_info
+        return None
 
-def GetCompilationInfoForFile(filename):
-    # The compilation_commands.json file generated by CMake does not have entries
-    # for header files. So we do our best by asking the db for flags for a
-    # corresponding source file, if any. If one exists, the flags for that file
-    # should be good enough.
-    with open("/tmp/script.log", "a") as logfile:
-        if IsHeaderFile(filename):
-            basename = os.path.splitext(filename)[0]
+    def AnyCppFileLookup(self, filename):
+        # source file from here up to vcs root
+        self.logger.log(1, "source file from here up to vcs root")
+        dirname = os.path.dirname(filename)
+        self.logger.log(1, "dirname {}".format(dirname))
 
-            # match header -> source file
-            logfile.write("match header -> source file\n")
-            for extension in SOURCE_EXTENSIONS:
-                replacement_file = basename + extension
-                logfile.write("  replacement_file" + replacement_file + "\n")
-                if os.path.exists(replacement_file):
-                    logfile.write("    exists\n")
-                    compilation_info = database.GetCompilationInfoForFile(replacement_file)
-                    if compilation_info.compiler_flags_:
-                        return compilation_info
+        while True:
+            for dirpath, dirs, files in os.walk(dirname):
+                self.logger.log(2, "walk {}, {}, {}, {}".format(dirname, dirpath, dirs, files))
+                for file in files:
+                    self.logger.log(3, "check {}".format(file))
+                    if self.cppFiles.IsSourceFile(file):
+                        self.logger.log(4, "source file")
+                        replacement_file = os.path.join(dirpath, file)
+                        self.logger.log(4, "replacement_file {}".format(replacement_file))
+                        compilation_info = self.database.GetCompilationInfoForFile(replacement_file)
+                        if compilation_info.compiler_flags_:
+                            return compilation_info
 
-            # source file from here up to vcs root
-            logfile.write("source file from here up to vcs root\n")
-            dirname = os.path.dirname(filename)
-            logfile.write("  dirname" + dirname + "\n")
+            if self.fsHelper.IsProjectRoot(dirname):
+                self.logger.log(3, "hit root")
+                return None
+            else:
+                dirname = self.fsHelper.GetLevelUp(dirname)
+                self.logger.log(3, "up, dirname {} ".format(dirname))
 
-            while True:
-                for dirpath, dirs, files in os.walk(dirname):
-                    logfile.write("    walk %s %s %s %s\n" % (dirname, dirpath, dirs, files))
-                    for file in files:
-                        logfile.write("      check " + file + "\n")
-                        for extension in SOURCE_EXTENSIONS:
-                            if file.endswith(extension):
-                                logfile.write("        source file\n")
-                                replacement_file = os.path.join(dirpath, file)
-                                logfile.write("        replacement_file %s\n" % replacement_file)
-                                compilation_info = database.GetCompilationInfoForFile(replacement_file)
-                                if compilation_info.compiler_flags_:
-                                    return compilation_info
+        return None
 
-                if IsProjectRoot(dirname):
-                    logfile.write("  hit root\n")
-                    return None
-                else:
-                    dirname = GetLevelUp(dirname)
-                    logfile.write("  up, dirname " + dirname + "\n")
+    def GetCompilationInfoForFile(self, filename):
+        if self.cppFiles.IsHeaderFile(filename):
+            self.logger.log(0, 'header file')
+            flags = self.MatchCppFile(filename)
+            return flags if flags else self.AnyCppFileLookup(filename)
 
-            return None
-        return database.GetCompilationInfoForFile(filename)
+        self.logger.log(0, 'direct db call')
+        return self.database.GetCompilationInfoForFile(filename)
+
+    def FlagsForFile(self, filename, **kwargs):
+        if self.database:
+            compilation_info = self.GetCompilationInfoForFile(filename)
+            if not compilation_info:
+                return None
+
+            final_flags = self.fsHelper.MakeRelativePathsInFlagsAbsolute(
+                compilation_info.compiler_flags_,
+                compilation_info.compiler_working_dir_)
+        else:
+            relative_to = self.fsHelper.DirectoryOfThisScript()
+            final_flags = self.fsHelper.MakeRelativePathsInFlagsAbsolute(self.staticFlags.no_db_flags, relative_to)
+
+        return {'flags': final_flags + self.staticFlags.common_flags}
 
 
 def FlagsForFile(filename, **kwargs):
-    if database:
-        # Bear in mind that compilation_info.compiler_flags_ does NOT return a
-        # python list, but a "list-like" StringVec object
-        compilation_info = GetCompilationInfoForFile(filename)
-        if not compilation_info:
-            return None
-
-        final_flags = MakeRelativePathsInFlagsAbsolute(
-            compilation_info.compiler_flags_,
-            compilation_info.compiler_working_dir_)
-    else:
-        relative_to = DirectoryOfThisScript()
-        final_flags = MakeRelativePathsInFlagsAbsolute(flags, relative_to)
-
-    return {'flags': final_flags + common_flags}
+    flagsProvider = FlagsProvider()
+    return flagsProvider.FlagsForFile(filename, **kwargs)
