@@ -224,4 +224,9 @@ let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
 " - - - - - - - - - - - - - -
 let g:airline_symbols_ascii = 1
 
+" - - - - - - - - - - - - - -
+" mbbill/undotree
+" - - - - - - - - - - - - - -
+nmap <leader>u :UndotreeToggle<CR> :UndotreeFocus<CR>
+
 " vim: ft=vim
