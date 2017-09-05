@@ -91,7 +91,7 @@ map <C-m> :NERDTreeFind<CR>
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeNaturalSort = 1
-let g:NERDTreeWinSize = 60
+let g:NERDTreeWinSize = 70
 
 " - - - - - - - - - - - - - -
 " Valloric/YouCompleteMe
@@ -191,20 +191,6 @@ call denite#custom#option('grep', {
 call denite#custom#option('file_rec', {
             \ 'mode': 'insert' })
 
-call denite#custom#option('buffer', {
-            \ 'auto-resize': v:true,
-            \ 'split': 'no' })
-
-call denite#custom#option('outline', {
-            \ 'auto-resize': v:true,
-            \ 'split': 'no' })
-
-call denite#custom#option('yank', {
-            \ 'auto-resize': v:true })
-
-call denite#custom#option('tab', {
-            \ 'auto-resize': v:true })
-
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
 " - - - - - - - - - - - - - -
@@ -221,6 +207,7 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 let g:tagbar_sort = 1
+let g:tagbar_width = 70
 
 " - - - - - - - - - - - - - -
 " SirVer/ultisnips
