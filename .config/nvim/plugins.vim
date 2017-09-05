@@ -194,7 +194,7 @@ call denite#custom#option('file_rec', {
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
 " - - - - - - - - - - - - - -
-nmap <leader><F4> ::IndentGuidesToggle<CR>
+nmap <leader>i ::IndentGuidesToggle<CR>
 
 " - - - - - - - - - - - - - -
 " majutsushi/tagbar
@@ -217,7 +217,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/snips"
-  let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
 
 " - - - - - - - - - - - - - -
 " bling/vim-airline
