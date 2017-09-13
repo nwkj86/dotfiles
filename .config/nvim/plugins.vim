@@ -38,7 +38,7 @@ Plug 'xolox/vim-misc'                                         " Dependency for v
 Plug 'xolox/vim-session'                                      " Sessions management
 
 Plug 'tpope/vim-commentary'                                   " comment stuff out
-Plug 'tpope/vim-eunuch'                                       " Remove, Unlink, Moe, Rename, Chmod, Mkdir...
+Plug 'tpope/vim-eunuch'                                       " Remove, Unlink, Move, Rename, Chmod, Mkdir...
 Plug 'tpope/vim-fugitive'                                     " git in vim
 Plug 'tpope/vim-unimpaired'                                   " many useful shortcuts in ]<letters> and ]<letters>
 Plug 'tpope/vim-surround'
@@ -55,13 +55,6 @@ Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
 " syntax autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " asynchronous completion framework
-"Plug 'zchee/deoplete-jedi'                                    " python autocompletion
-"Plug 'neovim/python-client'                                   " required by deoplete-ternjs
-"Plug 'carlitux/deoplete-ternjs'                               " js autocompletion
-"Plug 'mhartington/nvim-typescript'                            " typescript autocompletion
-"Plug 'sebastianmarkow/deoplete-rust'                          " rust autocompletion
-"Plug 'zchee/deoplete-clang'
 Plug 'Valloric/YouCompleteMe'                                 " clang completion
 
 Plug 'mbbill/undotree'                                        " undo tree visualiser
@@ -69,7 +62,8 @@ Plug 'majutsushi/tagbar'                                      " ctags based outl
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'mhinz/vim-startify'                                     " nice start screen
 Plug 'scrooloose/nerdtree'                                    " file navigator
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
+Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 
 " Plug 'ryanoasis/vim-devicons'
 
@@ -136,30 +130,6 @@ let g:startify_list_order = [ ['  Sessions:'], 'sessions', ['  Files:'], 'files'
 " - - - - - - - - - - - - - -
 let g:alternateExtensions_cpp = "h,hpp"
 let g:alternateExtensions_h = "cpp,c"
-
-" - - - - - - - - - - - - - -
-" Shougo/deoplete.nvim
-" - - - - - - - - - - - - - -
-call deoplete#enable()
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif " close preview window after completion: Shougo/deoplete.nvim/issues/115
-
-" - - - - - - - - - - - - - -
-" zchee/deoplete-clang
-" - - - - - - - - - - - - - -
-let g:deoplete#sources#clang#libclang_path =  "/usr/lib/libclang.so"
-let g:deoplete#sources#clang#clang_header =  "/usr/lib/clang"
-
-" - - - - - - - - - - - - - -
-" zchee/deoplete-jedi
-" - - - - - - - - - - - - - -
-let g:deoplete#sources#jedi#show_docstring = 1
-
-" - - - - - - - - - - - - - -
-" carlitux/deoplete-ternjs
-" - - - - - - - - - - - - - -
-let g:deoplete#sources#ternjs#tern_bin = "/usr/bin/tern"
-let g:deoplete#sources#ternjs#timeout = 2
-let g:deoplete#sources#ternjs#docs = 1
 
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
