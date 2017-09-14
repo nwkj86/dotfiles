@@ -21,7 +21,7 @@ Plug 'peterhoeg/vim-qml'
 " ---
 " --- Plugins
 " ---
-Plug 'neomake/neomake'                                        " asynchronous linting and make framework
+Plug 'w0rp/ale'                                               " Asynchronous Lint Engine
 Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'brooth/far.vim'                                         " find and replace
 
@@ -102,10 +102,9 @@ nmap <leader>d :YcmCompleter GoToDefinition<CR>
 nmap <leader>f :YcmCompleter GoToDeclaration<CR>
 
 " - - - - - - - - - - - - - -
-" neomake/neomake
+" w0rp/ale
 " - - - - - - - - - - - - - -
-autocmd! BufWritePost * Neomake
-let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'] } " too long lines
+let g:ale_python_flake8_options = '--ignore=E501'
 
 " - - - - - - - - - - - - - -
 " arakashic/chromatica.nvim
