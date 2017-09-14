@@ -104,6 +104,9 @@ nmap <leader>f :YcmCompleter GoToDeclaration<CR>
 " - - - - - - - - - - - - - -
 " w0rp/ale
 " - - - - - - - - - - - - - -
+let g:ale_linters = {
+            \ 'cpp' : ['clangtidy', 'clangcheck', 'cppcheck', 'gcc'],
+            \}
 let g:ale_python_flake8_options = '--ignore=E501'
 
 " - - - - - - - - - - - - - -
