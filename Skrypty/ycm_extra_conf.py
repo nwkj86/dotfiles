@@ -146,7 +146,7 @@ class Logger(object):
         self.indent = indent
 
     def log(self, indent_depth, message):
-        self.file.write(indent_depth * self.indent + message +'\n')
+        self.file.write(indent_depth * self.indent + message + '\n')
 
 
 class FlagsProvider(object):

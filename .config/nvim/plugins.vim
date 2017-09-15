@@ -62,6 +62,7 @@ Plug 'majutsushi/tagbar'                                      " ctags based outl
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'mhinz/vim-startify'                                     " nice start screen
 Plug 'scrooloose/nerdtree'                                    " file navigator
+Plug 'Xuyuanp/nerdtree-git-plugin'                            " git status in nerdtree
 Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 
@@ -105,7 +106,7 @@ nmap <leader>f :YcmCompleter GoToDeclaration<CR>
 " w0rp/ale
 " - - - - - - - - - - - - - -
 let g:ale_linters = {
-            \ 'cpp' : ['clangtidy', 'clangcheck', 'cppcheck', 'gcc'],
+            \ 'cpp' : ['clangcheck', 'gcc'],
             \}
 let g:ale_python_flake8_options = '--ignore=E501'
 

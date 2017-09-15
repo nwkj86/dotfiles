@@ -27,6 +27,11 @@ export HISTIGNORE="&:md5sum:sha1sum:echo:ls:[bf]g:exit"
 export HISTSIZE=1024
 
 ###
+# PATH
+###
+export PATH="${HOME}/.local/bin:${PATH}"
+
+###
 # LibreOffie fresh
 ###
 export SAL_USE_VCLPLUGIN=gtk
