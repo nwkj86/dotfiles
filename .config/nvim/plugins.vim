@@ -61,14 +61,14 @@ Plug 'mbbill/undotree'                                        " undo tree visual
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'mhinz/vim-startify'                                     " nice start screen
-Plug 'scrooloose/nerdtree'                                    " file navigator
-Plug 'Xuyuanp/nerdtree-git-plugin'                            " git status in nerdtree
+Plug 'tpope/vim-vinegar'
 Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 
 " Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
+
 
 " - - - - - - - - - - - - - -
 " colorscheme
@@ -79,14 +79,11 @@ colorscheme jellybeans
 set background=dark
 
 " - - - - - - - - - - - - - -
-" scrooloose/nerdtree
+" netrw
 " - - - - - - - - - - - - - -
-map <C-n> :NERDTreeCWD<CR>
-map <C-m> :NERDTreeFind<CR>
-let g:NERDTreeQuitOnOpen = 1
-let g:NERDTreeHijackNetrw = 1
-let g:NERDTreeNaturalSort = 1
-let g:NERDTreeWinSize = 70
+let g:netrw_liststyle = 1
+map <C-n> :Explore<CR>
+autocmd FileType netrw setl bufhidden=delete
 
 " - - - - - - - - - - - - - -
 " Valloric/YouCompleteMe
