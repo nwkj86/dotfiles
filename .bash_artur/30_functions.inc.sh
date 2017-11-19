@@ -89,6 +89,4 @@ function print_colors()
   done
 }
 
-# footer
-unit_name="$(basename $BASH_SOURCE)"
-echo -n " -> $unit_name"
+print_footer $BASH_SOURCE

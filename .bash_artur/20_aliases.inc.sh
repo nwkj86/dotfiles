@@ -48,4 +48,4 @@ elif [ -n $(which vim) ]; then
     alias vi=vim
 fi
 
-echo -n " -> $unit_name"
+print_footer $BASH_SOURCE

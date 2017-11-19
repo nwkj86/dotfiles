@@ -65,6 +65,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 
+Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-management
+
+Plug 'hardenedapple/vsh/'                                     " Store and replay shell sessions -- also output search/modification/undo/redo.
+
 " Plug 'ryanoasis/vim-devicons'
 
 call plug#end()

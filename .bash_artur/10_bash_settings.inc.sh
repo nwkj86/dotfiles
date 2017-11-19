@@ -16,7 +16,7 @@ shopt -s checkwinsize
 
 set convert-meta on
 
-# disable Ctrl-S
+# disable Ctrl-S/Ctrl-Q
 stty -ixon
 
 # merge resources
@@ -24,6 +24,4 @@ if [ -e $HOME/.Xresources ]; then
     xrdb $HOME/.Xresources
 fi
 
-# footer
-unit_name="$(basename $BASH_SOURCE)"
-echo -n " -> $unit_name"
+print_footer $BASH_SOURCE

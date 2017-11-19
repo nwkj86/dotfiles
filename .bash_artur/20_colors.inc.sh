@@ -26,6 +26,4 @@ cbf_white=$(tput bold; tput setaf 7)
 dircolors > /dev/null
 eval $(dircolors ~/.dir_colors)
 
-# footer
-unit_name="$(basename $BASH_SOURCE)"
-echo -n " -> $unit_name"
+print_footer $BASH_SOURCE

@@ -1,5 +1,0 @@
-###
-# ponysay
-###
-ponysay -o
-

@@ -18,12 +18,11 @@ sleep 3
 /usr/bin/cantata &
 /usr/bin/dropbox &
 /usr/bin/pidgin &
-#/usr/bin/quiterss &
+/usr/bin/quiterss &
 /usr/bin/viber &
 
 sleep 2
 $NOINTERNET /usr/bin/keepassx &
 #/usr/bin/deluge &
 #/usr/bin/ktorrent &
-#/usr/bin/thunderbird &
-/usr/bin/kontact &
+/usr/bin/thunderbird &
