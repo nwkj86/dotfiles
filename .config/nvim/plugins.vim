@@ -46,7 +46,7 @@ Plug 'tpope/vim-repeat'
 
 Plug 'vim-scripts/Align'                                      " aligning text
 Plug 'vim-scripts/DoxygenToolkit.vim'                         " insert doxygen block
-Plug 'vim-scripts/Mark'                                       " highlight in different colors
+Plug 'vim-scripts/Mark--Karkat'                               " highlight in different colors
 Plug 'vim-scripts/a.vim'                                      " pairing cpp with h
 Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, useful to check if 256 cols available
 
