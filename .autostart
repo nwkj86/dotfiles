@@ -5,7 +5,7 @@ NOINTERNET=~/.local/bin/nointernet
 sleep 2
 /usr/bin/konsole &
 #/usr/bin/conky &
-/usr/bin/variety &
+#/usr/bin/variety &
 #/usr/bin/redshift-gtk &
 
 sleep 3
@@ -22,7 +22,7 @@ sleep 3
 /usr/bin/viber &
 
 sleep 2
-$NOINTERNET /usr/bin/keepassx &
+$NOINTERNET /usr/bin/keepassxc &
 #/usr/bin/deluge &
 #/usr/bin/ktorrent &
 #/usr/bin/thunderbird &

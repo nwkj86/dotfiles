@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
-firejail --net=none "$*"
+
+# 1) add group nointernet
+# > groupadd nointernet
+# 2) add specific user to it
+# > useradd -G nointernet username
+# 3) block traffic for nointernt in iptables
+# > iptables -A OUTPUT -m owner --gid-owner nointernet -j DROP
+sg nointernet "$*"

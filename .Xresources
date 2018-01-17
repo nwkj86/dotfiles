@@ -23,8 +23,11 @@ XTerm.vt100.background: black
 !XTerm.vt100.faceName: Inconsolata-g:style=g:pixelsize=14
 XTerm.vt100.faceName: Source\ Code\ Pro:size=10
 
-Xft.dpi: 100
-Xft.antialias: true
+Xft.dpi: 144
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
 Xft.rgba: rgb
-Xft.hinting: false
-Xft.hintstyle: hintnone
+
