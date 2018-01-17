@@ -20,3 +20,4 @@
   review = "!f(){ ~/Skrypty/git_review.sh \"$@\"; }; f"
 [core]
 	excludesfile = ~/.gitignore
+	editor = nvim

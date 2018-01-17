@@ -3,7 +3,7 @@
 NOINTERNET=~/.local/bin/nointernet
 
 sleep 2
-/usr/bin/konsole &
+/usr/bin/terminator &
 #/usr/bin/conky &
 #/usr/bin/variety &
 #/usr/bin/redshift-gtk &
