@@ -69,6 +69,8 @@ Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-manag
 
 Plug 'hardenedapple/vsh/'                                     " Store and replay shell sessions -- also output search/modification/undo/redo.
 
+Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
+
 " Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
