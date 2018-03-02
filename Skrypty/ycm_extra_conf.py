@@ -123,7 +123,7 @@ class FilesystemHelper(object):
 
 class CppFiles(object):
     def __init__(self):
-        self.SOURCE_EXTENSIONS = ['.cpp', '.cxx', 'c++', '.cc', '.c', '.m', '.mm']
+        self.SOURCE_EXTENSIONS = ['.cpp', '.cxx', '.c++', '.cc', '.c', '.m', '.mm']
         self.HEADER_EXTENSIONS = ['.h', '.hxx', '.hpp', '.hh']
 
     def IsHeaderFile(self, filename):
@@ -156,7 +156,7 @@ class FlagsProvider(object):
         self.fsHelper = FilesystemHelper()
         self.cppFiles = CppFiles()
 
-        self.compilation_database_folder = '.'
+        self.compilation_database_folder = 'SET_DIRECTORY_HERE'
 
         if os.path.exists(self.compilation_database_folder):
             self.database = ycm_core.CompilationDatabase(self.compilation_database_folder)

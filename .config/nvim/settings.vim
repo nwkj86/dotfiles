@@ -12,11 +12,9 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set guicursor=""
 
-" change tab to spaces
+" tab = 4 spaces
 set expandtab
 set smarttab
-
-" each tab is 4 spaces
 set shiftwidth=4
 set tabstop=4
 
@@ -29,7 +27,7 @@ set nowrap
 
 " line numbers
 set number
-"set relativenumber
+set relativenumber
 
 " mark current line & column
 set nocursorline
@@ -67,6 +65,9 @@ set nospell
 " more human completition
 set wildmode=longest,list
 set wildmenu
+
+" whitespaces
+set list
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *

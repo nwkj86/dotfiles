@@ -70,8 +70,7 @@ Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-manag
 Plug 'hardenedapple/vsh/'                                     " Store and replay shell sessions -- also output search/modification/undo/redo.
 
 Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
-
-" Plug 'ryanoasis/vim-devicons'
+Plug 'justinmk/vim-dirvish'                                   " file explorer
 
 call plug#end()
 
@@ -108,8 +107,9 @@ nmap <leader>f :YcmCompleter GoToDeclaration<CR>
 " - - - - - - - - - - - - - -
 " w0rp/ale
 " - - - - - - - - - - - - - -
+    " validated by YCM
 let g:ale_linters = {
-            \ 'cpp' : ['clangcheck', 'gcc'],
+            \ 'cpp' : [],
             \}
 let g:ale_python_flake8_options = '--ignore=E501'
 
@@ -140,11 +140,13 @@ let g:alternateExtensions_h = "cpp,c"
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
-nnoremap <C-p> :Denite file_rec -buffer-name=file_rec<cr>
+nnoremap <C-p> :Denite file_rec -buffer-name=file_rec<CR>
 nnoremap <leader>g :DeniteCursorWord -buffer-name=grep grep:.<CR>
-nnoremap <leader>b :Denite -buffer-name=buffer buffer<cr>
-nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<cr>
-nnoremap <leader>j :Denite -buffer-name=jump jump<cr>
+nnoremap <leader>b :Denite -buffer-name=buffer buffer<CR>
+nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<CR>
+nnoremap <leader>j :Denite -buffer-name=jump jump<CR>
+nnoremap <leader>h :Denite grep:. -mode=normal<CR>
+
 
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
 call denite#custom#map('normal', '<Esc>', '<NOP>', 'noremap')
@@ -161,11 +163,19 @@ call denite#custom#option('_', {
             \ 'mode': 'normal',
             \ 'cursor_wrap': v:true })
 
-call denite#custom#option('grep', {
-            \ 'quit': v:false })
 
 call denite#custom#option('file_rec', {
             \ 'mode': 'insert' })
+call denite#custom#var('file_rec', 'command',
+            \ ['rg', '--files', '--glob', '!.git', ''])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts',
+            \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#option('grep', { 'quit': v:false })
 
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
@@ -204,5 +214,12 @@ let g:airline_symbols_ascii = 1
 " mbbill/undotree
 " - - - - - - - - - - - - - -
 nmap <leader>u :UndotreeToggle<CR> :UndotreeFocus<CR>
+
+
+" - - - - - - - - - - - - - -
+" justinmk/vim-dirvish
+" - - - - - - - - - - - - - -
+let g:dirvish_mode = ':sort ,^.*[\/],'
+autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 
 " vim: ft=vim
