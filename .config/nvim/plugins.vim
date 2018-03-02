@@ -87,7 +87,7 @@ set background=dark
 " netrw
 " - - - - - - - - - - - - - -
 let g:netrw_liststyle = 1
-map <C-n> :Explore<CR>
+map <C-n> :Dirvish<CR>
 autocmd FileType netrw setl bufhidden=delete
 
 " - - - - - - - - - - - - - -
