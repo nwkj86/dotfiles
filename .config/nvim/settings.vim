@@ -7,8 +7,8 @@ syntax on
 " enable file type detection
 filetype plugin on
 
+" use true colors
 set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set guicursor=""
 
@@ -44,9 +44,6 @@ set laststatus=2
 
 " lines 'from the bottom'
 set scrolloff=10
-
-" enable 256 colors
-set t_Co=256
 
 " ignore whitespaces
 "set diffopt+=iwhite

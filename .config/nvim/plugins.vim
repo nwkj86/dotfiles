@@ -9,14 +9,14 @@ Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
 Plug 'sickill/vim-monokai'
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'MaxSt/FlatColor'
+Plug 'challenger-deep-theme/vim'
 Plug 'mhinz/vim-janah'
 Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 
-" Plug 'arakashic/chromatica.nvim'                              " clang based c-like languages scheme
 Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
-Plug 'peterhoeg/vim-qml'
+Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
+Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
 
 " ---
 " --- Plugins
@@ -54,22 +54,19 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous uni
 Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
-" syntax autocompletion
 Plug 'Valloric/YouCompleteMe'                                 " clang completion
+Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-management
+Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 
 Plug 'mbbill/undotree'                                        " undo tree visualiser
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'mhinz/vim-startify'                                     " nice start screen
-Plug 'tpope/vim-vinegar'
 Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 
-Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-management
+Plug 'hardenedapple/vsh'                                     " Store and replay shell sessions -- also output search/modification/undo/redo.
 
-Plug 'hardenedapple/vsh/'                                     " Store and replay shell sessions -- also output search/modification/undo/redo.
-
-Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
 Plug 'justinmk/vim-dirvish'                                   " file explorer
 
 call plug#end()
@@ -80,15 +77,9 @@ call plug#end()
 " - - - - - - - - - - - - - -
 let g:jellybeans_use_lowcolor_black = 0
 let g:gruvbox_contrast_dark = 'hard'
-colorscheme jellybeans
-set background=dark
 
-" - - - - - - - - - - - - - -
-" netrw
-" - - - - - - - - - - - - - -
-let g:netrw_liststyle = 1
-map <C-n> :Dirvish<CR>
-autocmd FileType netrw setl bufhidden=delete
+colorscheme onedark
+set background=dark
 
 " - - - - - - - - - - - - - -
 " Valloric/YouCompleteMe
@@ -219,6 +210,7 @@ nmap <leader>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 " - - - - - - - - - - - - - -
 " justinmk/vim-dirvish
 " - - - - - - - - - - - - - -
+map <C-n> :Dirvish %<CR>
 let g:dirvish_mode = ':sort ,^.*[\/],'
 autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 
