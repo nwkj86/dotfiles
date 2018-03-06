@@ -156,9 +156,9 @@ class FlagsProvider(object):
         self.fsHelper = FilesystemHelper()
         self.cppFiles = CppFiles()
 
-        self.compilation_database_folder = 'SET_DIRECTORY_HERE'
+        self.compilation_database_folder = 'build'
 
-        if os.path.exists(self.compilation_database_folder):
+        if os.path.exists(os.path.join(self.compilation_database_folder, 'compile_commands.json')):
             self.database = ycm_core.CompilationDatabase(self.compilation_database_folder)
         else:
             self.database = None
