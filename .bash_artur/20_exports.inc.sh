@@ -36,4 +36,6 @@ export PATH="${HOME}/.local/bin:${PATH}"
 ###
 export SAL_USE_VCLPLUGIN=gtk
 
+export TERM="xterm-256color"
+
 print_footer $BASH_SOURCE

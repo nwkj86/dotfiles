@@ -25,4 +25,3 @@ for s in $BASH_ARTUR_DIR/*.inc.sh; do
   . $s
 done
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
