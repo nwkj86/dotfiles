@@ -13,6 +13,8 @@ Plug 'challenger-deep-theme/vim'
 Plug 'mhinz/vim-janah'
 Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
+Plug 'romainl/flattened'
+Plug 'chriskempson/base16-vim'
 
 Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
 Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
@@ -77,8 +79,9 @@ call plug#end()
 " - - - - - - - - - - - - - -
 let g:jellybeans_use_lowcolor_black = 0
 let g:gruvbox_contrast_dark = 'hard'
+let base16colorspace=256  " Access colors present in 256 colorspace
 
-colorscheme onedark
+colorscheme base16-default-dark
 set background=dark
 
 " - - - - - - - - - - - - - -
