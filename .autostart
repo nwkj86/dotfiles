@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NOINTERNET=~/.local/bin/nointernet
+NOINTERNET=~/.local_root/usr/bin/nointernet
 
 sleep 2
 /usr/bin/terminator &
