@@ -1,5 +1,7 @@
 #/usr/bin/env bash
-. ~/.bashrc
+
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+. "${SCRIPT_DIR}/common.sh"
 
 #_RPI2_IP=10.1.1.10
 #_RPI2_IP=10.10.10.10

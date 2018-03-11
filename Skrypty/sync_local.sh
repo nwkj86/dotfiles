@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-. ~/.bashrc
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+. "${SCRIPT_DIR}/common.sh"
 
 _MY_ID=$(whoami)
 # Storages
