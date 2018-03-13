@@ -67,9 +67,10 @@ Plug 'mhinz/vim-startify'                                     " nice start scree
 Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 
-Plug 'hardenedapple/vsh'                                     " Store and replay shell sessions -- also output search/modification/undo/redo.
+Plug 'hardenedapple/vsh'                                      " Store and replay shell sessions -- also output search/modification/undo/redo.
 
 Plug 'justinmk/vim-dirvish'                                   " file explorer
+Plug 'machakann/vim-highlightedyank'                          " Make the yanked region apparent!
 
 call plug#end()
 

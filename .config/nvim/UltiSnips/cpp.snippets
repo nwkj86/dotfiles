@@ -1,33 +1,29 @@
 snippet inc "include (local)"
-#include "${1}"
-${0}
+#include "${1}"${0}
 endsnippet
 
 snippet incs "include (system)"
-#include <${1}>
-${0}
+#include <${1}>${0}
 endsnippet
 
 snippet us "using X = Y"
-using ${1} = ${2};
-${0}
+using ${1} = ${2};${0}
 endsnippet
 
 snippet un "using namespace X"
-using namespace ${1:std};
-${0}
+using namespace ${1:std};${0}
 endsnippet
 
 global !p
 def create_namespaces(snip):
-	placeholders_amount = int(snip.buffer[snip.line].strip())
-	snip.buffer[snip.line] = ""
+    placeholders_amount = int(snip.buffer[snip.line].strip())
+    snip.buffer[snip.line] = ""
 
-	anon_snippet = " ".join(['namespace $' + str(i + 1) + ' {' for i in range(placeholders_amount)])
-	anon_snippet += '\n' * 2 + '$0' + '\n' * 2
-	anon_snippet += '}' * placeholders_amount + " // namespace " + "::".join(['$' + str(i + 1) for i in range(placeholders_amount)])
+    anon_snippet = " ".join(['namespace $' + str(i + 1) + ' {' for i in range(placeholders_amount)])
+    anon_snippet += '\n' * 2 + '$0' + '\n' * 2
+    anon_snippet += '}' * placeholders_amount + " // namespace " + "::".join(['$' + str(i + 1) for i in range(placeholders_amount)])
 
-	snip.expand_anon(anon_snippet)
+    snip.expand_anon(anon_snippet)
 endglobal
 
 post_jump "create_namespaces(snip)"
@@ -38,32 +34,32 @@ endsnippet
 snippet if "if"
 if(${1:condition})
 {
-	${0}
+    ${0}
 }
 endsnippet
 
 snippet ife "if-else"
 if(${1:condition})
 {
-	${2}
+    ${2}
 }
 else
 {
-	${0}
+    ${0}
 }
 endsnippet
 
 snippet for "for-loop"
 for(${1}; ${2}; ${3})
 {
-	${0}
+    ${0}
 }
 endsnippet
 
 snippet fu "function"
 ${1} ${2}(${3})
 {
-	${0}
+    ${0}
 }
 endsnippet
 
@@ -71,7 +67,7 @@ snippet tfu "template function"
 template<typename ${1}>
 ${2} ${3}(${4})
 {
-	${0}
+    ${0}
 }
 endsnippet
 
@@ -79,13 +75,13 @@ snippet cl "class"
 class ${1}
 {
 public:
-	$1(${2})
-	: ${3}
-	{
-	}
+    $1(${2})
+    : ${3}
+    {
+    }
 
 private:
-	${0}
+    ${0}
 };
 endsnippet
 
@@ -94,13 +90,13 @@ template<typename ${1}>
 class ${2}
 {
 public:
-	$2(${3})
-	: ${4}
-	{
-	}
+    $2(${3})
+    : ${4}
+    {
+    }
 
 private:
-	${0}
+    ${0}
 };
 endsnippet
 
@@ -110,33 +106,35 @@ endsnippet
 
 snippet laf "lambda - full"
 [${1:/* capture */}](${2:/* args */}) ${3:mutable} ${4:noexcept} -> ${5:/* return */} {
-	${0:/* code */}
+    ${0:/* code */}
 }
 endsnippet
 
 snippet laval "lambda - capure value"
-auto ${1} = [=](${2}) {
-	${0}
+auto ${1} = [=](${2})
+{
+    ${0}
 }
 endsnippet
 
 snippet laref "lambda - capture ref"
-auto ${1} = [&](${2}) {
-	${0}
+auto ${1} = [&](${2})
+{
+    ${0}
 }
 endsnippet
 
 snippet st "struct"
 struct ${1}
 {
-	${0}
+    ${0}
 };
 endsnippet
 
 snippet un "union"
 union ${1}
 {
-	${0}
+    ${0}
 };
 endsnippet
 
@@ -160,7 +158,7 @@ endsnippet
 snippet main "main function"
 int main(int argc, char* argv[])
 {
-	${0}
-	return 0;
+    ${0}
+    return 0;
 }
 endsnippet
