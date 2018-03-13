@@ -107,6 +107,8 @@ let g:ale_linters = {
             \ 'cpp' : [],
             \}
 let g:ale_python_flake8_options = '--ignore=E501'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 " - - - - - - - - - - - - - -
 " arakashic/chromatica.nvim
