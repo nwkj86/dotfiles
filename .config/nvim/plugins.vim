@@ -212,6 +212,10 @@ let g:airline_symbols_ascii = 1
 " - - - - - - - - - - - - - -
 nmap <leader>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 
+" - - - - - - - - - - - - - -
+" Plug 'airblade/vim-gitgutter'
+" - - - - - - - - - - - - - -
+let g:gitgutter_async = 0
 
 " - - - - - - - - - - - - - -
 " justinmk/vim-dirvish
