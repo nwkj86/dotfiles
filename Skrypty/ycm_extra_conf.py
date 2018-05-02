@@ -47,7 +47,7 @@ class Config(object):
         self.header_extensions = ['.h', '.hxx', '.hpp', '.hh']
 
         # ignore unknown flags
-        self.common_flags = ['-Wno-unknown-warning-option']
+        self.common_flags = ['-Wno-unknown-warning-option -I/usr/include']
 
         # flags if compilation database is not present
         self.static_flags = [

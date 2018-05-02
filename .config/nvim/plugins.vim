@@ -221,6 +221,7 @@ let g:gitgutter_async = 0
 " justinmk/vim-dirvish
 " - - - - - - - - - - - - - -
 map <C-n> :Dirvish %<CR>
+map <C-m> :Dirvish<CR>
 let g:dirvish_mode = ':sort ,^.*[\/],'
 autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 

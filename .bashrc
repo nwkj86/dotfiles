@@ -22,6 +22,7 @@ fi
 ###
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
 BASH_ARTUR_DIR=~/.bash_artur
 for s in $BASH_ARTUR_DIR/*.inc.sh; do
   . $s
