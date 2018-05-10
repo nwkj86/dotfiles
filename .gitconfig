@@ -21,3 +21,5 @@
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim
+	precomposeUnicode = true
+	quotePath = false
