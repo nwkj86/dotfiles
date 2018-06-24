@@ -38,7 +38,7 @@
 
 (use-package evil-collection
   :ensure t
-  :after evil neotree
+  :after evil anaconda-mode company eldoc flycheck ivy
   :config
   (evil-collection-init 'anaconda-mode)
   (evil-collection-init 'company)
@@ -207,8 +207,8 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
-(use-package yasnippet-snippets
-  :ensure t)
+;(use-package yasnippet-snippets
+;  :ensure t)
 
 (use-package projectile
   :ensure t
