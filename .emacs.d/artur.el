@@ -39,12 +39,14 @@
 (use-package evil-collection
   :ensure t
   :after evil anaconda-mode company eldoc flycheck ivy
-  :config
+  :custom (evil-collection-setup-minibuffer t)
+  :init
   (evil-collection-init 'anaconda-mode)
   (evil-collection-init 'company)
   (evil-collection-init 'eldoc)
   (evil-collection-init 'flycheck)
   (evil-collection-init 'ivy)
+  (evil-collection-init 'minibuffer)
   (setq evil-collection-setup-minibuffer t))
 
 (use-package elscreen
@@ -55,7 +57,15 @@
   (define-key evil-normal-state-map (kbd "C-w t") 'elscreen-create) ;create tab
   (define-key evil-normal-state-map (kbd "C-w x") 'elscreen-kill) ;kill tab
   (define-key evil-normal-state-map "gT" 'elscreen-previous) ;previous tab
-  (define-key evil-normal-state-map "gt" 'elscreen-next)) ;next tab
+  (define-key evil-normal-state-map "gt" 'elscreen-next) ;next tab
+  (defun tabnew ()
+    "Create new ElScreen"
+    (interactive)
+    (elscreen-create))
+  (defun tabclose ()
+    "Kill ElScreen"
+    (interactive)
+    (elscreen-kill)))
 
 (use-package base16-theme
   :ensure t
@@ -77,7 +87,8 @@
 (use-package find-file-in-project
   :ensure t
   :config
-  (define-key evil-normal-state-map (kbd "C-p") 'counsel-projectile-find-file))
+  (evil-leader/set-key
+    "p"  'counsel-projectile-find-file))
 
 (use-package telephone-line
   :ensure t
@@ -161,9 +172,13 @@
 
 (use-package ycmd
   :ensure t
+  :after evil-leader
   :config
   (add-hook 'c++-mode-hook 'ycmd-mode)
-  (set-variable 'ycmd-server-command `("python" ,(file-truename "~/.emacs.d/ycmd/ycmd/"))))
+  (set-variable 'ycmd-server-command `("python" ,(file-truename "~/.emacs.d/ycmd/ycmd/")))
+  (evil-leader/set-key
+    "d"  'ycmd-goto-declaration
+    "i"  'ycmd-goto-definition))
 
 (use-package company
   :ensure t
@@ -220,3 +235,9 @@
   :after projectile ivy
   :config
   (counsel-projectile-mode))
+
+(use-package sr-speedbar
+  :ensure t
+  :config
+  (evil-leader/set-key
+    "o"  'sr-speedbar-toggle))
