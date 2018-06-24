@@ -30,7 +30,22 @@
   :ensure t
   :after evil
   :config
-  (global-evil-leader-mode))
+  (global-evil-leader-mode)
+  (defun better-whitespace ()
+    (interactive)
+    (whitespace-mode -1)
+    (let ((ws-small '(face lines-tail))
+          (ws-big '(face tabs spaces trailing lines-tail space-before-tab
+                         newline indentation empty space-after-tab space-mark
+                         tab-mark newline-mark)))
+      (if (eq whitespace-style ws-small)
+          (setq whitespace-style ws-big)
+        (setq whitespace-style ws-small)))
+    (whitespace-mode 1))
+  (evil-leader/set-key
+    "<f1>"  'toggle-truncate-lines)
+  (evil-leader/set-key
+    "<f2>"  'better-whitespace))
 
 (use-package evil-magit
   :ensure t
