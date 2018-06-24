@@ -53,7 +53,7 @@
 
 (use-package evil-collection
   :ensure t
-  :after evil anaconda-mode company eldoc flycheck ivy
+  :after evil anaconda-mode company eldoc flycheck ivy magit
   :custom (evil-collection-setup-minibuffer t)
   :init
   (evil-collection-init 'anaconda-mode)
@@ -62,6 +62,7 @@
   (evil-collection-init 'flycheck)
   (evil-collection-init 'ivy)
   (evil-collection-init 'minibuffer)
+  (evil-collection-init 'magit)
   (setq evil-collection-setup-minibuffer t))
 
 (use-package elscreen
@@ -251,8 +252,27 @@
   :config
   (counsel-projectile-mode))
 
+(use-package speedbar
+  :ensure t)
+
 (use-package sr-speedbar
   :ensure t
+  :after speedbar
   :config
+  (setq speedbar-use-images nil)
+  (defun sr-speedbar-open-and-focus ()
+    "Open & focus sr-speedbar window"
+    (interactive)
+    (sr-speedbar-toggle)
+    (sr-speedbar-select-window))
   (evil-leader/set-key
-    "o"  'sr-speedbar-toggle))
+    "o"  'projectile-speedbar-open-current-buffer-in-tree))
+
+(use-package projectile-speedbar
+  :ensure t
+  :after projectile sr-speedbar)
+
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode +1))
