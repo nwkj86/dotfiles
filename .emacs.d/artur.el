@@ -89,23 +89,16 @@
   (evil-leader/set-key
     "<f2>"  'better-whitespace))
 
+(use-package evil-collection
+  :after evil anaconda-mode company eldoc flycheck ivy magit git-timemachine neotree
+  :custom (evil-collection-setup-minibuffer t)
+  :config
+  (dolist (mode '(neotree)) ; modes to delete
+    (setq evil-collection-mode-list (delq mode evil-collection-mode-list)))
+  (evil-collection-init))
+
 (use-package magit
   :after evil)
-
-(use-package evil-collection
-  :after evil anaconda-mode company eldoc flycheck ivy magit git-timemachine
-  :custom (evil-collection-setup-minibuffer t)
-  :init
-  (evil-collection-init 'anaconda-mode)
-  (evil-collection-init 'company)
-  (evil-collection-init 'eldoc)
-  (evil-collection-init 'flycheck)
-  (evil-collection-init 'ivy)
-  (evil-collection-init 'minibuffer)
-  (evil-collection-init 'magit)
-  (evil-collection-init 'package-menu)
-  (evil-collection-init 'git-timemachine)
-  (setq evil-collection-setup-minibuffer t))
 
 (use-package elscreen
   :config
@@ -166,7 +159,7 @@
     "o"  'counsel-ibuffer))
 
 (use-package neotree
-  :config
+  :init
   (evil-leader/set-key
     "m"  'neotree-toggle
     "n"  'neotree-project-dir)
@@ -284,10 +277,3 @@
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
-;(use-package git-gutter
-;  :config
-;  (global-git-gutter-mode t)
-;  (git-gutter:linum-setup)
-;  (custom-set-variables
-;   '(git-gutter:update-interval 1)))
