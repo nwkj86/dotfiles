@@ -47,13 +47,13 @@
   (evil-leader/set-key
     "<f2>"  'better-whitespace))
 
-(use-package evil-magit
+(use-package magit
   :ensure t
   :after evil)
 
 (use-package evil-collection
   :ensure t
-  :after evil anaconda-mode company eldoc flycheck ivy magit
+  :after evil anaconda-mode company eldoc flycheck ivy magit git-timemachine
   :custom (evil-collection-setup-minibuffer t)
   :init
   (evil-collection-init 'anaconda-mode)
@@ -63,6 +63,8 @@
   (evil-collection-init 'ivy)
   (evil-collection-init 'minibuffer)
   (evil-collection-init 'magit)
+  (evil-collection-init 'package-menu)
+  (evil-collection-init 'git-timemachine)
   (setq evil-collection-setup-minibuffer t))
 
 (use-package elscreen
@@ -88,11 +90,12 @@
   :config
   (load-theme 'base16-default-dark))
 
-(use-package nlinum-relative
+(use-package linum-relative
   :ensure t
+  :after evil
   :config
   (setq nlinum-relative-redisplay-delay 0)      ;; delay
-  (setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
+  (setq nlinum-relative-current-symbol ">")      ;; or "" for display current line number
   (setq nlinum-relative-offset 0)
   (nlinum-relative-setup-evil)
   (add-hook 'prog-mode-hook 'nlinum-relative-mode))
@@ -276,3 +279,17 @@
   :ensure t
   :config
   (global-anzu-mode +1))
+
+(use-package cmake-font-lock
+  :ensure t)
+
+(use-package git-timemachine
+  :ensure t)
+
+;(use-package git-gutter
+;  :ensure t
+;  :config
+;  (global-git-gutter-mode t)
+;  (git-gutter:linum-setup)
+;  (custom-set-variables
+;   '(git-gutter:update-interval 1)))
