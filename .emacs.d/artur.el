@@ -1,23 +1,64 @@
 (savehist-mode 1)
 
+;;
+;; Settings
+;;
+
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4) ; emacs 23.1, 24.2, default to 8
+(setq-default tab-width 4)
+
 (setq c-default-style "linux")
 (setq c-basic-offset 4)
 
+
+;; auto saves & backups  location
+(defvar user-temporary-file-directory
+  (concat temporary-file-directory user-login-name "/"))
+(make-directory user-temporary-file-directory t)
+(setq backup-by-copying t)
+(setq backup-directory-alist
+      `(("." . ,user-temporary-file-directory)
+        (,tramp-file-name-regexp nil)))
+(setq auto-save-list-file-prefix
+      (concat user-temporary-file-directory ".auto-saves-"))
+(setq auto-save-file-name-transforms
+      `((".*" ,user-temporary-file-directory t)))
+
 ;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;;
+;; Packages
+;;
 
 (setq package-enable-at-startup nil)
 (package-initialize)
 
 (require 'package)
+(setq package-list '(use-package))
+
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+
+; activate all the packages (in particular autoloads)
 (package-initialize)
+; fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (require 'use-package)
+
+;; Themes
+(use-package base16-theme
+  :ensure t
+  :config
+  (load-theme 'base16-default-dark))
 
 (use-package evil
   :ensure t
@@ -85,12 +126,7 @@
     (interactive)
     (elscreen-kill)))
 
-(use-package base16-theme
-  :ensure t
-  :config
-  (load-theme 'base16-default-dark))
-
-(use-package linum-relative
+(use-package nlinum-relative
   :ensure t
   :after evil
   :config
@@ -101,6 +137,9 @@
   (add-hook 'prog-mode-hook 'nlinum-relative-mode))
 
 (use-package magit
+  :ensure t)
+
+(use-package evil-magit
   :ensure t)
 
 (use-package find-file-in-project
@@ -193,6 +232,7 @@
   :ensure t
   :after evil-leader
   :config
+  (setq ycmd-extra-conf-handler 'load)
   (add-hook 'c++-mode-hook 'ycmd-mode)
   (set-variable 'ycmd-server-command `("python" ,(file-truename "~/.emacs.d/ycmd/ycmd/")))
   (evil-leader/set-key
