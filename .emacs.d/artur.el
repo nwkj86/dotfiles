@@ -53,22 +53,20 @@
     (package-install package)))
 
 (require 'use-package)
+(setq use-package-always-ensure t)
 
 ;; Themes
 (use-package base16-theme
-  :ensure t
   :config
   (load-theme 'base16-default-dark))
 
 (use-package evil
-  :ensure t
   :init
   (setq evil-want-integration nil)
   :config
   (evil-mode 1))
 
 (use-package evil-leader
-  :ensure t
   :after evil
   :config
   (global-evil-leader-mode)
@@ -89,11 +87,9 @@
     "<f2>"  'better-whitespace))
 
 (use-package magit
-  :ensure t
   :after evil)
 
 (use-package evil-collection
-  :ensure t
   :after evil anaconda-mode company eldoc flycheck ivy magit git-timemachine
   :custom (evil-collection-setup-minibuffer t)
   :init
@@ -109,7 +105,6 @@
   (setq evil-collection-setup-minibuffer t))
 
 (use-package elscreen
-  :ensure t
   :config
   (load "elscreen" "ElScreen" t)
   (elscreen-start)
@@ -127,7 +122,6 @@
     (elscreen-kill)))
 
 (use-package nlinum-relative
-  :ensure t
   :after evil
   :config
   (setq nlinum-relative-redisplay-delay 0)      ;; delay
@@ -136,25 +130,20 @@
   (nlinum-relative-setup-evil)
   (add-hook 'prog-mode-hook 'nlinum-relative-mode))
 
-(use-package magit
-  :ensure t)
+(use-package magit)
 
-(use-package evil-magit
-  :ensure t)
+(use-package evil-magit)
 
 (use-package find-file-in-project
-  :ensure t
   :config
   (evil-leader/set-key
     "p"  'counsel-projectile-find-file))
 
 (use-package telephone-line
-  :ensure t
   :config
   (telephone-line-mode 1))
 
 (use-package ivy
-  :ensure t
   :diminish
   (ivy-mode . "")             ; does not display ivy in the modeline
   :init
@@ -168,16 +157,13 @@
   (setq ivy-format-function 'ivy-format-function-line) ; Make highlight extend all the way to the right
   (setq ivy-initial-inputs-alist nil))
 
-(use-package hydra
-  :ensure t)
+(use-package hydra)
 
 (use-package counsel
-  :ensure t
   :config
   (define-key evil-normal-state-map (kbd "C-b") 'counsel-ibuffer))
 
 (use-package neotree
-  :ensure t
   :config
   (evil-leader/set-key
     "m"  'neotree-toggle
@@ -222,14 +208,12 @@
           (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter-hide))))
 
 (use-package flycheck
-  :ensure t
   :config
   (global-flycheck-mode)
   (when (not (display-graphic-p))
     (setq flycheck-indication-mode nil)))
 
 (use-package ycmd
-  :ensure t
   :after evil-leader
   :config
   (setq ycmd-extra-conf-handler 'load)
@@ -240,66 +224,54 @@
     "i"  'ycmd-goto-definition))
 
 (use-package company
-  :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-ycmd
-  :ensure t
   :after ycmd company
   :config
   (company-ycmd-setup))
 
 (use-package anaconda-mode
-  :ensure t
   :after eldoc
   :config
   (add-hook 'python-mode-hook 'anaconda-mode)
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
 (use-package company-anaconda
-  :ensure t
   :after company anaconda-mode
   :config
   (add-to-list 'company-backends 'company-anaconda)
   (add-hook 'python-mode-hook 'anaconda-mode))
 
 (use-package flycheck-ycmd
-  :ensure t
   :after flycheck ycmd
   :config
   (flycheck-ycmd-setup))
 
 (use-package eldoc
-  :ensure t
   :diminish eldoc-mode
   :init (add-hook 'ycmd-mode-hook 'ycmd-eldoc-setup))
 
 (use-package yasnippet
-  :ensure t
   :config
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
-;(use-package yasnippet-snippets
-;  :ensure t)
+;(use-package yasnippet-snippets)
 
 (use-package projectile
-  :ensure t
   :config
   (projectile-mode))
 
 (use-package counsel-projectile
-  :ensure t
   :after projectile ivy
   :config
   (counsel-projectile-mode))
 
-(use-package speedbar
-  :ensure t)
+(use-package speedbar)
 
 (use-package sr-speedbar
-  :ensure t
   :after speedbar
   :config
   (setq speedbar-use-images nil)
@@ -312,22 +284,17 @@
     "o"  'projectile-speedbar-open-current-buffer-in-tree))
 
 (use-package projectile-speedbar
-  :ensure t
   :after projectile sr-speedbar)
 
 (use-package anzu
-  :ensure t
   :config
   (global-anzu-mode +1))
 
-(use-package cmake-font-lock
-  :ensure t)
+(use-package cmake-font-lock)
 
-(use-package git-timemachine
-  :ensure t)
+(use-package git-timemachine)
 
 ;(use-package git-gutter
-;  :ensure t
 ;  :config
 ;  (global-git-gutter-mode t)
 ;  (git-gutter:linum-setup)
