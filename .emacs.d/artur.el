@@ -6,6 +6,8 @@
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq-default truncate-lines t)
+
 
 (setq c-default-style "linux")
 (setq c-basic-offset 4)
@@ -24,7 +26,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
 
-;(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;;
@@ -41,13 +43,13 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 
-; activate all the packages (in particular autoloads)
+;; activate all the packages (in particular autoloads)
 (package-initialize)
-; fetch the list of packages available
+;; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
-; install the missing packages
+;; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
@@ -63,6 +65,7 @@
 (use-package evil
   :init
   (setq evil-want-integration nil)
+  (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1))
 
@@ -124,8 +127,8 @@
 (use-package nlinum-relative
   :after evil
   :config
-  (setq nlinum-relative-redisplay-delay 0)      ;; delay
-  (setq nlinum-relative-current-symbol ">")      ;; or "" for display current line number
+  (setq nlinum-relative-redisplay-delay 0)      ; delay
+  (setq nlinum-relative-current-symbol ">")      ; or "" for display current line number
   (setq nlinum-relative-offset 0)
   (nlinum-relative-setup-evil)
   (add-hook 'prog-mode-hook 'nlinum-relative-mode))
@@ -157,11 +160,10 @@
   (setq ivy-format-function 'ivy-format-function-line) ; Make highlight extend all the way to the right
   (setq ivy-initial-inputs-alist nil))
 
-(use-package hydra)
-
 (use-package counsel
   :config
-  (define-key evil-normal-state-map (kbd "C-b") 'counsel-ibuffer))
+  (evil-leader/set-key
+    "o"  'counsel-ibuffer))
 
 (use-package neotree
   :config
@@ -217,6 +219,8 @@
   :after evil-leader
   :config
   (setq ycmd-extra-conf-handler 'load)
+  (set-variable 'ycmd-extra-conf-whitelist '("~/Skrypty/ycm_extra_conf.py"))
+  (set-variable 'ycmd-global-config "~/Skrypty/ycm_extra_conf.py")
   (add-hook 'c++-mode-hook 'ycmd-mode)
   (set-variable 'ycmd-server-command `("python" ,(file-truename "~/.emacs.d/ycmd/ycmd/")))
   (evil-leader/set-key
@@ -269,23 +273,6 @@
   :config
   (counsel-projectile-mode))
 
-(use-package speedbar)
-
-(use-package sr-speedbar
-  :after speedbar
-  :config
-  (setq speedbar-use-images nil)
-  (defun sr-speedbar-open-and-focus ()
-    "Open & focus sr-speedbar window"
-    (interactive)
-    (sr-speedbar-toggle)
-    (sr-speedbar-select-window))
-  (evil-leader/set-key
-    "o"  'projectile-speedbar-open-current-buffer-in-tree))
-
-(use-package projectile-speedbar
-  :after projectile sr-speedbar)
-
 (use-package anzu
   :config
   (global-anzu-mode +1))
@@ -293,6 +280,10 @@
 (use-package cmake-font-lock)
 
 (use-package git-timemachine)
+
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;(use-package git-gutter
 ;  :config
