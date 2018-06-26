@@ -58,9 +58,9 @@
 (setq use-package-always-ensure t)
 
 ;; Themes
-(use-package base16-theme
-  :config
-  (load-theme 'base16-default-dark))
+(use-package base16-theme)
+(use-package zenburn-theme)
+(load-theme 'zenburn t)
 
 (use-package evil
   :init
