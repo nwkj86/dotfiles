@@ -12,6 +12,7 @@
 (setq c-default-style "linux")
 (setq c-basic-offset 4)
 
+(modify-syntax-entry ?_ "w")
 
 ;; auto saves & backups  location
 (defvar user-temporary-file-directory
@@ -210,12 +211,11 @@
 
 (use-package ycmd
   :after evil-leader
-  :config
-  (setq ycmd-extra-conf-handler 'load)
-  (set-variable 'ycmd-extra-conf-whitelist '("~/Skrypty/ycm_extra_conf.py"))
-  (set-variable 'ycmd-global-config "~/Skrypty/ycm_extra_conf.py")
+  :init
   (add-hook 'c++-mode-hook 'ycmd-mode)
-  (set-variable 'ycmd-server-command `("python" ,(file-truename "~/.emacs.d/ycmd/ycmd/")))
+  (setq ycmd-server-command '("python" "-u" "/home/artur2/.emacs.d/ycmd/ycmd/")
+        ;ycmd-global-config "/home/artur2/Skrypty/ycm_extra_conf.py"
+        ycmd-extra-conf-handler 'load)
   (evil-leader/set-key
     "d"  'ycmd-goto-declaration
     "i"  'ycmd-goto-definition))

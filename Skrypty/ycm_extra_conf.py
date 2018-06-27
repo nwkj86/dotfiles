@@ -34,11 +34,16 @@ import ycm_core
 
 class Config(object):
     def __init__(self):
-        self.compilation_database_dir = 'build'
+        # starting from current file PWD go up to the project root
+        # check these subdirs for compilation databse
+        self.database_lookup_dirs = ['.', 'build']
+
+        # file to log data to
         self.log_file = '/tmp/ycm_extra_conf_{}.log'.format(os.getpid())
 
         # for finding project root
-        self.project_root = ['.git', '.hg', '.svn']
+        self.cvs_markers = ['.git', '.hg', '.svn']
+
         # for include paths
         self.path_flags = ['-isystem', '-I', '-iquote', '--sysroot=']
 
@@ -92,9 +97,10 @@ config = Config()
 
 class Logger(object):
     def __init__(self, logFile, indent=4 * ' '):
-        self.logFile = logFile
-        self.file = open(self.logFile, 'a')
+        self.file = open(logFile, 'a')
         self.indent = indent
+        self.log(0, "Logger initialized")
+        self.log(0, "CWD: {}".format(os.getcwd()))
 
     def log(self, indent_depth, message):
         self.file.write(indent_depth * self.indent + message + '\n')
@@ -104,12 +110,35 @@ class Logger(object):
 logger = Logger(config.log_file)
 
 
-def directory_of_this_script():
-    return os.path.dirname(os.path.abspath(__file__))
+def get_dir_for_file(filename):
+    return os.path.dirname(os.path.abspath(filename))
+
+
+def get_dir_of_this_script():
+    return os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
+
+
+def is_top_dir(path):
+    """Top dir is a CVS dir or this file dir"""
+    for csv_dir in config.cvs_markers:
+        if os.path.exists(os.path.join(path, csv_dir)) or path == '/':
+            return True
+    path = os.path.normpath(path)
+
+    return path == get_dir_of_this_script()
 
 
 def get_level_up(path):
+    if is_top_dir(path):
+        return None
     return os.path.abspath(os.path.dirname(path))
+
+
+def get_top_dir(filename):
+    dir = get_dir_for_file(filename)
+    while get_level_up(dir):
+        dir = get_level_up(dir)
+    return dir
 
 
 def make_relative_paths_in_flags_absolute(flags, working_directory):
@@ -140,13 +169,6 @@ def make_relative_paths_in_flags_absolute(flags, working_directory):
     return new_flags
 
 
-def is_project_root(path):
-    for csv_dir in config.project_root:
-        if os.path.exists(os.path.join(path, csv_dir)) or path == '/':
-            return True
-    return False
-
-
 def is_header_file(filename):
     extension = os.path.splitext(filename)[1]
     return extension in config.header_extensions
@@ -164,27 +186,38 @@ def get_alternative_files(filename):
 
 def get_compilation_database(dir):
     """ find compilation database file """
-    database_file = os.path.join(config.compilation_database_dir, 'compile_commands.json')
-    if os.path.exists(database_file):
-        logger.log(0, "database {}".format(database_file))
-        return ycm_core.CompilationDatabase(config.compilation_database_dir)
-    else:
-        logger.log(0, "database not found")
-        return None
+    while dir:
+        for d in config.database_lookup_dirs:
+            database_dir = os.path.join(dir, d)
+            database_file = os.path.join(database_dir, 'compile_commands.json')
+            logger.log(1, "checking database {}".format(database_file))
+
+            if os.path.exists(database_file):
+                logger.log(0, "using database {}".format(database_file))
+                return ycm_core.CompilationDatabase(database_dir)
+
+        dir = get_level_up(dir)
+
+    logger.log(0, "database not found")
+    return None
 
 
 class FlagsProvider(object):
     def __init__(self):
-        self.database = get_compilation_database(config.compilation_database_dir)
+        self.database = None
 
     def match_cpp_file(self, filename):
         """ Try to match source file for given header file """
         logger.log(0, "match_cpp_file({})".format(filename))
         for replacement_file in get_alternative_files(filename):
             logger.log(1, "replacement_file {}".format(replacement_file))
-            compilation_info = self.database.GetCompilationInfoForFile(replacement_file)
+            compilation_info = self.database.GetCompilationInfoForFile(
+                replacement_file)
+
             if compilation_info.compiler_flags_:
-                logger.log(2, "...found")
+                logger.log(0, "using replacement file {}".format(
+                    replacement_file))
+
                 return compilation_info
         logger.log(1, "flags not found")
         return None
@@ -209,12 +242,12 @@ class FlagsProvider(object):
                             logger.log(5, "...found")
                             return compilation_info
 
-            if is_project_root(dirname):
+            dirname = get_level_up(dirname)
+            if dirname:
+                logger.log(2, "up, dirname {} ".format(dirname))
+            else:
                 logger.log(2, "hit root")
                 break
-            else:
-                dirname = get_level_up(dirname)
-                logger.log(2, "up, dirname {} ".format(dirname))
 
         logger.log(1, "flags not found")
         return None
@@ -229,6 +262,16 @@ class FlagsProvider(object):
         return self.database.GetCompilationInfoForFile(filename)
 
     def flags_for_file(self, filename, **kwargs):
+        root_dir = get_top_dir(filename)
+        script_dir = get_dir_of_this_script()
+
+        logger.log(0, "Filename: {}".format(filename))
+        logger.log(0, "Project dir: {}".format(root_dir))
+        logger.log(0, "Script dir: {}".format(script_dir))
+
+        self.database = get_compilation_database(
+            get_dir_for_file(filename))
+
         if self.database:
             compilation_info = self.get_compilation_info_for_file(filename)
             if not compilation_info:
@@ -238,7 +281,7 @@ class FlagsProvider(object):
                 compilation_info.compiler_flags_,
                 compilation_info.compiler_working_dir_)
         else:
-            final_flags = make_relative_paths_in_flags_absolute(config.static_flags, directory_of_this_script())
+            final_flags = make_relative_paths_in_flags_absolute(config.static_flags, script_dir)
 
         return {'flags': final_flags + config.common_flags}
 
