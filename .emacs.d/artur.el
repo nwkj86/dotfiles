@@ -67,6 +67,7 @@
   :init
   (setq evil-want-integration nil)
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-C-d-scroll t)
   :config
   (evil-mode 1))
 
@@ -131,14 +132,13 @@
 
 (use-package evil-magit)
 
-(use-package find-file-in-project
-  :config
-  (evil-leader/set-key
-    "p"  'counsel-projectile-find-file))
+(use-package flx)
 
 (use-package telephone-line
   :config
-  (telephone-line-mode 1))
+  (telephone-line-mode 1)
+  (evil-leader/set-key
+    "gs"  'swiper))
 
 (use-package ivy
   :diminish
@@ -148,22 +148,39 @@
   :config
   (setq ivy-use-virtual-buffers t)       ; extend searching to bookmarks and
   (setq enable-recursive-minibuffers t)
-  (setq ivy-height 20)                   ; set height of the ivy window
+  (setq ivy-height 16)                   ; set height of the ivy window
   (setq ivy-count-format "(%d/%d) ")     ; count format, from the ivy help page
   (setq ivy-display-style 'fancy)
   (setq ivy-format-function 'ivy-format-function-line) ; Make highlight extend all the way to the right
-  (setq ivy-initial-inputs-alist nil))
+  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-re-builders-alist         ; fuzy for everything except swiper
+        '((swiper . ivy--regex-plus)
+          (t      . ivy--regex-fuzzy)))
+  (evil-leader/set-key
+    "b"  'ivy-switch-buffer
+    "r"  'ivy-resume))
 
 (use-package counsel
+  :after ivy
+  :config)
+
+(use-package counsel-projectile
+  :after projectile counsel
   :config
+  (counsel-projectile-mode)
+  ;(setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-vc)
   (evil-leader/set-key
-    "o"  'counsel-ibuffer))
+    "p"  'counsel-projectile-find-file
+    "sp" 'counsel-projectile-switch-project
+    "gg" 'counsel-projectile-rg
+    "b"  'counsel-projectile-switch-to-buffer))
 
 (use-package neotree
+  :after projectile
   :init
   (evil-leader/set-key
-    "m"  'neotree-toggle
-    "n"  'neotree-project-dir)
+    "nn"  'neotree-toggle
+    "nm"  'neotree-project-dir)
   (setq neo-smart-open t)
 
   (setq projectile-switch-project-action 'neotree-projectile-action)
@@ -217,8 +234,9 @@
         ;ycmd-global-config "/home/artur2/Skrypty/ycm_extra_conf.py"
         ycmd-extra-conf-handler 'load)
   (evil-leader/set-key
-    "d"  'ycmd-goto-declaration
-    "i"  'ycmd-goto-definition))
+    "yd"  'ycmd-goto-declaration
+    "yf"  'ycmd-goto-definition
+    "yi"  'ycmd-goto-implementation))
 
 (use-package company
   :config
@@ -261,11 +279,6 @@
   :config
   (projectile-mode))
 
-(use-package counsel-projectile
-  :after projectile ivy
-  :config
-  (counsel-projectile-mode))
-
 (use-package anzu
   :config
   (global-anzu-mode +1))
@@ -277,3 +290,13 @@
 (use-package rainbow-delimiters
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1)
+  (add-hook 'c++-mode-hook (lambda ()
+                             (push '(?< . ("<" . ">")) evil-surround-pairs-alist))))
+
+(use-package evil-exchange
+  :config
+  (evil-exchange-install))

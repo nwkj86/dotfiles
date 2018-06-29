@@ -15,6 +15,6 @@
  '(git-gutter:update-interval 2)
  '(package-selected-packages
    (quote
-    (rainbow-delimiters evil-magit nlinum-relative flycheck-ycmd company-anaconda anaconda-mode company-ycmd company ycmd flycheck counsel linum-relative git-timemachine git-gutter cmake-font-lock rtags anzu counsel-projectile projectile yasnippet-snippets yasnippet 0xc base16-default-dark neotree elscreen telephone-line 0blayout evil-collection hydra helm ## find-file-in-project smart-mode-line monokai-theme monokai-alt-theme evil-surround base16-theme))))
+    (dired+ evil-exchange flx rainbow-delimiters evil-magit nlinum-relative flycheck-ycmd company-anaconda anaconda-mode company-ycmd company ycmd flycheck counsel linum-relative git-timemachine git-gutter cmake-font-lock rtags anzu counsel-projectile projectile yasnippet-snippets yasnippet 0xc base16-default-dark neotree elscreen telephone-line 0blayout evil-collection hydra helm ## find-file-in-project smart-mode-line monokai-theme monokai-alt-theme evil-surround base16-theme))))
 
 (load (concat user-emacs-directory "artur.el"))
