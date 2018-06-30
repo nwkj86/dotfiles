@@ -279,7 +279,8 @@ class FlagsProvider(object):
 
             final_flags = make_relative_paths_in_flags_absolute(
                 compilation_info.compiler_flags_,
-                compilation_info.compiler_working_dir_)
+                #compilation_info.compiler_working_dir_)
+                get_dir_for_file(filename))
         else:
             final_flags = make_relative_paths_in_flags_absolute(config.static_flags, script_dir)
 
