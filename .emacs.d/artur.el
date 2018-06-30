@@ -1,10 +1,25 @@
 (savehist-mode 1)
 
+;; keys:
+;; leader + KEY
+;;     gs - swiper
+;;     bb - switch buffer
+;;     r - ivy resume
+;;     p - find file in project
+;;     sp - switch project
+;;     bp - switch buffer within project
+;;     gg - project grep with rg
+;;     nn - neotree toggle
+;;     np - neotree project dir
+;;     yd - ycmd declaration
+;;     yf - ycmd definition
+;;     yi - ycmd implementation
+
 ;;
 ;; Settings
 ;;
 
-(setq-default indent-tabs-mode nil)
+(setq-default indnt-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default truncate-lines t)
 
@@ -29,6 +44,9 @@
 
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; add extension to mode
+(add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 
 ;;
 ;; Packages
@@ -155,9 +173,9 @@
   (setq ivy-initial-inputs-alist nil)
   (setq ivy-re-builders-alist         ; fuzy for everything except swiper
         '((swiper . ivy--regex-plus)
-          (t      . ivy--regex-fuzzy)))
+          (t      . ivy--regex-plus)))
   (evil-leader/set-key
-    "b"  'ivy-switch-buffer
+    "bb"  'ivy-switch-buffer
     "r"  'ivy-resume))
 
 (use-package counsel
@@ -173,14 +191,14 @@
     "p"  'counsel-projectile-find-file
     "sp" 'counsel-projectile-switch-project
     "gg" 'counsel-projectile-rg
-    "b"  'counsel-projectile-switch-to-buffer))
+    "bp"  'counsel-projectile-switch-to-buffer))
 
 (use-package neotree
   :after projectile
   :init
   (evil-leader/set-key
     "nn"  'neotree-toggle
-    "nm"  'neotree-project-dir)
+    "np"  'neotree-project-dir)
   (setq neo-smart-open t)
 
   (setq projectile-switch-project-action 'neotree-projectile-action)
