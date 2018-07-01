@@ -345,3 +345,8 @@
   (evil-leader/set-key
     "mm"  'highlight-symbol
     "mc"  'highlight-symbol-remove-all))
+
+
+(use-package beacon
+  :init
+  (beacon-mode 1))
