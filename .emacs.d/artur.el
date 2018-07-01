@@ -19,10 +19,14 @@
 ;; Settings
 ;;
 
-(setq-default indnt-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq-default truncate-lines t)
+(setq-default show-trailing-whitespace t)       ; Show trailing whitespace
+(show-paren-mode t)                             ; Show matching parentheses
 
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8-unix)
 
 (setq c-default-style "linux")
 (setq c-basic-offset 4)
@@ -105,8 +109,7 @@
         (setq whitespace-style ws-small)))
     (whitespace-mode 1))
   (evil-leader/set-key
-    "<f1>"  'toggle-truncate-lines)
-  (evil-leader/set-key
+    "<f1>"  'toggle-truncate-lines
     "<f2>"  'better-whitespace))
 
 (use-package evil-collection
@@ -115,7 +118,9 @@
   :config
   (dolist (mode '(neotree)) ; modes to delete
     (setq evil-collection-mode-list (delq mode evil-collection-mode-list)))
-  (evil-collection-init))
+  (evil-collection-init)
+  (evil-leader/set-key
+    "git"  'magit-status))
 
 (use-package magit
   :after evil)
@@ -141,8 +146,9 @@
   :after evil
   :config
   (setq nlinum-relative-redisplay-delay 0)      ; delay
-  (setq nlinum-relative-current-symbol ">")      ; or "" for display current line number
+  (setq nlinum-relative-current-symbol "")      ; or "" for display current line number
   (setq nlinum-relative-offset 0)
+  (setq nlinum-relative-format "%4s")
   (nlinum-relative-setup-evil)
   (add-hook 'prog-mode-hook 'nlinum-relative-mode))
 
@@ -186,7 +192,7 @@
   :after projectile counsel
   :config
   (counsel-projectile-mode)
-  ;(setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-vc)
+                                        ;(setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-vc)
   (evil-leader/set-key
     "p"  'counsel-projectile-find-file
     "sp" 'counsel-projectile-switch-project
@@ -207,12 +213,12 @@
     "Open NeoTree using the git root."
     (interactive)
     (let ((project-dir (ffip-project-root))
-      (file-name (buffer-file-name)))
+          (file-name (buffer-file-name)))
       (if project-dir
-      (progn
-        (neotree-dir project-dir)
-        (neotree-find file-name))
-    (message "Could not find git project root."))))
+          (progn
+            (neotree-dir project-dir)
+            (neotree-find file-name))
+        (message "Could not find git project root."))))
 
   (defun neo-open-file-hide (full-path &optional arg)
     "Open a file node and hides tree."
@@ -226,17 +232,17 @@
     (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
 
   (add-hook 'neotree-mode-hook
-        (lambda ()
-          (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-          (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
-          (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
-          (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
-          (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
-          (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
-          (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
-          (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-          (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
-          (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter-hide))))
+            (lambda ()
+              (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+              (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
+              (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
+              (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
+              (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+              (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+              (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+              (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+              (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+              (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter-hide))))
 
 (use-package flycheck
   :config
@@ -249,7 +255,7 @@
   :init
   (add-hook 'c++-mode-hook 'ycmd-mode)
   (setq ycmd-server-command '("python" "-u" "/home/artur2/.emacs.d/ycmd/ycmd/")
-        ;ycmd-global-config "/home/artur2/Skrypty/ycm_extra_conf.py"
+                                        ;ycmd-global-config "/home/artur2/Skrypty/ycm_extra_conf.py"
         ycmd-extra-conf-handler 'load)
   (evil-leader/set-key
     "yd"  'ycmd-goto-declaration
@@ -291,7 +297,7 @@
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
 
-;(use-package yasnippet-snippets)
+                                        ;(use-package yasnippet-snippets)
 
 (use-package projectile
   :config
@@ -300,6 +306,9 @@
 (use-package anzu
   :config
   (global-anzu-mode +1))
+
+(use-package evil-anzu
+  :after anzu evil)
 
 (use-package cmake-font-lock)
 
@@ -318,3 +327,17 @@
 (use-package evil-exchange
   :config
   (evil-exchange-install))
+
+(use-package ggtags
+  :config
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode 1)))))
+
+(use-package highlight-symbol
+  :after evil-leader
+  :init
+  (evil-leader/set-key
+    "mm"  'highlight-symbol
+    "mc"  'highlight-symbol-remove-all))
