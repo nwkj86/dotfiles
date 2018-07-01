@@ -154,7 +154,9 @@
   (setq nlinum-relative-offset 0)
   (setq nlinum-relative-format "%4s")
   (nlinum-relative-setup-evil)
-  (add-hook 'prog-mode-hook 'nlinum-relative-mode))
+  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+  (evil-leader/set-key
+    "<f3>"  'nlinum-mode))
 
 (use-package magit)
 
