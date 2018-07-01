@@ -33,6 +33,10 @@
 
 (modify-syntax-entry ?_ "w")
 
+  (defun A ()
+    (interactive)
+    (ff-get-other-file))
+
 ;; auto saves & backups  location
 (defvar user-temporary-file-directory
   (concat temporary-file-directory user-login-name "/"))
