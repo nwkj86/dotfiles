@@ -94,6 +94,7 @@
   (setq evil-want-integration nil)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-d-scroll t)
+  (setq evil-want-C-i-jump t)
   :config
   (evil-mode 1))
 
@@ -122,12 +123,13 @@
   :config
   (dolist (mode '(neotree)) ; modes to delete
     (setq evil-collection-mode-list (delq mode evil-collection-mode-list)))
-  (evil-collection-init)
-  (evil-leader/set-key
-    "git"  'magit-status))
+  (evil-collection-init))
 
 (use-package magit
-  :after evil)
+  :after evil
+  :init
+  (evil-leader/set-key
+    "git"  'magit-status))
 
 (use-package elscreen
   :config
@@ -150,7 +152,7 @@
   :after evil
   :config
   (setq nlinum-relative-redisplay-delay 0)      ; delay
-  (setq nlinum-relative-current-symbol "")      ; or "" for display current line number
+  (setq nlinum-relative-current-symbol ">")      ; or "" for display current line number
   (setq nlinum-relative-offset 0)
   (setq nlinum-relative-format "%4s")
   (nlinum-relative-setup-evil)
