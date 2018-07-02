@@ -33,9 +33,9 @@
 
 (modify-syntax-entry ?_ "w")
 
-  (defun A ()
-    (interactive)
-    (ff-get-other-file))
+(defun A ()
+  (interactive)
+  (ff-get-other-file))
 
 ;; auto saves & backups  location
 (defvar user-temporary-file-directory
@@ -55,6 +55,12 @@
 
 ;; add extension to mode
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
+
+;; UI
+(scroll-bar-mode -1)
+(tool-bar-mode   -1)
+(tooltip-mode    -1)
+(menu-bar-mode   1)
 
 ;;
 ;; Packages
@@ -118,7 +124,7 @@
     "<f2>"  'better-whitespace))
 
 (use-package evil-collection
-  :after evil anaconda-mode company eldoc flycheck ivy magit git-timemachine neotree
+  :after (evil anaconda-mode company eldoc flycheck ivy magit git-timemachine neotree)
   :custom (evil-collection-setup-minibuffer t)
   :config
   (dolist (mode '(neotree)) ; modes to delete
@@ -168,9 +174,7 @@
 
 (use-package telephone-line
   :config
-  (telephone-line-mode 1)
-  (evil-leader/set-key
-    "gs"  'swiper))
+  (telephone-line-mode 1))
 
 (use-package ivy
   :diminish
@@ -189,15 +193,16 @@
         '((swiper . ivy--regex-plus)
           (t      . ivy--regex-plus)))
   (evil-leader/set-key
+    "gs"  'swiper
     "bb"  'ivy-switch-buffer
-    "r"  'ivy-resume))
+    "i"  'ivy-resume))
 
 (use-package counsel
   :after ivy
   :config)
 
 (use-package counsel-projectile
-  :after projectile counsel
+  :after (projectile counsel)
   :config
   (counsel-projectile-mode)
                                         ;(setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-vc)
@@ -275,7 +280,7 @@
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-ycmd
-  :after ycmd company
+  :after (ycmd company)
   :config
   (company-ycmd-setup))
 
@@ -286,13 +291,13 @@
   (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
 (use-package company-anaconda
-  :after company anaconda-mode
+  :after (company anaconda-mode)
   :config
   (add-to-list 'company-backends 'company-anaconda)
   (add-hook 'python-mode-hook 'anaconda-mode))
 
 (use-package flycheck-ycmd
-  :after flycheck ycmd
+  :after (flycheck ycmd)
   :config
   (flycheck-ycmd-setup))
 
@@ -313,10 +318,10 @@
 
 (use-package anzu
   :config
-  (global-anzu-mode +1))
+  (global-anzu-mode 1))
 
 (use-package evil-anzu
-  :after anzu evil)
+  :after (anzu evil))
 
 (use-package cmake-font-lock)
 
@@ -354,3 +359,33 @@
 (use-package beacon
   :init
   (beacon-mode 1))
+
+(use-package rtags
+  :init
+  (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+  (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+  (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
+  (evil-leader/set-key
+    "rd" 'rtags-find-symbol-at-point
+    "rr" 'rtags-find-references-at-point
+    "rv" 'rtags-find-virtuals-at-point
+    "rsi" 'rtags-symbol-info
+    "rt" 'rtags-symbol-type
+    "ri" 'rtags-imenu
+    ))
+
+(use-package company-rtags
+  :init
+  (push 'company-rtags company-backends))
+
+(use-package flycheck-rtags
+  :init
+  (defun my-flycheck-rtags-setup ()
+    (flycheck-select-checker 'rtags)
+    (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
+    (setq-local flycheck-check-syntax-automatically nil))
+  (add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
+  (add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
+  (add-hook 'objc-mode-hook #'my-flycheck-rtags-setup))
+
+(use-package ivy-rtags)
