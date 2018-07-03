@@ -120,8 +120,8 @@
         (setq whitespace-style ws-small)))
     (whitespace-mode 1))
   (evil-leader/set-key
-    "<f1>"  'toggle-truncate-lines
-    "<f2>"  'better-whitespace))
+    "<f1>" 'toggle-truncate-lines
+    "<f2>" 'better-whitespace))
 
 (use-package evil-collection
   :after (evil anaconda-mode company eldoc flycheck ivy magit git-timemachine neotree)
@@ -135,7 +135,7 @@
   :after evil
   :init
   (evil-leader/set-key
-    "git"  'magit-status))
+    "git" 'magit-status))
 
 (use-package elscreen
   :config
@@ -207,17 +207,17 @@
   (counsel-projectile-mode)
                                         ;(setq counsel-projectile-switch-project-action 'counsel-projectile-switch-project-action-vc)
   (evil-leader/set-key
-    "p"  'counsel-projectile-find-file
+    "p" 'counsel-projectile-find-file
     "sp" 'counsel-projectile-switch-project
     "gg" 'counsel-projectile-rg
-    "bp"  'counsel-projectile-switch-to-buffer))
+    "bp" 'counsel-projectile-switch-to-buffer))
 
 (use-package neotree
   :after projectile
   :init
   (evil-leader/set-key
-    "nn"  'neotree-toggle
-    "np"  'neotree-project-dir)
+    "nn" 'neotree-toggle
+    "np" 'neotree-project-dir)
   (setq neo-smart-open t)
 
   (setq projectile-switch-project-action 'neotree-projectile-action)
@@ -241,7 +241,7 @@
 
   (defun neotree-enter-hide (&optional arg)
     "Enters file and hides neotree directly"
-    (interactive "P")
+    (interactive)
     (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
 
   (add-hook 'neotree-mode-hook
@@ -266,14 +266,14 @@
 (use-package ycmd
   :after evil-leader
   :init
-  (add-hook 'c++-mode-hook 'ycmd-mode)
+  (add-hook 'after-init-hook #'global-ycmd-mode)
+  ;(add-hook 'c++-mode-hook 'ycmd-mode)
   (setq ycmd-server-command '("python" "-u" "/home/artur2/.emacs.d/ycmd/ycmd/")
-                                        ;ycmd-global-config "/home/artur2/Skrypty/ycm_extra_conf.py"
         ycmd-extra-conf-handler 'load)
   (evil-leader/set-key
-    "yd"  'ycmd-goto-declaration
-    "yf"  'ycmd-goto-definition
-    "yi"  'ycmd-goto-implementation))
+    "yd" 'ycmd-goto-declaration
+    "yf" 'ycmd-goto-definition
+    "yi" 'ycmd-goto-implementation))
 
 (use-package company
   :config
@@ -316,20 +316,12 @@
   :config
   (projectile-mode))
 
-(use-package anzu
-  :config
-  (global-anzu-mode 1))
-
 (use-package evil-anzu
   :after (anzu evil))
 
 (use-package cmake-font-lock)
 
 (use-package git-timemachine)
-
-(use-package rainbow-delimiters
-  :config
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package evil-surround
   :config
@@ -352,40 +344,10 @@
   :after evil-leader
   :init
   (evil-leader/set-key
-    "mm"  'highlight-symbol
-    "mc"  'highlight-symbol-remove-all))
+    "mm" 'highlight-symbol
+    "mc" 'highlight-symbol-remove-all))
 
 
 (use-package beacon
   :init
   (beacon-mode 1))
-
-(use-package rtags
-  :init
-  (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
-  (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-  (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
-  (evil-leader/set-key
-    "rd" 'rtags-find-symbol-at-point
-    "rr" 'rtags-find-references-at-point
-    "rv" 'rtags-find-virtuals-at-point
-    "rsi" 'rtags-symbol-info
-    "rt" 'rtags-symbol-type
-    "ri" 'rtags-imenu
-    ))
-
-(use-package company-rtags
-  :init
-  (push 'company-rtags company-backends))
-
-(use-package flycheck-rtags
-  :init
-  (defun my-flycheck-rtags-setup ()
-    (flycheck-select-checker 'rtags)
-    (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
-    (setq-local flycheck-check-syntax-automatically nil))
-  (add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
-  (add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
-  (add-hook 'objc-mode-hook #'my-flycheck-rtags-setup))
-
-(use-package ivy-rtags)
