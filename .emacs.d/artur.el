@@ -269,7 +269,9 @@
   (add-hook 'after-init-hook #'global-ycmd-mode)
   ;(add-hook 'c++-mode-hook 'ycmd-mode)
   (setq ycmd-server-command '("python" "-u" "/home/artur2/.emacs.d/ycmd/ycmd/")
-        ycmd-extra-conf-handler 'load)
+        ycmd-extra-conf-handler 'load
+        request-message-level -1
+        ycmd-force-semantic-completion t)
   (evil-leader/set-key
     "yd" 'ycmd-goto-declaration
     "yf" 'ycmd-goto-definition
@@ -281,8 +283,8 @@
 
 (use-package company-ycmd
   :after (ycmd company)
-  :config
-  (company-ycmd-setup))
+  :init
+  (add-hook 'ycmd-mode-hook #'company-ycmd-setup))
 
 (use-package anaconda-mode
   :after eldoc
@@ -298,8 +300,8 @@
 
 (use-package flycheck-ycmd
   :after (flycheck ycmd)
-  :config
-  (flycheck-ycmd-setup))
+  :init
+  (add-hook 'ycmd-mode-hook #'flycheck-ycmd-setup))
 
 (use-package eldoc
   :diminish eldoc-mode
@@ -309,8 +311,6 @@
   :config
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode))
-
-                                        ;(use-package yasnippet-snippets)
 
 (use-package projectile
   :config
