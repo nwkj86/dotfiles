@@ -124,7 +124,7 @@
     "<f2>" 'better-whitespace))
 
 (use-package evil-collection
-  :after (evil anaconda-mode company eldoc flycheck ivy magit git-timemachine neotree)
+  :after (evil anaconda-mode company eldoc flycheck ivy magit git-timemachine neotree rtags)
   :custom (evil-collection-setup-minibuffer t)
   :config
   (dolist (mode '(neotree)) ; modes to delete
@@ -264,14 +264,15 @@
     (setq flycheck-indication-mode nil)))
 
 (use-package ycmd
+  :disabled t
   :after evil-leader
   :init
   (add-hook 'after-init-hook #'global-ycmd-mode)
   ;(add-hook 'c++-mode-hook 'ycmd-mode)
-  (setq ycmd-server-command '("python" "-u" "/home/artur2/.emacs.d/ycmd/ycmd/")
-        ycmd-extra-conf-handler 'load
+  (setq ycmd-extra-conf-handler 'load
         request-message-level -1
         ycmd-force-semantic-completion t)
+  (setq ycmd-server-command `("python", "-u", (file-truename "~/.emacs.d/ycmd/ycmd/")))
   (evil-leader/set-key
     "yd" 'ycmd-goto-declaration
     "yf" 'ycmd-goto-definition
@@ -282,9 +283,16 @@
   (add-hook 'after-init-hook 'global-company-mode))
 
 (use-package company-ycmd
+  :disabled t
   :after (ycmd company)
   :init
   (add-hook 'ycmd-mode-hook #'company-ycmd-setup))
+
+(use-package flycheck-ycmd
+  :disabled t
+  :after (flycheck ycmd)
+  :init
+  (add-hook 'ycmd-mode-hook #'flycheck-ycmd-setup))
 
 (use-package anaconda-mode
   :after eldoc
@@ -297,11 +305,6 @@
   :config
   (add-to-list 'company-backends 'company-anaconda)
   (add-hook 'python-mode-hook 'anaconda-mode))
-
-(use-package flycheck-ycmd
-  :after (flycheck ycmd)
-  :init
-  (add-hook 'ycmd-mode-hook #'flycheck-ycmd-setup))
 
 (use-package eldoc
   :diminish eldoc-mode
@@ -351,3 +354,21 @@
 (use-package beacon
   :init
   (beacon-mode 1))
+
+(use-package rtags
+  :init
+  (require 'flycheck-rtags)
+  (add-hook 'c-mode-hook 'rtags-start-process-unless-running)
+  (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+  (add-hook 'objc-mode-hook 'rtags-start-process-unless-running)
+  (setq rtags-autostart-diagnostics t)
+  (setq rtags-completions-enabled t)
+  (setq rtags-display-result-backend 'ivy)
+  (push 'company-rtags company-backends)
+  (defun my-flycheck-rtags-setup ()
+    (flycheck-select-checker 'rtags)
+    (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
+    (setq-local flycheck-check-syntax-automatically nil))
+  (add-hook 'c-mode-hook #'my-flycheck-rtags-setup)
+  (add-hook 'c++-mode-hook #'my-flycheck-rtags-setup)
+  (add-hook 'objc-mode-hook #'my-flycheck-rtags-setup))
