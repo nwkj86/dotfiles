@@ -138,8 +138,8 @@ let g:alternateExtensions_h = "cpp,c"
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
-nnoremap <C-p> :Denite file_rec -buffer-name=file_rec<CR>
-nnoremap <leader>g :DeniteCursorWord -buffer-name=grep grep:.<CR>
+nnoremap <Leader>p :Denite file_rec -buffer-name=file_rec<CR>
+nnoremap <leader>gg :DeniteCursorWord -buffer-name=grep grep:.<CR>
 nnoremap <leader>b :Denite -buffer-name=buffer buffer<CR>
 nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<CR>
 nnoremap <leader>j :Denite -buffer-name=jump jump<CR>
@@ -183,7 +183,7 @@ nmap <leader>i ::IndentGuidesToggle<CR>
 " - - - - - - - - - - - - - -
 " majutsushi/tagbar
 " - - - - - - - - - - - - - -
-nnoremap <C-t> :TagbarToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
 let g:tagbar_compact = 1
 let g:tagbar_compact = 1
 let g:tagbar_foldlevel = 3
@@ -221,8 +221,8 @@ let g:gitgutter_async = 0
 " - - - - - - - - - - - - - -
 " justinmk/vim-dirvish
 " - - - - - - - - - - - - - -
-map <C-n> :Dirvish %<CR>
-map <C-m> :Dirvish<CR>
+map <leader>nn :Dirvish %<CR>
+map <leader>nm :Dirvish<CR>
 let g:dirvish_mode = ':sort ,^.*[\/],'
 autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 
