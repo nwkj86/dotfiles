@@ -42,9 +42,12 @@ Plug 'xolox/vim-session'                                      " Sessions managem
 Plug 'tpope/vim-commentary'                                   " comment stuff out
 Plug 'tpope/vim-eunuch'                                       " Remove, Unlink, Move, Rename, Chmod, Mkdir...
 Plug 'tpope/vim-fugitive'                                     " git in vim
+Plug 'junegunn/gv.vim'                                        " git history browser
 Plug 'tpope/vim-unimpaired'                                   " many useful shortcuts in ]<letters> and ]<letters>
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+
+Plug 'tommcdo/vim-exchange'                                   " swap words, regions etc
 
 Plug 'vim-scripts/Align'                                      " aligning text
 Plug 'vim-scripts/DoxygenToolkit.vim'                         " insert doxygen block
@@ -139,11 +142,11 @@ let g:alternateExtensions_h = "cpp,c"
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
 nnoremap <Leader>p :Denite file_rec -buffer-name=file_rec<CR>
-nnoremap <leader>gg :DeniteCursorWord -buffer-name=grep grep:.<CR>
+nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep grep:.<CR>
 nnoremap <leader>b :Denite -buffer-name=buffer buffer<CR>
 nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<CR>
 nnoremap <leader>j :Denite -buffer-name=jump jump<CR>
-nnoremap <leader>h :Denite grep:. -mode=normal<CR>
+nnoremap <leader>gg :Denite grep:. -mode=normal<CR>
 
 
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')

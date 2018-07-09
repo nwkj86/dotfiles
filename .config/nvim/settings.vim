@@ -63,6 +63,9 @@ set nospell
 set wildmode=longest,list
 set wildmenu
 
+" use clipboard as yank register
+set clipboard=unnamedplus
+
 " whitespaces
 set list
 
