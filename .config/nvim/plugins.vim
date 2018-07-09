@@ -43,6 +43,7 @@ Plug 'tpope/vim-commentary'                                   " comment stuff ou
 Plug 'tpope/vim-eunuch'                                       " Remove, Unlink, Move, Rename, Chmod, Mkdir...
 Plug 'tpope/vim-fugitive'                                     " git in vim
 Plug 'junegunn/gv.vim'                                        " git history browser
+Plug 'jreybert/vimagit'                                       " Magit for vim
 Plug 'tpope/vim-unimpaired'                                   " many useful shortcuts in ]<letters> and ]<letters>
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
