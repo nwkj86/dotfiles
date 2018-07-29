@@ -25,5 +25,5 @@ sleep 2
 $NOINTERNET /usr/bin/keepassxc &
 #/usr/bin/deluge &
 #/usr/bin/ktorrent &
-#/usr/bin/thunderbird &
-/usr/bin/evolution &
+/usr/bin/thunderbird &
+#/usr/bin/evolution &
