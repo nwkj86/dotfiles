@@ -61,7 +61,9 @@ Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
 Plug 'Valloric/YouCompleteMe'                                 " clang completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " auto completion
+Plug 'lyuts/vim-rtags'                                        " RTags support
+"Plug 'hukeyue/vim-clangd'                                     " clangd
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " auto completion
 Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-management
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 
@@ -233,6 +235,6 @@ autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 " - - - - - - - - - - - - - -
 " Shougo/deoplete.nvim
 " - - - - - - - - - - - - - -
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
 " vim: ft=vim
