@@ -27,7 +27,7 @@ set nowrap
 
 " line numbers
 set number
-set relativenumber
+" set relativenumber
 
 " mark current line & column
 set nocursorline
