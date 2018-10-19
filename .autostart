@@ -15,8 +15,9 @@ sleep 3
 #/usr/bin/kupfer &
 #/usr/bin/liferea &
 #/usr/bin/uget-gtk &
+#/usr/bin/dropbox &
 /usr/bin/cantata &
-/usr/bin/dropbox &
+/usr/bin/SpiderOakONE &
 /usr/bin/pidgin &
 /usr/bin/quiterss &
 /usr/bin/viber &
