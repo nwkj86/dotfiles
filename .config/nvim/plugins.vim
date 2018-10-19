@@ -23,7 +23,6 @@ Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file s
 " ---
 " --- Plugins
 " ---
-"
 
 " from tpope
 Plug 'tpope/vim-commentary'                                   " comment stuff out
@@ -59,29 +58,33 @@ Plug 'lyuts/vim-rtags'                                        " RTags support
 Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-management
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 
-" others
-Plug 'justinmk/vim-dirvish'                                   " file explorer
+" programming
+Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
 Plug 'w0rp/ale'                                               " asynchronous lint engine
 Plug 'wbthomason/buildit.nvim'                                " async builder
+Plug 'SirVer/ultisnips'                                       " snippets
+Plug 'majutsushi/tagbar'                                      " ctags based outline
+Plug 'machakann/vim-highlightedyank'                          " Make the yanked region apparent!
+Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
+Plug 'thiagoalessio/rainbow_levels.vim'                       " a different approach to code highlighting
+Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
+Plug 'tmhedberg/matchit'                                      " match more by % (HTML, Latex, ...)
+
+" others
+Plug 'justinmk/vim-dirvish'                                   " file explorer
 Plug 'brooth/far.vim'                                         " find and replace
 
-Plug 'SirVer/ultisnips'                                       " snippets
-
+Plug 'wsdjeg/vim-fetch'                                       " make vim handle line and column numbers in file names with a minimum of fuss
 Plug 'bling/vim-airline'                                      " status line
 Plug 'vim-airline/vim-airline-themes'                         " themes for airline
 
 Plug 'xolox/vim-misc'                                         " Dependency for vim-sessions
 Plug 'xolox/vim-session'                                      " Sessions management
 
-Plug 'tmhedberg/matchit'                                      " match more by % (HTML, Latex, ...)
 Plug 'mbbill/undotree'                                        " undo tree visualiser
-Plug 'majutsushi/tagbar'                                      " ctags based outline
-Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'mhinz/vim-startify'                                     " nice start screen
-Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 Plug 'hardenedapple/vsh'                                      " Store and replay shell sessions -- also output search/modification/undo/redo.
-Plug 'machakann/vim-highlightedyank'                          " Make the yanked region apparent!
 
 call plug#end()
 
