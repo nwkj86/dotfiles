@@ -85,6 +85,7 @@ Plug 'mbbill/undotree'                                        " undo tree visual
 Plug 'mhinz/vim-startify'                                     " nice start screen
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 Plug 'hardenedapple/vsh'                                      " Store and replay shell sessions -- also output search/modification/undo/redo.
+Plug 'junegunn/goyo.vim'                                      " distraction-free writing in Vim
 
 call plug#end()
 
