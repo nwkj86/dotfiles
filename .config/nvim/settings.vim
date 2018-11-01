@@ -45,6 +45,9 @@ set laststatus=2
 " lines 'from the bottom'
 set scrolloff=10
 
+" don't show mode - use airline instead
+set noshowmode
+
 " ignore whitespaces
 "set diffopt+=iwhite
 
