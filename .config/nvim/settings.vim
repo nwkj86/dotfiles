@@ -30,7 +30,7 @@ set number
 " set relativenumber
 
 " mark current line & column
-set nocursorline
+set cursorline
 set nocursorcolumn
 
 " change buffer without saving
