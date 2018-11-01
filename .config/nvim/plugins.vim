@@ -151,12 +151,12 @@ let g:alternateExtensions_h = "cpp,c"
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
-nnoremap <Leader>p :Denite file_rec -buffer-name=file_rec<CR>
-nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep grep:.<CR>
-nnoremap <leader>b :Denite -buffer-name=buffer buffer<CR>
-nnoremap <leader>y :Denite -buffer-name=yank unite:history/yank<CR>
-nnoremap <leader>j :Denite -buffer-name=jump jump<CR>
-nnoremap <leader>gg :Denite grep:. -mode=normal<CR>
+nnoremap <Leader>p  :Denite -buffer-name=file_rec file_rec<CR>
+nnoremap <leader>b  :Denite -buffer-name=buffer buffer<CR>
+nnoremap <leader>y  :Denite -buffer-name=yank neoyank<CR>
+nnoremap <leader>j  :Denite -buffer-name=jump jump<CR>
+nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep -no-empty grep:.<CR>
+nnoremap <leader>gg :Denite -buffer-name=grep -no-empty grep:.<CR>
 
 
 call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
