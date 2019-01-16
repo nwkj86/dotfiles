@@ -42,6 +42,8 @@ set hlsearch
 " status width
 set laststatus=2
 
+set updatetime=500
+
 " lines 'from the bottom'
 set scrolloff=10
 
