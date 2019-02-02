@@ -241,6 +241,23 @@ let g:dirvish_mode = ':sort ,^.*[\/],'
 autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 
 " - - - - - - - - - - - - - -
+" lyuts/vim-rtags
+" - - - - - - - - - - - - - -
+function! SetupNeocompleteForCppWithRtags()
+    " Enable heavy omni completion.
+    setlocal omnifunc=RtagsCompleteFunc
+
+    if !exists('g:neocomplete#sources#omni#input_patterns')
+        let g:neocomplete#sources#omni#input_patterns = {}
+    endif
+    let l:cpp_patterns='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.cpp = l:cpp_patterns
+    set completeopt+=longest,menuone
+endfunction
+
+autocmd FileType cpp,c call SetupNeocompleteForCppWithRtags()
+
+" - - - - - - - - - - - - - -
 " Shougo/deoplete.nvim
 " - - - - - - - - - - - - - -
 "let g:deoplete#enable_at_startup = 1
