@@ -3,7 +3,8 @@
 NOINTERNET=~/.local_root/usr/bin/nointernet
 
 sleep 2
-/usr/bin/terminator &
+#/usr/bin/terminator &
+/usr/bin/konsole &
 #/usr/bin/conky &
 #/usr/bin/variety &
 #/usr/bin/redshift-gtk &
@@ -16,7 +17,8 @@ sleep 3
 #/usr/bin/liferea &
 #/usr/bin/uget-gtk &
 #/usr/bin/dropbox &
-/usr/bin/cantata &
+#/usr/bin/cantata &
+/usr/bin/clementine &
 /usr/bin/SpiderOakONE &
 /usr/bin/pidgin &
 /usr/bin/quiterss &
