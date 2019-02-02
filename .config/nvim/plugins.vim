@@ -54,9 +54,8 @@ Plug 'Shougo/vinarise.vim'                                    " hex editing for 
 " C++ related
 Plug 'Valloric/YouCompleteMe'                                 " clang completion
 Plug 'lyuts/vim-rtags'                                        " RTags support
-"Plug 'hukeyue/vim-clangd'                                     " clangd
-Plug 'ludovicchabant/vim-gutentags'                           " ctags auto-management
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
+Plug 'huawenyu/neogdb.vim'                                    " GBD helper
 
 " programming
 Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
