@@ -46,16 +46,19 @@ Plug 'vim-scripts/a.vim'                                      " pairing cpp with
 Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, useful to check if 256 cols available
 
 " from Shougo
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
-Plug 'Shougo/neoyank.vim'                                     " yank history
-Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " auto completion
+"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
+"Plug 'Shougo/neoyank.vim'                                     " yank history
+"Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " C++ related
-Plug 'Valloric/YouCompleteMe'                                 " clang completion
+"Plug 'Valloric/YouCompleteMe'                                 " clang completion
 Plug 'lyuts/vim-rtags'                                        " RTags support
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-jedi', {'do': 'yarn install'}
 
 " programming
 Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
@@ -85,6 +88,7 @@ Plug 'mhinz/vim-startify'                                     " nice start scree
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 Plug 'hardenedapple/vsh'                                      " Store and replay shell sessions -- also output search/modification/undo/redo.
 Plug 'junegunn/goyo.vim'                                      " distraction-free writing in Vim
+Plug 'https://gitlab.com/Lenovsky/nuake.git'                  " Quake style terminal
 
 call plug#end()
 
@@ -102,24 +106,36 @@ set background=dark
 " - - - - - - - - - - - - - -
 " Valloric/YouCompleteMe
 " - - - - - - - - - - - - - -
-let g:ycm_error_symbol = '!'
-let g:ycm_warning_symbol = '>'
-let g:ycm_key_list_select_completion = ['<Down>']
-let g:ycm_key_list_previous_completion = ['<Up>']
-let g:ycm_server_log_level = 'debug'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_error_symbol = '!'
+"let g:ycm_warning_symbol = '>'
+"let g:ycm_key_list_select_completion = ['<Down>']
+"let g:ycm_key_list_previous_completion = ['<Up>']
+"let g:ycm_server_log_level = 'debug'
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"
+"nmap <leader>d :YcmCompleter GoToDefinition<CR>
+"nmap <leader>f :YcmCompleter GoToDeclaration<CR>
 
-nmap <leader>d :YcmCompleter GoToDefinition<CR>
-nmap <leader>f :YcmCompleter GoToDeclaration<CR>
+
+" - - - - - - - - - - - - - -
+" neoclide/coc.vim
+" - - - - - - - - - - - - - -
+nmap <leader>cs <Plug>(coc-declaration)
+nmap <leader>cd <Plug>(coc-definition)
+nmap <leader>cy <Plug>(coc-type-definition)
+nmap <leader>cr <Plug>(coc-references)
+nmap <leader>ci <Plug>(coc-implementation)
+nmap <leader>ch :call CocAction('doHover')<CR>
+nmap <leader>co :CocList outline<CR>
 
 " - - - - - - - - - - - - - -
 " w0rp/ale
 " - - - - - - - - - - - - - -
     " validated by YCM
 let g:ale_linters = {
-            \ 'cpp' : [],
-            \}
+    \ 'cpp' : [],
+    \}
 let g:ale_python_flake8_options = '--ignore=E501'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
@@ -149,44 +165,15 @@ let g:alternateExtensions_cpp = "h,hpp"
 let g:alternateExtensions_h = "cpp,c"
 
 " - - - - - - - - - - - - - -
-" Shougo/denite.nvim
+" junegunn/fzf.vim
 " - - - - - - - - - - - - - -
-nnoremap <Leader>p  :Denite -buffer-name=file_rec file_rec<CR>
-nnoremap <leader>b  :Denite -buffer-name=buffer buffer<CR>
-nnoremap <leader>y  :Denite -buffer-name=yank neoyank<CR>
-nnoremap <leader>j  :Denite -buffer-name=jump jump<CR>
-nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep -no-empty grep:.<CR>
-nnoremap <leader>gg :Denite -buffer-name=grep -no-empty grep:.<CR>
-
-
-call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
-call denite#custom#map('normal', '<Esc>', '<NOP>', 'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('normal', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
-call denite#custom#map('normal', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
-call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>', 'noremap')
-
-call denite#custom#option('_', {
-            \ 'prompt': '>',
-            \ 'mode': 'normal',
-            \ 'cursor_wrap': v:true })
-
-
-call denite#custom#option('file_rec', {
-            \ 'mode': 'insert' })
-call denite#custom#var('file_rec', 'command',
-            \ ['rg', '--files', '--glob', '!.git', ''])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-            \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#option('grep', { 'quit': v:false })
+nnoremap <Leader>p :Files .<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>c :Commits<CR>
+nnoremap <leader>bc :BCommits<CR>
+nnoremap <leader>gg :Rg<Space>
+nnoremap <leader>gw :Rg <C-R><C-W><CR>
+nnoremap <leader>gm :Marks<CR>
 
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
@@ -257,8 +244,10 @@ endfunction
 autocmd FileType cpp,c call SetupNeocompleteForCppWithRtags()
 
 " - - - - - - - - - - - - - -
-" Shougo/deoplete.nvim
+" https://gitlab.com/Lenovsky/nuake.git
 " - - - - - - - - - - - - - -
-"let g:deoplete#enable_at_startup = 1
+nnoremap <F12> :Nuake<CR>
+inoremap <F12> <C-\><C-n>:Nuake<CR>
+tnoremap <F12> <C-\><C-n>:Nuake<CR>
 
 " vim: ft=vim
