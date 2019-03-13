@@ -56,7 +56,9 @@ Plug 'lyuts/vim-rtags'                                        " RTags support
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-jedi', {'do': 'yarn install'}
+
+" Python related
+Plug 'davidhalter/jedi-vim'                                   " Jedi completion and syntax checking
 
 " programming
 Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
@@ -170,7 +172,7 @@ let g:alternateExtensions_h = "cpp,c"
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
-nnoremap <Leader>p  :Denite -buffer-name=file_rec file_rec<CR>
+nnoremap <Leader>p  :Denite -buffer-name=file/rec file/rec<CR>
 nnoremap <leader>b  :Denite -buffer-name=buffer buffer<CR>
 nnoremap <leader>y  :Denite -buffer-name=yank neoyank<CR>
 nnoremap <leader>j  :Denite -buffer-name=jump jump<CR>
@@ -193,9 +195,9 @@ call denite#custom#option('_', {
             \ 'cursor_wrap': v:true })
 
 
-call denite#custom#option('file_rec', {
+call denite#custom#option('file/rec', {
             \ 'mode': 'insert' })
-call denite#custom#var('file_rec', 'command',
+call denite#custom#var('file/rec', 'command',
             \ ['rg', '--files', '--glob', '!.git', ''])
 call denite#custom#var('grep', 'command', ['rg'])
 call denite#custom#var('grep', 'default_opts',
