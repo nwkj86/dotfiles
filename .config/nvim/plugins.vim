@@ -15,6 +15,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
+Plug 'patstockwell/vim-monokai-tasty'
 
 Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
 Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
@@ -56,6 +57,7 @@ Plug 'lyuts/vim-rtags'                                        " RTags support
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-lists'
 
 " Python related
 Plug 'davidhalter/jedi-vim'                                   " Jedi completion and syntax checking
@@ -75,6 +77,7 @@ Plug 'tmhedberg/matchit'                                      " match more by % 
 " others
 Plug 'justinmk/vim-dirvish'                                   " file explorer
 Plug 'brooth/far.vim'                                         " find and replace
+"Plug 'airblade/vim-rooter'                                    " Changes Vim working directory to project root (identified by presence of known directory or file).
 
 Plug 'wsdjeg/vim-fetch'                                       " make vim handle line and column numbers in file names with a minimum of fuss
 Plug 'bling/vim-airline'                                      " status line
@@ -242,15 +245,18 @@ let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
 " - - - - - - - - - - - - - -
 let g:airline_symbols_ascii = 1
 
+
 " - - - - - - - - - - - - - -
 " mbbill/undotree
 " - - - - - - - - - - - - - -
 nmap <leader>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 
+
 " - - - - - - - - - - - - - -
 " Plug 'airblade/vim-gitgutter'
 " - - - - - - - - - - - - - -
 let g:gitgutter_async = 0
+
 
 " - - - - - - - - - - - - - -
 " justinmk/vim-dirvish

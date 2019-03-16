@@ -36,11 +36,5 @@
                 }
             }
         }
-    },
-    "list.insertMappings": {
-        "<Esc>": "feedkeys:\\<C-o>"
-    },
-    "list.normalMappings": {
-        "q": "do:cancel"
     }
 }
