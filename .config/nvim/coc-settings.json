@@ -15,7 +15,6 @@
             ],
             "rootPatterns": [
                 ".ccls",
-                "compile_commands.json",
                 ".vim/",
                 ".git/",
                 ".hg/"

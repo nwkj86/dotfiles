@@ -84,7 +84,6 @@ Plug 'bling/vim-airline'                                      " status line
 Plug 'vim-airline/vim-airline-themes'                         " themes for airline
 
 Plug 'xolox/vim-misc'                                         " Dependency for vim-sessions
-Plug 'xolox/vim-session'                                      " Sessions management
 
 Plug 'mbbill/undotree'                                        " undo tree visualiser
 Plug 'mhinz/vim-startify'                                     " nice start screen
@@ -129,6 +128,7 @@ nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cy <Plug>(coc-type-definition)
 nmap <leader>cr <Plug>(coc-references)
 nmap <leader>ci <Plug>(coc-implementation)
+nmap <leader>cn <Plug>(coc-rename)
 nmap <leader>ch :call CocAction('doHover')<CR>
 nmap <leader>co :CocList outline<CR>
 nmap <leader>cB :call CocLocations('ccls','$ccls/inheritance')<CR>
