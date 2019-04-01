@@ -52,11 +52,9 @@ Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
 " C++ related
-"Plug 'Valloric/YouCompleteMe'                                 " clang completion
-Plug 'lyuts/vim-rtags'                                        " RTags support
 Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}} " Completion and other language server support for Neovim, featured as VSCode
 Plug 'neoclide/coc-lists'
 
 " Python related
@@ -104,21 +102,6 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme base16-default-dark
 set background=dark
-
-" - - - - - - - - - - - - - -
-" Valloric/YouCompleteMe
-" - - - - - - - - - - - - - -
-"let g:ycm_error_symbol = '!'
-"let g:ycm_warning_symbol = '>'
-"let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion = ['<Up>']
-"let g:ycm_server_log_level = 'debug'
-"let g:ycm_confirm_extra_conf = 0
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"
-"nmap <leader>d :YcmCompleter GoToDefinition<CR>
-"nmap <leader>f :YcmCompleter GoToDeclaration<CR>
-
 
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim
