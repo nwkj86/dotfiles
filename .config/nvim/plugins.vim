@@ -88,7 +88,6 @@ Plug 'mhinz/vim-startify'                                     " nice start scree
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 Plug 'hardenedapple/vsh'                                      " Store and replay shell sessions -- also output search/modification/undo/redo.
 Plug 'junegunn/goyo.vim'                                      " distraction-free writing in Vim
-Plug 'https://gitlab.com/Lenovsky/nuake.git'                  " Quake style terminal
 
 call plug#end()
 
@@ -194,7 +193,6 @@ call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#option('grep', { 'quit': v:false })
 
-
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
 " - - - - - - - - - - - - - -
@@ -265,12 +263,5 @@ function! SetupNeocompleteForCppWithRtags()
 endfunction
 
 autocmd FileType cpp,c call SetupNeocompleteForCppWithRtags()
-
-" - - - - - - - - - - - - - -
-" https://gitlab.com/Lenovsky/nuake.git
-" - - - - - - - - - - - - - -
-nnoremap <F12> :Nuake<CR>
-inoremap <F12> <C-\><C-n>:Nuake<CR>
-tnoremap <F12> <C-\><C-n>:Nuake<CR>
 
 " vim: ft=vim
