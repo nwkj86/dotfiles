@@ -35,7 +35,7 @@ Plug 'tpope/vim-repeat'
 " git
 Plug 'airblade/vim-gitgutter'                                 " git marks
 Plug 'tpope/vim-fugitive'                                     " git in vim
-Plug 'junegunn/gv.vim'                                        " git history browser
+Plug 'cohama/agit.vim'
 
 Plug 'tommcdo/vim-exchange'                                   " swap words, regions etc
 
@@ -52,7 +52,7 @@ Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
 " C++ related
-Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
+"Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}} " Completion and other language server support for Neovim, featured as VSCode
 Plug 'neoclide/coc-lists'
@@ -61,7 +61,7 @@ Plug 'neoclide/coc-lists'
 Plug 'davidhalter/jedi-vim'                                   " Jedi completion and syntax checking
 
 " programming
-Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
+"Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
 Plug 'w0rp/ale'                                               " asynchronous lint engine
 Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'SirVer/ultisnips'                                       " snippets
@@ -80,6 +80,7 @@ Plug 'brooth/far.vim'                                         " find and replace
 Plug 'wsdjeg/vim-fetch'                                       " make vim handle line and column numbers in file names with a minimum of fuss
 Plug 'bling/vim-airline'                                      " status line
 Plug 'vim-airline/vim-airline-themes'                         " themes for airline
+"Plug 'itchyny/lightline.vim'
 
 Plug 'xolox/vim-misc'                                         " Dependency for vim-sessions
 
