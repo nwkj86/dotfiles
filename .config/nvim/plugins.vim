@@ -7,7 +7,6 @@ call plug#begin()
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
 Plug 'w0ng/vim-hybrid'
-Plug 'sickill/vim-monokai'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'challenger-deep-theme/vim'
 Plug 'mhinz/vim-janah'
@@ -15,7 +14,6 @@ Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
-Plug 'patstockwell/vim-monokai-tasty'
 
 Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
 Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
@@ -47,18 +45,17 @@ Plug 'vim-scripts/a.vim'                                      " pairing cpp with
 Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, useful to check if 256 cols available
 
 " from Shougo
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
+Plug 'Shougo/denite.nvim',
+            \ { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
 Plug 'Shougo/neoyank.vim'                                     " yank history
 Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
 
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}} " Completion and other language server support for Neovim, featured as VSCode
+Plug 'neoclide/coc.nvim',
+            \ {'tag': '*', 'do': { -> coc#util#install()}} " Completion and other language server support for Neovim, featured as VSCode
 Plug 'neoclide/coc-lists'
-
-" Python related
-Plug 'davidhalter/jedi-vim'                                   " Jedi completion and syntax checking
 
 " programming
 "Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
@@ -92,7 +89,6 @@ Plug 'junegunn/goyo.vim'                                      " distraction-free
 
 call plug#end()
 
-
 " - - - - - - - - - - - - - -
 " colorscheme
 " - - - - - - - - - - - - - -
@@ -100,7 +96,7 @@ let g:jellybeans_use_lowcolor_black = 0
 let g:gruvbox_contrast_dark = 'hard'
 let base16colorspace=256  " Access colors present in 256 colorspace
 
-colorscheme base16-default-dark
+colorscheme base16-monokai
 set background=dark
 
 " - - - - - - - - - - - - - -
@@ -122,9 +118,9 @@ nmap <leader>cC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<CR>
 " - - - - - - - - - - - - - -
 " w0rp/ale
 " - - - - - - - - - - - - - -
-    " validated by YCM
 let g:ale_linters = {
     \ 'cpp' : [],
+    \ 'python' : [],
     \}
 let g:ale_python_flake8_options = '--ignore=E501'
 let g:ale_lint_on_text_changed = 'never'
