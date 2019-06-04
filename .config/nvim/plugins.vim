@@ -154,44 +154,59 @@ let g:startify_list_order = [ ['  Sessions:'], 'sessions', ['  Files:'], 'files'
 let g:alternateExtensions_cpp = "h,hpp"
 let g:alternateExtensions_h = "cpp,c"
 
-
 " - - - - - - - - - - - - - -
 " Shougo/denite.nvim
 " - - - - - - - - - - - - - -
+autocmd FileType denite call s:configure_denite()
+function! s:configure_denite() abort
+    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q denite#do_map('quit')
+    nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+endfunction
+
+autocmd FileType denite-filter call s:configure_denite_filter()
+function! s:configure_denite_filter() abort
+    imap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
+endfunction
+
 nnoremap <Leader>p  :Denite -buffer-name=file/rec file/rec<CR>
 nnoremap <leader>b  :Denite -buffer-name=buffer buffer<CR>
 nnoremap <leader>y  :Denite -buffer-name=yank neoyank<CR>
 nnoremap <leader>j  :Denite -buffer-name=jump jump<CR>
-nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep -no-empty grep:.<CR>
-nnoremap <leader>gg :Denite -buffer-name=grep -no-empty grep:.<CR>
-
-call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
-call denite#custom#map('normal', '<Esc>', '<NOP>', 'noremap')
-call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('normal', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
-call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('normal', '<C-s>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
-call denite#custom#map('normal', '<C-t>', '<denite:do_action:tabopen>', 'noremap')
-call denite#custom#map('normal', 'dw', '<denite:delete_word_after_caret>', 'noremap')
+nnoremap <leader>gg :Denite -buffer-name=grep grep:.<CR>
+nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep grep:.<CR>
 
 call denite#custom#option('_', {
             \ 'prompt': '>',
             \ 'mode': 'normal',
-            \ 'cursor_wrap': v:true })
-
+            \ 'empty': v:false,
+            \ 'status_line': v:false,
+            \ })
 
 call denite#custom#option('file/rec', {
-            \ 'mode': 'insert' })
-call denite#custom#var('file/rec', 'command',
-            \ ['rg', '--files', '--glob', '!.git', ''])
+            \ 'start_filter': v:true
+            \ })
+
+call denite#custom#source('file/rec', 'matchers',
+            \ [
+                \ 'matcher/hide_hidden_files',
+                \ 'matcher/ignore_current_buffer',
+                \ 'matcher/ignore_globs',
+                \ 'matcher/regexp'
+            \ ])
+
+call denite#custom#var('file/rec',
+            \ 'command', ['rg', '--files', '--glob', '!.git', '--no-ignore-messages']
+            \ )
+
 call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts',
-            \ ['--hidden', '--vimgrep', '--no-heading', '-S'])
+call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--no-heading', '-S'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#option('grep', { 'quit': v:false })
 
 " - - - - - - - - - - - - - -
