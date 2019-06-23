@@ -65,7 +65,6 @@ Plug 'SirVer/ultisnips'                                       " snippets
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'machakann/vim-highlightedyank'                          " Make the yanked region apparent!
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
-Plug 'thiagoalessio/rainbow_levels.vim'                       " a different approach to code highlighting
 Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'tmhedberg/matchit'                                      " match more by % (HTML, Latex, ...)
 
