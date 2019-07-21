@@ -116,6 +116,12 @@ nmap <leader>cD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true}
 nmap <leader>cc :call CocLocations('ccls','$ccls/call')<CR>
 nmap <leader>cC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<CR>
 
+call coc#add_extension('coc-json')
+call coc#add_extension('coc-yaml')
+call coc#add_extension('coc-tsserver')
+call coc#add_extension('coc-python')
+call coc#add_extension('coc-css')
+
 " - - - - - - - - - - - - - -
 " w0rp/ale
 " - - - - - - - - - - - - - -
