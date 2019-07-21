@@ -15,7 +15,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
 
-Plug 'peter-edge/vim-capnp'                                   " syntax highlight for Cap'n Proto
+Plug 'cstrahan/vim-capnp'
 Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
 Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
 
@@ -55,7 +55,9 @@ Plug 'Shougo/vinarise.vim'                                    " hex editing for 
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
 Plug 'neoclide/coc.nvim',
             \ {'tag': '*', 'do': { -> coc#util#install()}} " Completion and other language server support for Neovim, featured as VSCode
-Plug 'neoclide/coc-lists'
+
+" Julia
+Plug 'JuliaEditorSupport/julia-vim'
 
 " programming
 "Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim

@@ -18,6 +18,15 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" update time - avoid lags
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" Better display for messages
+set cmdheight=2
+
 " indent
 set autoindent
 set smartindent
