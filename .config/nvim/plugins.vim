@@ -61,7 +61,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 
 " programming
 "Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
-Plug 'w0rp/ale'                                               " asynchronous lint engine
+Plug 'dense-analysis/ale'                                     " asynchronous lint engine
 Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'SirVer/ultisnips'                                       " snippets
 Plug 'majutsushi/tagbar'                                      " ctags based outline
