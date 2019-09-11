@@ -53,8 +53,7 @@ Plug 'Shougo/vinarise.vim'                                    " hex editing for 
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'neoclide/coc.nvim',
-            \ {'tag': '*', 'do': { -> coc#util#install()}} " Completion and other language server support for Neovim, featured as VSCode
+Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'

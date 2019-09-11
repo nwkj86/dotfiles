@@ -30,6 +30,7 @@ export HISTSIZE=1024
 # PATH
 ###
 export PATH="${HOME}/.local_root/usr/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${PATH}"
 export LD_LIBRARY_PATH="${HOME}/.local_root/usr/lib:${LD_LIBRARY_PATH}"
 
 ###
