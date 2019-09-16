@@ -44,16 +44,10 @@ Plug 'vim-scripts/Mark--Karkat'                               " highlight in dif
 Plug 'vim-scripts/a.vim'                                      " pairing cpp with h
 Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, useful to check if 256 cols available
 
-" from Shougo
-Plug 'Shougo/denite.nvim',
-            \ { 'do': ':UpdateRemotePlugins' }   " asynchronous unite all interfaces
-Plug 'Shougo/neoyank.vim'                                     " yank history
-Plug 'Shougo/vinarise.vim'                                    " hex editing for vim
-
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}   " Completion and other language server support for Neovim, featured as VSCode
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
@@ -66,7 +60,6 @@ Plug 'SirVer/ultisnips'                                       " snippets
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'machakann/vim-highlightedyank'                          " Make the yanked region apparent!
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
-Plug 'ludovicchabant/vim-gutentags'                           " ctags generator/manager
 Plug 'tmhedberg/matchit'                                      " match more by % (HTML, Latex, ...)
 
 " others
@@ -102,6 +95,14 @@ set background=dark
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim
 " - - - - - - - - - - - - - -
+call coc#add_extension('coc-json')
+call coc#add_extension('coc-yaml')
+call coc#add_extension('coc-tsserver')
+call coc#add_extension('coc-python')
+call coc#add_extension('coc-css')
+call coc#add_extension('coc-lists')
+call coc#add_extension('coc-yank')
+
 nmap <leader>cs <Plug>(coc-declaration)
 nmap <leader>cd <Plug>(coc-definition)
 nmap <leader>cy <Plug>(coc-type-definition)
@@ -115,11 +116,13 @@ nmap <leader>cD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true}
 nmap <leader>cc :call CocLocations('ccls','$ccls/call')<CR>
 nmap <leader>cC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<CR>
 
-call coc#add_extension('coc-json')
-call coc#add_extension('coc-yaml')
-call coc#add_extension('coc-tsserver')
-call coc#add_extension('coc-python')
-call coc#add_extension('coc-css')
+nnoremap <Leader>p  :CocList files<CR>
+nnoremap <leader>b  :CocList buffers<CR>
+nnoremap <leader>y  :CocList yank<CR>
+nnoremap <leader>j  :CocList marks<CR>
+nnoremap <leader>gg :exe 'CocList -I grep'<CR>
+nnoremap <leader>gw :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <leader>l :CocListResume<CR>
 
 " - - - - - - - - - - - - - -
 " w0rp/ale
@@ -155,61 +158,6 @@ let g:startify_list_order = [ ['  Sessions:'], 'sessions', ['  Files:'], 'files'
 " - - - - - - - - - - - - - -
 let g:alternateExtensions_cpp = "h,hpp"
 let g:alternateExtensions_h = "cpp,c"
-
-" - - - - - - - - - - - - - -
-" Shougo/denite.nvim
-" - - - - - - - - - - - - - -
-autocmd FileType denite call s:configure_denite()
-function! s:configure_denite() abort
-    nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q denite#do_map('quit')
-    nnoremap <silent><buffer><expr> <Esc> denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
-endfunction
-
-autocmd FileType denite-filter call s:configure_denite_filter()
-function! s:configure_denite_filter() abort
-    imap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
-endfunction
-
-nnoremap <Leader>p  :Denite -buffer-name=file/rec file/rec<CR>
-nnoremap <leader>b  :Denite -buffer-name=buffer buffer<CR>
-nnoremap <leader>y  :Denite -buffer-name=yank neoyank<CR>
-nnoremap <leader>j  :Denite -buffer-name=jump jump<CR>
-nnoremap <leader>gg :Denite -buffer-name=grep grep:.<CR>
-nnoremap <leader>gw :DeniteCursorWord -buffer-name=grep grep:.<CR>
-
-call denite#custom#option('_', {
-            \ 'prompt': '>',
-            \ 'mode': 'normal',
-            \ 'empty': v:false,
-            \ 'status_line': v:false,
-            \ })
-
-call denite#custom#option('file/rec', {
-            \ 'start_filter': v:true
-            \ })
-
-call denite#custom#source('file/rec', 'matchers',
-            \ [
-                \ 'matcher/hide_hidden_files',
-                \ 'matcher/ignore_current_buffer',
-                \ 'matcher/ignore_globs',
-                \ 'matcher/regexp'
-            \ ])
-
-call denite#custom#var('file/rec',
-            \ 'command', ['rg', '--files', '--glob', '!.git', '--no-ignore-messages']
-            \ )
-
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--no-heading', '-S'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#option('grep', { 'quit': v:false })
 
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
