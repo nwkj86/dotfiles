@@ -18,6 +18,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'cstrahan/vim-capnp'
 Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
 Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
+Plug 'cespare/vim-toml'                                       " TOML highlight
 
 " ---
 " --- Plugins
