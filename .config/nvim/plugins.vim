@@ -48,7 +48,7 @@ Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, us
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}   " Completion and other language server support for Neovim, featured as VSCode
+Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
@@ -59,6 +59,7 @@ Plug 'dense-analysis/ale'                                     " asynchronous lin
 Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'SirVer/ultisnips'                                       " snippets
 Plug 'majutsushi/tagbar'                                      " ctags based outline
+Plug 'liuchengxu/vista.vim'                                   " LSP and ctags based outline
 Plug 'machakann/vim-highlightedyank'                          " Make the yanked region apparent!
 Plug 'nathanaelkane/vim-indent-guides'                        " indentation guidlines
 Plug 'tmhedberg/matchit'                                      " match more by % (HTML, Latex, ...)
@@ -177,6 +178,16 @@ let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 let g:tagbar_sort = 1
 let g:tagbar_width = 70
+
+
+" - - - - - - - - - - - - - -
+" 'iuchengxu/vista.vim
+" - - - - - - - - - - - - - -
+let g:vista_sidebar_position = "vertical topleft"
+let g:vista_sidebar_width = 100
+let g:vista_close_on_jump = 1
+nmap <leader>tc :Vista ctags<CR>
+nmap <leader>tl :Vista coc<CR>
 
 " - - - - - - - - - - - - - -
 " SirVer/ultisnips
