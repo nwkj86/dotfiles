@@ -3,8 +3,7 @@
         "ccls": {
             "command": "ccls",
             "args": [
-                "--log-file=/tmp/ccls.log",
-                "-v=1"
+                "--log-file=/tmp/ccls.log"
             ],
             "cwd": "./build",
             "filetypes": [
