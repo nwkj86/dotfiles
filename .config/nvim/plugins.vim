@@ -68,6 +68,7 @@ Plug 'tmhedberg/matchit'                                      " match more by % 
 Plug 'justinmk/vim-dirvish'                                   " file explorer
 Plug 'brooth/far.vim'                                         " find and replace
 "Plug 'airblade/vim-rooter'                                    " Changes Vim working directory to project root (identified by presence of known directory or file).
+"Plug 'metakirby5/codi.vim'                                    " The interactive scratchpad for hackers.
 
 Plug 'wsdjeg/vim-fetch'                                       " make vim handle line and column numbers in file names with a minimum of fuss
 Plug 'bling/vim-airline'                                      " status line
