@@ -16,9 +16,7 @@ Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
 
 Plug 'cstrahan/vim-capnp'
-Plug 'peterhoeg/vim-qml'                                      " syntax highlight for Qt-QML
-Plug 'tmux-plugins/vim-tmux'                                  " tmux.conf file support
-Plug 'cespare/vim-toml'                                       " TOML highlight
+Plug 'sheerun/vim-polyglot'
 
 " ---
 " --- Plugins
@@ -48,10 +46,9 @@ Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, us
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
 
-" Julia
-Plug 'JuliaEditorSupport/julia-vim'
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
 
 " programming
 "Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
