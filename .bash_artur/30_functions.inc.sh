@@ -83,5 +83,15 @@ awk 'BEGIN{
 
 }
 
+function tmux_sort_windows()
+{
+# Shift current ids far out
+tmux list-windows | awk -F: '{system("tmux move-window -s "$1" -t 100"$1)}'
+
+# sort and move windows
+tmux list-windows | sort -sk2 \
+| awk -F: '{system("tmux move-window -s "$1" -t "(NR - 1))}'
+}
+
 
 print_footer $BASH_SOURCE
