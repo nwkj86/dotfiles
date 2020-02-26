@@ -80,6 +80,9 @@ Plug 'chrisbra/NrrwRgn'                                       " Narrow region
 Plug 'hardenedapple/vsh'                                      " Store and replay shell sessions -- also output search/modification/undo/redo.
 Plug 'junegunn/goyo.vim'                                      " distraction-free writing in Vim
 
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+
 call plug#end()
 
 " - - - - - - - - - - - - - -
@@ -222,5 +225,10 @@ map <leader>nn :Dirvish %<CR>
 map <leader>nm :Dirvish<CR>
 let g:dirvish_mode = ':sort ,^.*[\/],'
 autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
+
+" - - - - - - - - - - - - - -
+" Plug 'skywind3000/asyncrun.vim'
+" - - - - - - - - - - - - - -
+let g:asyncrun_open = 6
 
 " vim: ft=vim

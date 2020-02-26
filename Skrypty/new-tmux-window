@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+
+window_name=${1:-__Main}
+cd_pwd="cd ~"
+
+tmux new-window -n ${window_name} \; \
+   send-keys "${cd_pwd}" C-m \; \
+   split-window -v -p 10 \; \
+   send-keys "${cd_pwd}" C-m \; \
+   send-keys "${cd_build}" C-m \; \
+   split-window -h -p 75 \; \
+   send-keys "${cd_pwd}" C-m \; \
+   split-window -h -p 66 \; \
+   send-keys "${cd_pwd}" C-m \; \
+   split-window -h -p 50 \; \
+   send-keys "${cd_pwd}" C-m \; \
+   select-pane -t 1 \; \
+   select-pane -t 0 \; \
+
+
+#vim ft=sh

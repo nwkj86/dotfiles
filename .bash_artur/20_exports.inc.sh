@@ -31,6 +31,7 @@ export HISTSIZE=1024
 ###
 export PATH="${HOME}/.local_root/usr/bin:${PATH}"
 export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/Skrypty:${PATH}"
 export LD_LIBRARY_PATH="${HOME}/.local_root/usr/lib:${LD_LIBRARY_PATH}"
 
 ###
