@@ -98,12 +98,13 @@ set background=dark
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim
 " - - - - - - - - - - - - - -
-call coc#add_extension('coc-json')
-call coc#add_extension('coc-yaml')
-call coc#add_extension('coc-tsserver')
-call coc#add_extension('coc-python')
 call coc#add_extension('coc-css')
+call coc#add_extension('coc-json')
 call coc#add_extension('coc-lists')
+call coc#add_extension('coc-python')
+call coc#add_extension('coc-tasks')
+call coc#add_extension('coc-tsserver')
+call coc#add_extension('coc-yaml')
 call coc#add_extension('coc-yank')
 
 nmap <leader>cs <Plug>(coc-declaration)
