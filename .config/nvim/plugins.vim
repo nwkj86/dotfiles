@@ -92,7 +92,8 @@ let g:jellybeans_use_lowcolor_black = 0
 let g:gruvbox_contrast_dark = 'hard'
 let base16colorspace=256  " Access colors present in 256 colorspace
 
-colorscheme base16-monokai
+"colorscheme base16-monokai
+colorscheme base16-gruvbox-dark-hard
 set background=dark
 
 " - - - - - - - - - - - - - -
@@ -120,6 +121,7 @@ nmap <leader>cD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true}
 nmap <leader>cc :call CocLocations('ccls','$ccls/call')<CR>
 nmap <leader>cC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<CR>
 
+nnoremap <leader>a  :CocList tasks<CR>
 nnoremap <Leader>p  :CocList files<CR>
 nnoremap <leader>b  :CocList buffers<CR>
 nnoremap <leader>y  :CocList yank<CR>
@@ -231,5 +233,15 @@ autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 " Plug 'skywind3000/asyncrun.vim'
 " - - - - - - - - - - - - - -
 let g:asyncrun_open = 6
+nnoremap <leader>as  :AsyncStop<CR>
+nnoremap <leader>ab  :AsyncTask build<CR>
+nnoremap <leader>at  :AsyncTask test<CR>
+
+" - - - - - - - - - - - - - -
+" Plug 'tpope/vim-fugitive'                                     " git in vim
+" - - - - - - - - - - - - - -
+nnoremap <leader>gs  :Gstatus<CR>
+
+
 
 " vim: ft=vim
