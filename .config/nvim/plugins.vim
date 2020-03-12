@@ -46,7 +46,7 @@ Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, us
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-Plug 'jackguo380/vim-lsp-cxx-highlight'
+"Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " CoC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
@@ -234,9 +234,10 @@ autocmd FileType dirvish silent keeppatterns g@\v/\.[^\/]+/?$@d _
 " Plug 'skywind3000/asyncrun.vim'
 " - - - - - - - - - - - - - -
 let g:asyncrun_open = 6
-nnoremap <leader>as  :AsyncStop<CR>
-nnoremap <leader>ab  :AsyncTask build<CR>
-nnoremap <leader>at  :AsyncTask test<CR>
+nnoremap <leader>as :AsyncStop<CR>
+nnoremap <leader>ab :AsyncTask build<CR>
+nnoremap <leader>at :AsyncTask test<CR>
+nnoremap <leader>aq :call asyncrun#quickfix_toggle(8)<CR>
 
 " - - - - - - - - - - - - - -
 " Plug 'tpope/vim-fugitive'                                     " git in vim
