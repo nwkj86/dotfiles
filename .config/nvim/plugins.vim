@@ -46,6 +46,7 @@ Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, us
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " CoC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode

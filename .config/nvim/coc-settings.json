@@ -19,6 +19,7 @@
                 ".hg/"
             ],
             "initializationOptions": {
+                "highlight": { "lsRanges" : true },
                 "compilationDatabaseDirectory": "./build",
                 "cache": {
                     "directory": "/tmp/ccls"
