@@ -73,8 +73,6 @@ Plug 'bling/vim-airline'                                      " status line
 Plug 'vim-airline/vim-airline-themes'                         " themes for airline
 "Plug 'itchyny/lightline.vim'
 
-Plug 'xolox/vim-misc'                                         " Dependency for vim-sessions
-
 Plug 'mbbill/undotree'                                        " undo tree visualiser
 Plug 'mhinz/vim-startify'                                     " nice start screen
 Plug 'chrisbra/NrrwRgn'                                       " Narrow region
@@ -143,18 +141,6 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
 " - - - - - - - - - - - - - -
-" arakashic/chromatica.nvim
-" - - - - - - - - - - - - - -
-let g:chromatica#enable_at_startup=1
-
-" - - - - - - - - - - - - - -
-" xolox/vim-session
-" - - - - - - - - - - - - - -
-let g:session_directory = "~/.config/nvim/sessions"
-let g:session_autoload = 'no'
-let g:session_autosave = 'prompt'
-
-" - - - - - - - - - - - - - -
 " mhinz/startify
 " - - - - - - - - - - - - - -
 let g:startify_session_dir = "~/.config/nvim/sessions"
@@ -163,8 +149,8 @@ let g:startify_list_order = [ ['  Sessions:'], 'sessions', ['  Files:'], 'files'
 " - - - - - - - - - - - - - -
 " vim-scripts/a.vim
 " - - - - - - - - - - - - - -
-let g:alternateExtensions_cpp = "h,hpp"
-let g:alternateExtensions_h = "cpp,c"
+let g:alternateExtensions_cpp = "h,hpp,hxx"
+let g:alternateExtensions_h = "cpp,c,cxx"
 
 " - - - - - - - - - - - - - -
 " nathanaelkane/vim-indent-guides
@@ -183,7 +169,6 @@ let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
 let g:tagbar_sort = 1
 let g:tagbar_width = 70
-
 
 " - - - - - - - - - - - - - -
 " 'iuchengxu/vista.vim
@@ -209,18 +194,15 @@ let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips', 'UltiSnips']
 " - - - - - - - - - - - - - -
 let g:airline_symbols_ascii = 1
 
-
 " - - - - - - - - - - - - - -
 " mbbill/undotree
 " - - - - - - - - - - - - - -
 nmap <leader>u :UndotreeToggle<CR> :UndotreeFocus<CR>
 
-
 " - - - - - - - - - - - - - -
 " Plug 'airblade/vim-gitgutter'
 " - - - - - - - - - - - - - -
 let g:gitgutter_async = 0
-
 
 " - - - - - - - - - - - - - -
 " justinmk/vim-dirvish
@@ -243,7 +225,5 @@ nnoremap <leader>aq :call asyncrun#quickfix_toggle(8)<CR>
 " Plug 'tpope/vim-fugitive'                                     " git in vim
 " - - - - - - - - - - - - - -
 nnoremap <leader>gs  :Gstatus<CR>
-
-
 
 " vim: ft=vim
