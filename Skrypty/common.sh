@@ -2,8 +2,8 @@
 
 function sync_dirs()
 {
-  #_SYNC_CMD="rsync -a -r --human-readable --delete --info=progress2"
-  local _SYNC_CMD="rsync -a -r --human-readable --delete --progress"
+  #local _SYNC_CMD="rsync -a -r --human-readable --delete --progress"
+  local _SYNC_CMD="rsync -a -r --human-readable --delete --info=progress2"
 
   if [ "$#" == "0" ]; then
     echo "Need start dir..."
