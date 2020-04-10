@@ -2,6 +2,7 @@
 
 NOINTERNET=~/.local_root/usr/bin/nointernet
 
+/usr/bin/optimus-manager-qt &
 /usr/bin/pcloudcc -u nwkj86@gmail.com &
 
 sleep 2
@@ -32,3 +33,6 @@ sleep 2
 #/usr/bin/ktorrent &
 /usr/bin/thunderbird &
 #/usr/bin/evolution &
+
+sleep 2
+killall plasmashell && plasmashell &
