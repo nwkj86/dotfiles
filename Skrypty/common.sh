@@ -2,8 +2,11 @@
 
 function sync_dirs()
 {
-  #local _SYNC_CMD="rsync -a -r --human-readable --delete --progress"
-  local _SYNC_CMD="rsync -a -r --human-readable --delete --info=progress2"
+  local _SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+  local _PROGRESS="--progress"
+  #local _PROGRESS="--info=progress2"
+
+  local _SYNC_CMD="rsync -a -r --human-readable --delete ${_PROGRESS} --exclude-from=${_SCRIPT_DIR}/excluded_from_sync.lst"
 
   if [ "$#" == "0" ]; then
     echo "Need start dir..."
