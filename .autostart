@@ -5,34 +5,16 @@ NOINTERNET=~/.local_root/usr/bin/nointernet
 /usr/bin/optimus-manager-qt &
 /usr/bin/pcloudcc -u nwkj86@gmail.com &
 
-sleep 2
-#/usr/bin/terminator &
-/usr/bin/konsole &
-#/usr/bin/conky &
-#/usr/bin/variety &
-#/usr/bin/redshift-gtk &
-
 sleep 3
-#/usr/bin/hexchat &
-#/usr/bin/kget &
-#/usr/bin/konversation &
-#/usr/bin/kupfer &
-#/usr/bin/liferea &
-#/usr/bin/uget-gtk &
-#/usr/bin/dropbox &
-#/usr/bin/cantata &
+/usr/bin/konsole &
 /usr/bin/clementine &
-/usr/bin/SpiderOakONE &
-/usr/bin/pidgin &
 /usr/bin/quiterss &
 /usr/bin/viber &
-
-sleep 2
-/usr/bin/keepassxc &
-#/usr/bin/deluge &
-#/usr/bin/ktorrent &
 /usr/bin/thunderbird &
-#/usr/bin/evolution &
+/usr/bin/firefox &
 
 sleep 2
-killall plasmashell && plasmashell &
+$NOINTERNET /usr/bin/keepassxc &
+
+#sleep 2
+#killall plasmashell && plasmashell &
