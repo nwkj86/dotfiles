@@ -92,7 +92,8 @@ let g:gruvbox_contrast_dark = 'hard'
 let base16colorspace=256  " Access colors present in 256 colorspace
 
 "colorscheme base16-monokai
-colorscheme base16-gruvbox-dark-hard
+"colorscheme base16-gruvbox-dark-hard
+colorscheme gruvbox
 set background=dark
 
 " - - - - - - - - - - - - - -
