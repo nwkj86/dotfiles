@@ -95,7 +95,7 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-monokai
 "colorscheme base16-gruvbox-dark-hard
 "colorscheme gruvbox
-colorscheme jellybeans
+colorscheme gruvbox
 set background=dark
 
 " - - - - - - - - - - - - - -
