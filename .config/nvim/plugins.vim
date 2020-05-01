@@ -14,6 +14,7 @@ Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
 Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'cstrahan/vim-capnp'
 Plug 'sheerun/vim-polyglot'
@@ -93,12 +94,14 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 
 "colorscheme base16-monokai
 "colorscheme base16-gruvbox-dark-hard
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme jellybeans
 set background=dark
 
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim
 " - - - - - - - - - - - - - -
+call coc#add_extension('coc-cmake')
 call coc#add_extension('coc-css')
 call coc#add_extension('coc-json')
 call coc#add_extension('coc-lists')

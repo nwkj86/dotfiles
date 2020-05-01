@@ -3,7 +3,6 @@
 NOINTERNET=~/.local_root/usr/bin/nointernet
 
 /usr/bin/optimus-manager-qt &
-/usr/bin/pcloudcc -u nwkj86@gmail.com &
 
 sleep 3
 /usr/bin/konsole &
@@ -16,5 +15,3 @@ sleep 3
 sleep 2
 $NOINTERNET /usr/bin/keepassxc &
 
-#sleep 2
-#killall plasmashell && plasmashell &
