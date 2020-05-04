@@ -5,7 +5,8 @@ NOINTERNET=~/.local_root/usr/bin/nointernet
 /usr/bin/optimus-manager-qt &
 
 sleep 3
-/usr/bin/konsole &
+#/usr/bin/konsole &
+/usr/bin/alacritty &
 /usr/bin/clementine &
 /usr/bin/quiterss &
 /usr/bin/viber &

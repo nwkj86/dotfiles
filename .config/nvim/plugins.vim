@@ -15,6 +15,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
 
 Plug 'cstrahan/vim-capnp'
 Plug 'sheerun/vim-polyglot'
@@ -101,15 +102,18 @@ set background=dark
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim
 " - - - - - - - - - - - - - -
-call coc#add_extension('coc-cmake')
-call coc#add_extension('coc-css')
-call coc#add_extension('coc-json')
-call coc#add_extension('coc-lists')
-call coc#add_extension('coc-python')
-call coc#add_extension('coc-tasks')
-call coc#add_extension('coc-tsserver')
-call coc#add_extension('coc-yaml')
-call coc#add_extension('coc-yank')
+let g:coc_global_extensions = [
+    \ 'coc-cmake',
+    \ 'coc-css',
+    \ 'coc-json',
+    \ 'coc-lists',
+    \ 'coc-omnisharp',
+    \ 'coc-python',
+    \ 'coc-tasks',
+    \ 'coc-tsserver',
+    \ 'coc-yaml',
+    \ 'coc-yank',
+\ ]
 
 nmap <leader>cs <Plug>(coc-declaration)
 nmap <leader>cd <Plug>(coc-definition)
