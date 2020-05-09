@@ -11,6 +11,7 @@ sleep 3
 /usr/bin/quiterss &
 /usr/bin/viber &
 /usr/bin/thunderbird &
+/usr/bin/birdtray &
 /usr/bin/firefox &
 
 sleep 2

@@ -16,6 +16,7 @@ Plug 'romainl/flattened'
 Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
 
 Plug 'cstrahan/vim-capnp'
 Plug 'sheerun/vim-polyglot'
@@ -96,8 +97,10 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme base16-monokai
 "colorscheme base16-gruvbox-dark-hard
 "colorscheme gruvbox
-colorscheme gruvbox
-set background=dark
+"colorscheme gruvbox
+
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim

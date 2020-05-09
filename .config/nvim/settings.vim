@@ -10,6 +10,9 @@ filetype plugin on
 " use true colors
 set termguicolors
 
+" use dark background
+set background=dark
+
 set guicursor=""
 
 " tab = 4 spaces
