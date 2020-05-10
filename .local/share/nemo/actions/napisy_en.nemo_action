@@ -1,8 +1,0 @@
-[Nemo Action]
-Name=Pobierz napisy (EN)
-Comment=Pobierz napisy (EN)
-Exec=/usr/bin/qnapi -l en %F
-Icon-Name=download
-Selection=notnone;
-Quote=double
-Mimetypes=video/mp4;video/avi;
