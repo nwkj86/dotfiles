@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-NOINTERNET=~/.local_root/usr/bin/nointernet
-
 /usr/bin/optimus-manager-qt &
 
 sleep 3
@@ -15,5 +13,5 @@ sleep 3
 /usr/bin/firefox &
 
 sleep 2
-$NOINTERNET /usr/bin/keepassxc &
+/usr/bin/firejail --net=none /usr/bin/keepassxc &
 
