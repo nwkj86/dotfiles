@@ -2,22 +2,20 @@
 call plug#begin()
 
 " ---
-" --- Colorschemes & highlights
+" --- Colorschemes
 " ---
-Plug 'nanotech/jellybeans.vim'
-Plug 'gruvbox-community/gruvbox'
-Plug 'w0ng/vim-hybrid'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'challenger-deep-theme/vim'
-Plug 'mhinz/vim-janah'
-Plug 'mhartington/oceanic-next'
-Plug 'joshdick/onedark.vim'
-Plug 'romainl/flattened'
-Plug 'chriskempson/base16-vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'mhartington/oceanic-next'
+Plug 'mhinz/vim-janah'
+Plug 'romainl/flattened'
+Plug 'MPiccinato/wombat256'
+Plug 'nanotech/jellybeans.vim'
 
+" ---
+" --- Highlights
+" ---
 Plug 'cstrahan/vim-capnp'
 Plug 'sheerun/vim-polyglot'
 
@@ -90,17 +88,10 @@ call plug#end()
 " - - - - - - - - - - - - - -
 " colorscheme
 " - - - - - - - - - - - - - -
-let g:jellybeans_use_lowcolor_black = 0
-let g:gruvbox_contrast_dark = 'hard'
 let base16colorspace=256  " Access colors present in 256 colorspace
 
-"colorscheme base16-monokai
-"colorscheme base16-gruvbox-dark-hard
-"colorscheme gruvbox
-"colorscheme gruvbox
-
 let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+colorscheme jellybeans
 
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim

@@ -39,6 +39,4 @@ export LD_LIBRARY_PATH="${HOME}/.local_root/usr/lib:${LD_LIBRARY_PATH}"
 ###
 export SAL_USE_VCLPLUGIN=gtk
 
-export TERM="xterm-256color"
-
 print_footer $BASH_SOURCE
