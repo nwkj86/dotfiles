@@ -3,8 +3,8 @@
 /usr/bin/optimus-manager-qt &
 
 sleep 3
-#/usr/bin/konsole &
-/usr/bin/alacritty &
+/usr/bin/konsole &
+#/usr/bin/alacritty &
 /usr/bin/clementine &
 /usr/bin/quiterss &
 /usr/bin/viber &
@@ -15,3 +15,8 @@ sleep 3
 sleep 2
 /usr/bin/firejail --net=none /usr/bin/keepassxc &
 
+sleep 1
+killall plasmashell; /usr/bin/plasmashell &
+
+# Reduce nVidia clocks
+nvidia-settings -a "[gpu:0]/GPUGraphicsClockOffset[2]=-100" -a "[gpu:0]/GPUMemoryTransferRateOffset[2]=-1000"

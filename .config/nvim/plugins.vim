@@ -91,7 +91,7 @@ call plug#end()
 let base16colorspace=256  " Access colors present in 256 colorspace
 
 let ayucolor="dark"   " for dark version of theme
-colorscheme jellybeans
+colorscheme base16-default-dark
 
 " - - - - - - - - - - - - - -
 " neoclide/coc.vim
