@@ -1,11 +1,11 @@
 {
     "languageserver": {
-        "ccls": {
-            "command": "ccls",
+        "clangd": {
+            "command": "clangd",
             "args": [
-                "--log-file=/tmp/ccls.log"
+                "--log=verbose",
+                "--compile-commands-dir=./build"
             ],
-            "cwd": "./build",
             "filetypes": [
                 "c",
                 "cpp",
@@ -18,24 +18,7 @@
                 ".git/",
                 ".hg/"
             ],
-            "initializationOptions": {
-                "highlight": {
-                    "lsRanges": true
-                },
-                "compilationDatabaseDirectory": "./build",
-                "cache": {
-                    "directory": "/tmp/ccls"
-                },
-                "clang": {
-                    "excludeArgs": [],
-                    "extraArgs": [],
-                    "pathMappings": []
-                },
-                "index": {
-                    "threads": 7,
-                    "multiVersion": 0
-                }
-            }
+            "trace.server": "verbose"
         },
         "julia": {
             "command": "/usr/bin/julia",
