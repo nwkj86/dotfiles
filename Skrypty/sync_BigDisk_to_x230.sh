@@ -10,5 +10,6 @@ _MY_ID=$(whoami)
 
 sync_dirs \
     /home/${_MY_ID}/BigDisk/ \
+    --exclude-from=${_SCRIPT_DIR}/excluded_from_remote_sync.lst \
     $_MY_ID@$_RPI2_IP:/home/$_MY_ID/Store/BigDisk_backup/
 

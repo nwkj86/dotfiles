@@ -12,6 +12,7 @@ Plug 'mhinz/vim-janah'
 Plug 'romainl/flattened'
 Plug 'MPiccinato/wombat256'
 Plug 'nanotech/jellybeans.vim'
+Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 
 " ---
 " --- Highlights
@@ -31,7 +32,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " git
-Plug 'airblade/vim-gitgutter'                                 " git marks
 Plug 'tpope/vim-fugitive'                                     " git in vim
 Plug 'cohama/agit.vim'
 
@@ -47,15 +47,12 @@ Plug 'vim-scripts/xterm-color-table.vim'                      " print colors, us
 " C++ related
 "Plug 'critiqjo/lldb.nvim'                                     " LLDB helper
 Plug 'huawenyu/neogdb.vim'                                    " GBD helper
-"Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " CoC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}               " Completion and other language server support for Neovim, featured as VSCode
 
 " programming
-"Plug 'szymonmaszke/vimpyter'                                  " edit your jupyter notebooks in vim/neovim
 Plug 'dense-analysis/ale'                                     " asynchronous lint engine
-Plug 'wbthomason/buildit.nvim'                                " async builder
 Plug 'SirVer/ultisnips'                                       " snippets
 Plug 'majutsushi/tagbar'                                      " ctags based outline
 Plug 'liuchengxu/vista.vim'                                   " LSP and ctags based outline
@@ -66,8 +63,6 @@ Plug 'tmhedberg/matchit'                                      " match more by % 
 " others
 Plug 'justinmk/vim-dirvish'                                   " file explorer
 Plug 'brooth/far.vim'                                         " find and replace
-"Plug 'airblade/vim-rooter'                                    " Changes Vim working directory to project root (identified by presence of known directory or file).
-"Plug 'metakirby5/codi.vim'                                    " The interactive scratchpad for hackers.
 
 Plug 'wsdjeg/vim-fetch'                                       " make vim handle line and column numbers in file names with a minimum of fuss
 Plug 'bling/vim-airline'                                      " status line
@@ -99,6 +94,7 @@ colorscheme base16-default-dark
 let g:coc_global_extensions = [
     \ 'coc-cmake',
     \ 'coc-css',
+    \ 'coc-git',
     \ 'coc-json',
     \ 'coc-lists',
     \ 'coc-omnisharp',

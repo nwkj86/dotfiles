@@ -14,12 +14,12 @@ _HOME_BACKUP="home_backup"
 #  sync_dirs /home/${_MY_ID}/${dir}/ ${_BIG_DISK}/${_HOME_BACKUP}/${dir}/
 #done
 sync_dirs \
-    --exclude-from=${_SCRIPT_DIR}/excluded_from_sync.lst \
+    --exclude-from=${_SCRIPT_DIR}/excluded_from_local_sync.lst \
     /home/${_MY_ID}/ \
     ${_BIG_DISK}/${_HOME_BACKUP}/${_MY_ID}/
 
 # Join mixed music into music dir
 sync_dirs \
-    --exclude-from=${_SCRIPT_DIR}/excluded_from_sync.lst \
+    --exclude-from=${_SCRIPT_DIR}/excluded_from_local_sync.lst \
     /home/${_MY_ID}/Muzyka/Mieszana/ \
     ${_BIG_DISK}/Muzyka/Mieszana/
